@@ -1,11 +1,11 @@
 
-Wayside
+# Wayside
 
-We'll go the distance
+# We'll go the distance
 
 Wayside is a MERN stack web application that matches drivers already intending to go a certain way with customers needing to send packages.
 
-Background and Overview
+# Background and Overview
 
 Have you ever had some free space in your car during a road trip and wanted to make a quick buck? Have you ever wanted a cheaper, faster, and more eco-friendly way to ship your packages?
 
@@ -13,7 +13,7 @@ Wayside uses Google Maps API to match drivers, who were already planning on driv
 
 The delivery fee is calculated based on the extra distance the driver had to go compared to his original intended route. Customers will then get to pick a driver based on the driver's date, price, and rating.
 
-Implementation Timeline:
+# Implementation Timeline:
 
 Monday
 
@@ -41,9 +41,7 @@ Friday
 Styling via CSS -Anna
 Fixing Bugs
 
-MVP and Functionalities
-
-MVP & Functionalities
+# MVP and Functionalities
 
  Drivers and Customers can sign up and login with Google+ API OAuth
  Drivers can post routes
@@ -56,15 +54,15 @@ Bonus Features
 
  Package size and weight limits for different drivers
  
- Technology
+ # Technology
 
 In this project, we will use the MERN stack. The backend will consist of Mongo/Mongoose and Express/NodeJS. The front end will be handled with React/Redux. In the course of this project, we will also implement OAuth (google authentication, so that users can log in with their google accounts.) We will also use the google maps API, in order to calculate the distances between locations.
 
-Potential Challenges
+# Potential Challenges
 
 Aside from React/Redux, all of the technologies in this project are new to us, so we will have to learn them prior to implementation. There will also be a fair bit of user interaction, which might be tricky to handle (for example, users should be able to rate a driver once a package has been delivered.)
 
-Weekend Accomplishments
+# Weekend Accomplishments
 
 Over this weekend:
 
@@ -76,4 +74,4 @@ Over this weekend:
  Tyler: OAuth
  Anna: mongoDB schema and wireframes
  
- Wireframes:
+ # Wireframes:
