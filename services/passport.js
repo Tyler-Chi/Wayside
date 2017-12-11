@@ -28,30 +28,33 @@ passport.use(
       callbackURL: "/auth/google/callback",
       proxy: true
     },
-    (accessToken, refreshToken, profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
+      console.log("this is profile");
+      console.log(profile);
       //first, we need to check if the googleId exists in the record though
-
       //this query returns a promise.
       //this query searchs based on the argument. logic:
       //check to see if existingUser exists (record with that googleId)
-      User.findOne({ googleId: profile.id }).then(existingUser => {
-        if (existingUser) {
-          //we have someone with that given profile ID
-          //first argument of done is errors u wanna show
-          //returns the second argument
-          done(null, existingUser);
-        } else {
-          //we don't have a user record with that ID
-          //creating a new user. right now, the schema specifies that users have
-          //a googleId. here, we are setting it to profile.id
-          //we got profile.id from the response from the google server
-          new User({ googleId: profile.id })
-            .save()
-            .then(user => done(null, user));
-          //new User does not actually save the user, just creates it in the javascript.
-          //this is why we need .save();
-        }
-      });
+      const existingUser = await User.findOne({ googleId: profile.id });
+
+      if (existingUser) {
+        //we have someone with that given profile ID
+        //first argument of done is errors u wanna show
+        //returns the second argument
+        return done(null, existingUser);
+      }
+      //we don't have a user record with that ID
+      //creating a new user. right now, the schema specifies that users have
+      //a googleId. here, we are setting it to profile.id
+      //we got profile.id from the response from the google server
+      const user = await new User({
+        googleId: profile.id,
+        name: profile.displayName,
+        imageUrl: profile.photos[0].value
+      }).save();
+      done(null, user);
+      //new User does not actually save the user, just creates it in the javascript.
+      //this is why we need .save();
     }
   )
 );
