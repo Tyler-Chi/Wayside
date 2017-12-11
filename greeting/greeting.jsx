@@ -19,7 +19,7 @@ class Greeting extends React.Component {
 
   handlePendingRequests(pendingOrders){
     let currentState = this.state.pendingDivActive;
-    this.setState({pendingDivActive: !currentState});
+    this.setState({pendingDivActive: currentState});
   }
 
 
