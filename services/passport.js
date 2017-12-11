@@ -29,6 +29,8 @@ passport.use(
       proxy: true
     },
     (accessToken, refreshToken, profile, done) => {
+      console.log("this is profile");
+      console.log(profile);
       //first, we need to check if the googleId exists in the record though
 
       //this query returns a promise.
@@ -45,7 +47,11 @@ passport.use(
           //creating a new user. right now, the schema specifies that users have
           //a googleId. here, we are setting it to profile.id
           //we got profile.id from the response from the google server
-          new User({ googleId: profile.id })
+          new User({
+            googleId: profile.id,
+            name: profile.displayName,
+            imageUrl: profile.photos[0].value
+          })
             .save()
             .then(user => done(null, user));
           //new User does not actually save the user, just creates it in the javascript.
