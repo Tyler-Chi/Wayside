@@ -1,3 +1,4 @@
+Momo was here
 
 # Wayside
 
@@ -43,18 +44,18 @@ Fixing Bugs
 
 # MVP and Functionalities
 
- Drivers and Customers can sign up and login with Google+ API OAuth
- Drivers can post routes
- Customer can request a package be delivered
- Prices are calculated based on the packages's routes and the drivers' routes
- Customers get matched with a driver based on their packages' routes and the drivers' routes
- Drivers can accept and deny delivery requests
- Customers can rate drivers
+Drivers and Customers can sign up and login with Google+ API OAuth
+Drivers can post routes
+Customer can request a package be delivered
+Prices are calculated based on the packages's routes and the drivers' routes
+Customers get matched with a driver based on their packages' routes and the drivers' routes
+Drivers can accept and deny delivery requests
+Customers can rate drivers
 Bonus Features
 
- Package size and weight limits for different drivers
- 
- # Technology
+Package size and weight limits for different drivers
+
+# Technology
 
 In this project, we will use the MERN stack. The backend will consist of Mongo/Mongoose and Express/NodeJS. The front end will be handled with React/Redux. In the course of this project, we will also implement OAuth (google authentication, so that users can log in with their google accounts.) We will also use the google maps API, in order to calculate the distances between locations.
 
@@ -66,42 +67,52 @@ Aside from React/Redux, all of the technologies in this project are new to us, s
 
 Over this weekend:
 
- Changed and fleshed out our new project idea and its MVPs
- Decided that we all want to learn the majority of the full MERN stack
- All did extensive research on mongoDB, Mongoose, Express and Node JS
- Implemented new timeline and main responsibilities
- Trung: Google Maps API
- Tyler: OAuth
- Anna: mongoDB schema and wireframes
- 
+Changed and fleshed out our new project idea and its MVPs
+Decided that we all want to learn the majority of the full MERN stack
+All did extensive research on mongoDB, Mongoose, Express and Node JS
+Implemented new timeline and main responsibilities
+Trung: Google Maps API
+Tyler: OAuth
+Anna: mongoDB schema and wireframes
+
 ## Wireframes
 
 #### Splash Page
-![Splash Page](https://github.com/Tyler-Chi/FlexProject/blob/master/Wireframes/Splash%20Page.png?raw=true) 
+
+![Splash Page](https://github.com/Tyler-Chi/FlexProject/blob/master/Wireframes/Splash%20Page.png?raw=true)
 
 #### Customer- Main Page
+
 ![Customer - Main Page](https://github.com/Tyler-Chi/FlexProject/blob/master/Wireframes/Customer%20-%20Main%20Page.png)
 
 #### Customer - Pick a Driver
+
 ![Customer - Pick a Driver](https://github.com/Tyler-Chi/FlexProject/blob/master/Wireframes/Customer%20-%20Pick%20a%20Driver%20.png)
 
 #### Customer - Pick a Driver - Confirmation Page
+
 ![Customer - Pick a Driver - Confirmation Page](https://github.com/Tyler-Chi/FlexProject/blob/master/Wireframes/Customer%20-%20Pick%20a%20Driver%20-%20Confirmation%20Page.png)
 
 #### Customer - Past Packages
+
 ![Customer - Past Packages](https://github.com/Tyler-Chi/FlexProject/blob/master/Wireframes/Customer%20-%20Past%20Packages.png)
 
 #### Driver - Main Page
+
 ![Driver - Main Page](https://github.com/Tyler-Chi/FlexProject/blob/master/Wireframes/Driver%20-%20Main%20Page.png)
 
 #### Driver - Past Deliveries - Index
+
 ![Driver - Past Deliveries - Index](https://github.com/Tyler-Chi/FlexProject/blob/master/Wireframes/Driver%20-%20Past%20Deliveries%20-%20Index.png)
 
 #### Driver - Past Deliveries - Item
+
 ![Driver - Past Deliveries - Item](https://github.com/Tyler-Chi/FlexProject/blob/master/Wireframes/Driver%20-%20Past%20Deliveries%20-%20Item.png)
 
 #### Driver - Upcoming Deliveries - Index
+
 ![Driver - Upcoming Deliveries - Index](https://github.com/Tyler-Chi/FlexProject/blob/master/Wireframes/Driver%20-%20Upcoming%20Deliveries%20-%20Index.png)
 
 #### Driver - Upcoming Deliveries - Item
+
 ![Driver - Upcoming Deliveries - Item](https://github.com/Tyler-Chi/FlexProject/blob/master/Wireframes/Driver%20-%20Upcoming%20Deliveries%20-%20Item.png)
