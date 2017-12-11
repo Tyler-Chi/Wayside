@@ -74,4 +74,34 @@ Over this weekend:
  Tyler: OAuth
  Anna: mongoDB schema and wireframes
  
- # Wireframes:
+## Wireframes
+
+#### Splash Page
+![Splash Page](https://github.com/Tyler-Chi/FlexProject/blob/master/Wireframes/Splash%20Page.png?raw=true) 
+
+#### Customer- Main Page
+![Customer - Main Page](https://github.com/Tyler-Chi/FlexProject/blob/master/Wireframes/Customer%20-%20Main%20Page.png)
+
+#### Customer - Pick a Driver
+![Customer - Pick a Driver](https://github.com/Tyler-Chi/FlexProject/blob/master/Wireframes/Customer%20-%20Pick%20a%20Driver%20.png)
+
+#### Customer - Pick a Driver - Confirmation Page
+![Customer - Pick a Driver - Confirmation Page](https://github.com/Tyler-Chi/FlexProject/blob/master/Wireframes/Customer%20-%20Pick%20a%20Driver%20-%20Confirmation%20Page.png)
+
+#### Customer - Past Packages
+![Customer - Past Packages](https://github.com/Tyler-Chi/FlexProject/blob/master/Wireframes/Customer%20-%20Past%20Packages.png)
+
+#### Driver - Main Page
+![Driver - Main Page](https://github.com/Tyler-Chi/FlexProject/blob/master/Wireframes/Driver%20-%20Main%20Page.png)
+
+#### Driver - Past Deliveries - Index
+![Driver - Past Deliveries - Index](https://github.com/Tyler-Chi/FlexProject/blob/master/Wireframes/Driver%20-%20Past%20Deliveries%20-%20Index.png)
+
+#### Driver - Past Deliveries - Item
+![Driver - Past Deliveries - Item](https://github.com/Tyler-Chi/FlexProject/blob/master/Wireframes/Driver%20-%20Past%20Deliveries%20-%20Item.png)
+
+#### Driver - Upcoming Deliveries - Index
+![Driver - Upcoming Deliveries - Index](https://github.com/Tyler-Chi/FlexProject/blob/master/Wireframes/Driver%20-%20Upcoming%20Deliveries%20-%20Index.png)
+
+#### Driver - Upcoming Deliveries - Item
+![Driver - Upcoming Deliveries - Item](https://github.com/Tyler-Chi/FlexProject/blob/master/Wireframes/Driver%20-%20Upcoming%20Deliveries%20-%20Item.png)
