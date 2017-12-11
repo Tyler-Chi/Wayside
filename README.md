@@ -1,5 +1,3 @@
-Momo was here
-
 # Wayside
 
 # We'll go the distance
