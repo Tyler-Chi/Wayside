@@ -21,10 +21,23 @@ export const fetchUser = () => async dispatch => {
 //i THINK that values is the body of the request
 
 export const submitTrip = (values, history) => dispatch => {
-  console.log("axios values", values);
   axios
     .post("/api/trips", values)
     .then(values => dispatch({ type: FETCH_USER, payload: values }));
 
   //where do we want to push them after this?
+};
+
+export const fetchAllTrips = () => dispatch => {
+  axios.get("/api/trips/all");
+  //eventually have .then, use actions to
+  //post it into the state
+};
+
+export const fetchCompletedTrips = () => dispatch => {
+  axios.get("/api/trips/completed");
+};
+
+export const fetchUpcomingTrips = () => dispatch => {
+  axios.get("/api/trips/upcoming");
 };

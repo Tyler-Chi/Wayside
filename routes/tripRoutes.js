@@ -3,6 +3,31 @@ const mongoose = require("mongoose");
 const Trip = mongoose.model("trips");
 
 module.exports = app => {
+  app.get("/api/trips/all", async (req, res) => {
+    //here, inside find, can specify which trips we want :D
+    const trips = await Trip.find();
+    console.log(trips);
+    res.send(trips);
+  });
+
+  app.get("/api/trips/completed", async (req, res) => {
+    const trips = await Trip.find({
+      completed: true,
+      _user: req.user.id
+    });
+    console.log(trips);
+    res.send(trips);
+  });
+
+  app.get("/api/trips/upcoming", async (req, res) => {
+    const trips = await Trip.find({
+      completed: false,
+      _user: req.user.id
+    });
+    console.log(trips);
+    res.send(trips);
+  });
+
   app.post("/api/trips", (req, res) => {
     //first check that the user is logged in, otherwise
     //they should not be able to make a trip
@@ -25,7 +50,8 @@ module.exports = app => {
       destination,
       tripStartDate,
       tripEndDate,
-      completed
+      completed,
+      _user: req.user.id
     });
 
     trip.save();

@@ -10,6 +10,7 @@ import CustomersOrdersHistory from "./Customers/CustomersOrdersHistory";
 import DriversTripsNew from "./Drivers/DriversTripsNew";
 import DriversTripsHistory from "./Drivers/DriversTripsHistory";
 import DriversNew from "./Drivers/DriversNew";
+import Test from "./test";
 
 class App extends Component {
   componentDidMount() {
@@ -22,6 +23,9 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Header />
+
+            <Route exact path="/test" component={Test} />
+
             <Route exact path="/" component={Splash} />
             <Route
               exact
