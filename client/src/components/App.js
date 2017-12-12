@@ -4,9 +4,12 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 
 import Header from "./Header";
-import Splash from "./splash";
-const Dashboard = () => <h2> Dashboard </h2>;
-const TripNew = () => <h2> TripNew </h2>;
+import Splash from "./Splash";
+import CustomersOrdersNew from "./CustomersOrdersNew";
+import CustomersOrdersHistory from "./CustomersOrdersHistory";
+import DriversTripsNew from "./DriversTripsNew";
+import DriversTripsHistory from "./DriversTripsHistory";
+import DriversNew from "./DriversNew";
 
 class App extends Component {
   componentDidMount() {
@@ -20,8 +23,31 @@ class App extends Component {
           <div>
             <Header />
             <Route exact path="/" component={Splash} />
-            <Route exact path="/customers/orders/new" component={Dashboard} />
-            <Route path="/trips/new" component={TripNew} />
+            <Route
+              exact
+              path="/customers/orders/new"
+              component={CustomersOrdersNew}
+            />
+
+            <Route
+              exact
+              path="/customers/orders/history"
+              component={CustomersOrdersHistory}
+            />
+
+            <Route
+              exact
+              path="/drivers/trips/new"
+              component={DriversTripsNew}
+            />
+
+            <Route
+              exact
+              path="/drivers/trips/history"
+              component={DriversTripsHistory}
+            />
+
+            <Route exact path="/drivers/new" component={DriversNew} />
           </div>
         </BrowserRouter>
       </div>

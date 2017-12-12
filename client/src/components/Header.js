@@ -11,10 +11,13 @@ class Header extends Component {
     //the a href thing makes the get request to /auth/google
     //this get request executes the google Login
     //i still need to have this redirect to normal
+
+    //this anchor to logout makes a get request to the api/logout. in authRoutes, this handles logout logic, as well as redirection.
     return (
       <div>
         Header
         <a href="/auth/google">Login with Google</a>
+        <a href="/api/logout">Logout</a>
       </div>
     );
   }

@@ -9,44 +9,59 @@ Wayside is a MERN stack web application that matches drivers already intending t
 
 Have you ever had some free space in your car during a road trip and wanted to make a quick buck? Have you ever wanted a cheaper, faster, and more eco-friendly way to ship your packages?
 
-Wayside uses Google Maps API to match drivers, who were already planning on driving somewhere, with customers, sending packages near that route. Thanks to OAuth, drivers and customers can easily sign up with their Google accounts and begin delivering/sending packages quickly.
+Wayside uses Google Maps API to match drivers, who were already planning on driving somewhere, with customers, sending packages near that trip. Thanks to OAuth, drivers and customers can easily sign up with their Google accounts and begin delivering/sending packages quickly.
 
-The delivery fee is calculated based on the extra distance the driver had to go compared to his original intended route. Customers will then get to pick a driver based on the driver's date, price, and rating.
+The delivery fee is calculated based on the extra distance the driver had to go compared to his original intended trip. Customers will then get to pick a driver based on the driver's date, price, and rating.
 
 ## Implementation Timeline:
 
 #### Monday
-* Have the full stack running -**Tyler**
+* Have the full stack running - **Tyler**
     * Bare bones front end - can fetch and post data via Postman  
-* Possibly: OAuth basics - users can log in but not do much else - **Trung Vu**
+* Possibly: OAuth basics - users can log in but not do much else - **Trung**
 
 #### Tuesday
-* Drivers and Customers and Routes are made -**Anna**
-* Drivers should be able to post routes -**Tyler**
-    * Base of Routes via Google Maps API needed  -**Trung**
+* Drivers and Trips are made - **Anna**
+* Splash page - **Anna**
+* Drivers should be able to create trips, see details of each trip - **Tyler**
+    * Base of Routes via Google Maps API needed  - **Trung**
 
 #### Wednesday
-* Implement Item class -**Tyler**
-* Implement search for the customer -**Trung**
-    * Should be able to see a list of routes that match the query. -**Anna**
-    * Should also be able to make a request to have their item delivered on that route.
-    * Driver should be able to accept/decline delivery of that item for their routes.
+* Customers are made. Will be able to create an order request, see past delivered packages - **Anna**
+* Implement Orders class - **Tyler**
+* Display new calculated trip, including price - **Trung**
 
 #### Thursday
-* Implement the rating system -**Tyler**
-    * Once the item has been delivered, Customer should be able to rate the delivery service. -**Trung**
+
+* Implement search for the customer. Only display trips within close proximity (15-20miles radius) and valid delivered-by date - **Trung**
+    * Should be able to see a list of trips that match the query. - **Anna**
+    * Should also be able to make a request to have their item delivered on that trip.
+    * Driver should be able to accept/decline delivery of that item for their trips.
 
 #### Friday
-* Styling via CSS -**Anna**
-* Fixing Bugs
+* Implement the rating system - **Tyler**
+    * Once the item has been delivered, Customer should be able to rate the delivery service. - **Trung**
+* Styling via CSS - **Anna**
 
+#### Saturday
+* Implement driver's ability to keep on taking more packages => includes/ withdraw his trip from future search list. - **Tyler**
+* Styling via CSS - **Anna**
+* Fixing Bugs - **Trung**
+
+#### Sunday
+* Implement customer's ability to specify package's size (fixed) as well as driver declaring his car maximum capability. - **Tyler**
+* Improve search features - **Trung**
+* Styling via CSS - **Anna**
+
+#### Monday
+* Touching up and turning in - **Team**
 
 ## MVP & Functionalities
 - [ ] Drivers and Customers can sign up and login with Google+ API OAuth
-- [ ] Drivers can post routes
+- [ ] Drivers can post trips
 - [ ] Customer can request a package be delivered
-- [ ] Prices are calculated based on the packages's routes and the drivers' routes
-- [ ] Customers get matched with a driver based on their packages' routes and the drivers' routes
+- [ ] Prices are calculated based on the packages's trips and the drivers' trips
+- [ ] Customers get matched with a driver based on their packages' trips and the drivers' trips
 - [ ] Drivers can accept and deny delivery requests
 - [ ] Customers can rate drivers
 
