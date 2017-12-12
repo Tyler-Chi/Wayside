@@ -57,7 +57,7 @@ class Header extends React.Component {
                       to={"/orders/"+ pendingOrder.id}>
 
                   <div className="customer-pending-orders-item-top">
-                    <img src={pendingOrder.driver.userImg}></img>
+                    <img src={pendingOrder.driver.userImg}/>
                     <h4>pendingOrder.driver.username</h4>
                     <h4>pendingOrder.price</h4>
                   </div>

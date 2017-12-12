@@ -1,16 +1,27 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+const style = {
+  mainSplashImg: {
+    width: "100%",
+    minWidth: "1020px",
+    height: "570px",
+  },
+
+};
+
+
 class Splash extends Component {
   render() {
     return (
-      <div className="splash">
+      <div className="splash" style={style}>
         <img
-          className="main-splash-img"
-          src="http://res.cloudinary.com/annaoh/image/upload/v1513098207/DSC03901_vcdzpy.jpg"/>
-        <h2>Deliver and Ship Packages</h2>
+          className="mainSplashImg"
+          src="http://res.cloudinary.com/annaoh/image/upload/v1513098207/DSC03901_vcdzpy.jpg"
+          style={style.mainSplashImg}/>
+        <h2 style={style.mainSplashHeader} className="mainSplashHeader">Deliver and Ship Packages</h2>
 
-        <button className="login-button"
+        <button className="loginButton"
                 onClick={()=> '/auth/google'}>
           Login with Google
         </button>
