@@ -8,17 +8,23 @@ module.exports = app => {
     //they should not be able to make a trip
     //except the body of the request to hold the schema stuff.
 
-    console.log(req.body);
+    console.log("req body", req.body);
 
     // console.log("res1", res);
 
-    const { startLoc, endLoc, startDate, endDate, completed } = req.body;
+    const {
+      origin,
+      destination,
+      tripStartDate,
+      tripEndDate,
+      completed
+    } = req.body;
 
     const trip = new Trip({
-      startLoc,
-      endLoc,
-      startDate,
-      endDate,
+      origin,
+      destination,
+      tripStartDate,
+      tripEndDate,
       completed
     });
 

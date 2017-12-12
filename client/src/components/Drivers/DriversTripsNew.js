@@ -10,11 +10,11 @@ class DriversTripsNew extends Component {
         <button
           onClick={() =>
             this.props.submitTrip({
-              startLoc: "bob",
-              endLoc: "bob",
-              startDate: "bob",
-              endDate: "bob",
-              completed: "bob"
+              origin: "bob",
+              destination: "bob",
+              tripStartDate: Date.now(),
+              tripEndDate: Date.now(),
+              completed: true
             })
           }
         >

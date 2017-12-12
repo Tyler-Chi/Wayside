@@ -4,11 +4,11 @@ const Schema = mongoose.Schema;
 //to make mongoose understand we are making a relationship...
 
 const tripSchema = new Schema({
-  startLoc: String,
-  endLoc: String,
-  startDate: String,
-  endDate: String,
-  completed: String,
+  origin: String,
+  destination: String,
+  tripStartDate: Date,
+  tripEndDate: Date,
+  completed: Boolean,
   _user: { type: Schema.Types.ObjectId, ref: "User" }
 });
 
