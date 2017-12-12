@@ -20,8 +20,11 @@ export const fetchUser = () => async dispatch => {
 
 //i THINK that values is the body of the request
 
-export const submitTrip = (values, history) => async dispatch => {
-  const res = await axios.post("/api/trips", values);
+export const submitTrip = (values, history) => dispatch => {
+  console.log("axios values", values);
+  axios
+    .post("/api/trips", values)
+    .then(values => dispatch({ type: FETCH_USER, payload: values }));
+
   //where do we want to push them after this?
-  dispatch({ type: FETCH_USER, payload: res.data });
 };

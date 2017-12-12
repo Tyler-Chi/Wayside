@@ -1,3 +1,4 @@
+const bodyparser = require("body-parser");
 const express = require("express");
 const mongoose = require("mongoose");
 
@@ -26,6 +27,8 @@ app.use(
   })
 );
 
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
