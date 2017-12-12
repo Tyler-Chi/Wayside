@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 const style = {
+  splash: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   mainSplashImg: {
     width: "100%",
     minWidth: "1020px",
@@ -23,7 +29,7 @@ const style = {
     fontSize: "80px",
     color: "white",
     textAlign: "center",
-    marginBottom: "40px",
+    marginBottom: "50px",
   },
   loginButton: {
     padding: "8px 20px",
@@ -33,17 +39,32 @@ const style = {
     boxShadow: "5px #000000" ,
     background: "#FF0000",
     fontSize: "20px",
-    fontWeight: "500",
+    fontWeight: "600",
     color: "white",
     marginBottom: "15px",
-  }
+  },
+  bottom: {
+    width: "1000px",
+  },
+  questions: {
+    marginTop: "40px",
+    textAlign: "center",
+  },
+  questionsTitle: {
+    textAlign: "center",
+    fontSize: "90px",
+    borderBottom: "1px solid gray",
+    width: "350px",
+    margin: "0 auto 35px auto",
+    paddingBottom: "2px",
+  },
 };
 
 
 class Splash extends Component {
   render() {
     return (
-      <div className="splash" style={style}>
+      <div className="splash" style={style.splash}>
         <div
           className="mainSplashImg"
           style={style.mainSplashImg}>
@@ -52,27 +73,39 @@ class Splash extends Component {
 
             <button className="loginButton" style={style.loginButton}
               onClick={()=> '/auth/google'}>
+              Log in with Google
+            </button>
+          </div>
+        </div>
+
+        <div className="bottom" style={style.bottom}>
+          <div className="questions" style={style.questions}>
+            <h2 className="questionsTitle pacifico" style={style.questionsTitle}>WaySide</h2>
+            <h5>Have you ever went on a road trip and had some free space in your car?</h5>
+            <h5>Have you ever wanted a cheaper, faster way to ship your packages?</h5>
+          </div>
+
+          <div className="about" style={style.about}>
+            <h4>WaySide matches drivers with preplanned routes, with packages that need to be delivered in that direction.</h4>
+            <h4>Prices are calculated based on the extra distance the driver had to go out of his way to pick up and drop off the packages.</h4>
+          </div>
+
+          <div className="human" style={style.human}>
+            <h2>A More Human Approach</h2>
+            <h4>Customers can see and pick their drivers based on their delivery date, price and rating.</h4>
+          </div>
+
+          <div className="signUp" style={style.signUp}>
+            <h4>Easy, Hassle Free Shipping</h4>
+            <h4>Why wait?</h4>
+            <h4>Sign up is easy with your Google account!</h4>
+            <button className="login-button"
+              onClick={()=> '/auth/google'}>
               Login with Google
             </button>
           </div>
         </div>
-        <h4>Have you ever went on a road trip and had some free space in your car?</h4>
-        <h4>Have you ever wanted a cheaper, faster and more eco-friendly way to ship your packages?</h4>
 
-        <h2>WaySide</h2>
-        <h4>WaySide matches drivers with preplanned routes, with packages that need to be delivered in that direction.</h4>
-        <h4>Prices are calculated based on the extra distance the driver had to go out of his way to pick up and drop off the packages.</h4>
-
-        <h2>A More Human Approach</h2>
-        <h4>Customers can see and pick their drivers based on their delivery date, price and rating.</h4>
-
-        <h4>Easy, Hassle Free Shipping</h4>
-        <h4>Why wait?</h4>
-        <h4>Sign up is easy with your Google account!</h4>
-        <button className="login-button"
-                onClick={()=> '/auth/google'}>
-          Login with Google
-        </button>
       </div>);
   }
 }
