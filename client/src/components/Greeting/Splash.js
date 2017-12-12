@@ -6,6 +6,9 @@ const style = {
     width: "100%",
     minWidth: "1020px",
     height: "570px",
+    backgroundImage: "url(//res.cloudinary.com/annaoh/image/upload/v1513098207/DSC03901_vcdzpy.jpg)",
+    backgroundPosition: "50%",
+    backgroundSize: "cover",
   },
 
 };
@@ -15,17 +18,17 @@ class Splash extends Component {
   render() {
     return (
       <div className="splash" style={style}>
-        <img
+        <div
           className="mainSplashImg"
-          src="http://res.cloudinary.com/annaoh/image/upload/v1513098207/DSC03901_vcdzpy.jpg"
-          style={style.mainSplashImg}/>
-        <h2 style={style.mainSplashHeader} className="mainSplashHeader">Deliver and Ship Packages</h2>
+          style={style.mainSplashImg}>
 
-        <button className="loginButton"
-                onClick={()=> '/auth/google'}>
-          Login with Google
-        </button>
+          <h2 style={style.mainSplashHeader} className="mainSplashHeader">Deliver and Ship Packages</h2>
 
+          <button className="loginButton"
+                  onClick={()=> '/auth/google'}>
+            Login with Google
+          </button>
+        </div>
         <h4>Have you ever went on a road trip and had some free space in your car?</h4>
         <h4>Have you ever wanted a cheaper, faster and more eco-friendly way to ship your packages?</h4>
 
