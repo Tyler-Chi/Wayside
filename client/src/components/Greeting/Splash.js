@@ -6,11 +6,37 @@ const style = {
     width: "100%",
     minWidth: "1020px",
     height: "570px",
-    backgroundImage: "url(//res.cloudinary.com/annaoh/image/upload/v1513098207/DSC03901_vcdzpy.jpg)",
+    background: "rgba(0,0,0, 0.5) url(//res.cloudinary.com/annaoh/image/upload/v1513098207/DSC03901_vcdzpy.jpg)",
     backgroundPosition: "50%",
     backgroundSize: "cover",
   },
-
+  mainSplashCover: {
+    background: "rgba(0,0,0,0.3)",
+    height: "100%",
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  mainSplashHeader: {
+    fontSize: "80px",
+    color: "white",
+    textAlign: "center",
+    marginBottom: "40px",
+  },
+  loginButton: {
+    padding: "8px 20px",
+    width: "250px",
+    borderRadius: "5px",
+    border: "1px solid #FF0000",
+    boxShadow: "5px #000000" ,
+    background: "#FF0000",
+    fontSize: "20px",
+    fontWeight: "500",
+    color: "white",
+    marginBottom: "15px",
+  }
 };
 
 
@@ -21,13 +47,14 @@ class Splash extends Component {
         <div
           className="mainSplashImg"
           style={style.mainSplashImg}>
+          <div className="mainSplashCover" style={style.mainSplashCover}>
+            <h2 className="mainSplashHeader pacifico" style={style.mainSplashHeader}>Deliver and Ship Packages</h2>
 
-          <h2 style={style.mainSplashHeader} className="mainSplashHeader">Deliver and Ship Packages</h2>
-
-          <button className="loginButton"
-                  onClick={()=> '/auth/google'}>
-            Login with Google
-          </button>
+            <button className="loginButton" style={style.loginButton}
+              onClick={()=> '/auth/google'}>
+              Login with Google
+            </button>
+          </div>
         </div>
         <h4>Have you ever went on a road trip and had some free space in your car?</h4>
         <h4>Have you ever wanted a cheaper, faster and more eco-friendly way to ship your packages?</h4>
