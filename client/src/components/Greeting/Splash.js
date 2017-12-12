@@ -5,33 +5,24 @@ const style = {
   mainSplashImg: {
     width: "100%",
     minWidth: "1020px",
-    height: "570px",
-  },
-
+    height: "570px"
+  }
 };
-
 
 class Splash extends Component {
   render() {
     return (
       <div className="splash" style={style}>
         <img
-<<<<<<< HEAD:client/src/components/Greeting/Splash.js
           className="mainSplashImg"
           src="http://res.cloudinary.com/annaoh/image/upload/v1513098207/DSC03901_vcdzpy.jpg"
-          style={style.mainSplashImg}/>
-        <h2 style={style.mainSplashHeader} className="mainSplashHeader">Deliver and Ship Packages</h2>
-
-        <button className="loginButton"
-                onClick={()=> '/auth/google'}>
-=======
-          className="main-splash-img"
-          src="https://lh6.googleusercontent.com/xkcFB2AbRVNO7-E2SazV-3ye3j879NJB8xBXppOhcnC5qtdYxcqtQhNtrhsaVDs0FKr-l98F_2W6_4s7QzJA=w928-h937-rw"
+          style={style.mainSplashImg}
         />
-        <h2>Deliver and Ship Packages</h2>
+        <h2 style={style.mainSplashHeader} className="mainSplashHeader">
+          Deliver and Ship Packages
+        </h2>
 
-        <button className="login-button" onClick={() => "/auth/google"}>
->>>>>>> postreq:client/src/components/splash.js
+        <button className="loginButton" onClick={() => "/auth/google"}>
           Login with Google
         </button>
 
@@ -62,16 +53,11 @@ class Splash extends Component {
         <h4>Easy, Hassle Free Shipping</h4>
         <h4>Why wait?</h4>
         <h4>Sign up is easy with your Google account!</h4>
-<<<<<<< HEAD:client/src/components/Greeting/Splash.js
-        <button className="login-button"
-                onClick={()=> '/auth/google'}>
+        <button className="login-button" onClick={() => "/auth/google"}>
           Login with Google
         </button>
-      </div>);
-=======
       </div>
     );
->>>>>>> postreq:client/src/components/splash.js
   }
 }
 
