@@ -28,11 +28,10 @@ class Splash extends Component {
         <h4>Easy, Hassle Free Shipping</h4>
         <h4>Why wait?</h4>
         <h4>Sign up is easy with your Google account!</h4>
-        <button className="login-button-2"
+        <button className="login-button"
                 onClick={()=> '/auth/google'}>
           Login with Google
         </button>
-
       </div>);
   }
 }

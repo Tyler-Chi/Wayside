@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 
 import Header from "./Header";
-import Splash from "./Greeting/Splash";
+import Splash from "./Splash";
 import CustomersOrdersNew from "./Customers/CustomersOrdersNew";
 import CustomersOrdersHistory from "./Customers/CustomersOrdersHistory";
 import DriversTripsNew from "./Drivers/DriversTripsNew";
