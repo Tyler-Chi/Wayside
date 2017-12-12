@@ -11,8 +11,6 @@ import DriversTripsNew from "./DriversTripsNew";
 import DriversTripsHistory from "./DriversTripsHistory";
 import DriversNew from "./DriversNew";
 
-const TripNew = () => <h2> TripNew </h2>;
-
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
@@ -23,7 +21,7 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <div>
-            <Header/>
+            <Header />
             <Route exact path="/" component={Splash} />
             <Route
               exact
