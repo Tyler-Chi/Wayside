@@ -7,7 +7,7 @@ class Splash extends Component {
       <div className="splash">
         <img
           className="main-splash-img"
-          src="https://lh6.googleusercontent.com/xkcFB2AbRVNO7-E2SazV-3ye3j879NJB8xBXppOhcnC5qtdYxcqtQhNtrhsaVDs0FKr-l98F_2W6_4s7QzJA=w928-h937-rw"/>
+          src="http://res.cloudinary.com/annaoh/image/upload/v1513098207/DSC03901_vcdzpy.jpg"/>
         <h2>Deliver and Ship Packages</h2>
 
         <button className="login-button"
@@ -28,6 +28,11 @@ class Splash extends Component {
         <h4>Easy, Hassle Free Shipping</h4>
         <h4>Why wait?</h4>
         <h4>Sign up is easy with your Google account!</h4>
+        <button className="login-button-2"
+                onClick={()=> '/auth/google'}>
+          Login with Google
+        </button>
+
       </div>);
   }
 }

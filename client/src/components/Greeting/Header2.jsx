@@ -8,7 +8,7 @@ import { Link, withRouter } from 'react-router-dom';
 // pending requests count <= an integer
 // currentUser
 
-class Greeting extends React.Component {
+class Header extends React.Component {
   constructor(props) {
     super(props);
     this.handlePendingRequests = this.handlePendingRequests.bind(this);
@@ -125,4 +125,4 @@ class Greeting extends React.Component {
   }
 }
 
-export default withRouter(Greeting);
+export default withRouter(Header);

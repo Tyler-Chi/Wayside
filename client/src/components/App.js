@@ -4,12 +4,12 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 
 import Header from "./Header";
-import Splash from "./Splash";
-import CustomersOrdersNew from "./CustomersOrdersNew";
-import CustomersOrdersHistory from "./CustomersOrdersHistory";
-import DriversTripsNew from "./DriversTripsNew";
-import DriversTripsHistory from "./DriversTripsHistory";
-import DriversNew from "./DriversNew";
+import Splash from "./Greeting/Splash";
+import CustomersOrdersNew from "./Customers/CustomersOrdersNew";
+import CustomersOrdersHistory from "./Customers/CustomersOrdersHistory";
+import DriversTripsNew from "./Drivers/DriversTripsNew";
+import DriversTripsHistory from "./Drivers/DriversTripsHistory";
+import DriversNew from "./Drivers/DriversNew";
 
 class App extends Component {
   componentDidMount() {
