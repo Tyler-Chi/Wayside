@@ -26,7 +26,7 @@ module.exports = app => {
     //logout is a function automatically attached to req by passport.
     //this kills the cookie.
     req.logout();
-    //req.user snould now be undefined.
+    //upon logout, this redirects the url to /
     res.redirect("/");
   });
 
