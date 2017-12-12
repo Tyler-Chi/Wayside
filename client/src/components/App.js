@@ -18,7 +18,7 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <div>
-            <Header />
+            <Header/>
             <Route exact path="/" component={Splash} />
             <Route exact path="/customers/orders/new" component={Dashboard} />
             <Route path="/trips/new" component={TripNew} />
