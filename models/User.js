@@ -1,8 +1,12 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+//must specify all of these fields, so that it is pulled out from passport.js
+
 const userSchema = new Schema({
-  googleId: String
+  googleId: String,
+  name: String,
+  imageUrl: String
 });
 
 //telling mongoose that we want to create a new collection called users
