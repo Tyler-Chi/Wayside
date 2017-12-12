@@ -101,17 +101,9 @@ class Greeting extends React.Component {
     let currentUser = this.props.currentUser;
     if (currentUser){
       return(
-        <div className="header-group">
-          <button onClick={()=> this.props.history.push('/explore')}>
-            <i className="fa fa-map" aria-hidden="true"></i>
-          </button>
-          <button>
-            <i className="fa fa-magic" aria-hidden="true"></i>
-          </button>
-          <button onClick={()=> this.props.history.push(`/user/${currentUser.username}`)}>
-            <i className="fa fa-user-o" aria-hidden="true"></i>
-          </button>
-          <button className="header-button" onClick={this.props.logout}>
+        <div className="nav-bar-right">
+          this.sessionLinks()
+          <button className="nav-bar-logout" onClick={this.props.logout}>
             Log out
           </button>
         </div>
