@@ -10,7 +10,16 @@ module.exports = app => {
 
   //at this point, the url has a code!
   //now, because the code is there, passport knows the code is there and will use it!
-  app.get("/auth/google/callback", passport.authenticate("google"));
+
+  //after user successfully authenticates through google
+  //req res will then take you to the next place
+  app.get(
+    "/auth/google/callback",
+    passport.authenticate("google"),
+    (req, res) => {
+      res.redirect("/trips");
+    }
+  );
 
   //if the user makes a get request to /api/logout, we want to execute the following callback.
   app.get("/api/logout", (req, res) => {
