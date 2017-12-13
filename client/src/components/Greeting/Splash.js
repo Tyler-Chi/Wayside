@@ -65,7 +65,7 @@ const style = {
 
 let lastScrollPos = 0;
 let ticking  = false;
-let left = -1000;
+let left = -1200;
 
 let moveCarLeft = function(car, scrollPos){
   // console.log(scrollPos);
@@ -91,11 +91,23 @@ class Splash extends Component {
   render() {
     return (
       <div className="splash" style={style.splash}>
+        <div className="nav-extender">
+          <h2 className="slogan">Going the distance</h2>
+          <h4 className="description">Request pickup. Ship. Repeat.</h4>
+          <div className="ratings">
+            <h4>Live Reviews</h4>
+            <h5>Cheap. $ent a box from LA to SF for 6 bucks.</h5>
+            <h5>Super quick and easy</h5>
+            <h5>Would try again</h5>
+            <h5>Weekend shipping is the best</h5>
+          </div>
+        </div>
         <div
           className="mainSplashImg"
           style={style.mainSplashImg}>
           <div className="mainSplashCover" style={style.mainSplashCover}>
-            <h1 className="mainSplashHeader barlow" style={style.mainSplashHeader}>Deliver & Ship Packages</h1>
+            <h1 className="mainSplashHeader barlow" style={style.mainSplashHeader}>
+              DELIVER & SHIP PACKAGES</h1>
 
             <button className="loginButton"
               onClick={()=> '/auth/google'}>

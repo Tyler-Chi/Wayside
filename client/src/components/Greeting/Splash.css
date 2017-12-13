@@ -1,6 +1,29 @@
 .mainSplashHeader {
   font-weight: 700;
 }
+
+.nav-extender {
+  height: 200px;
+  width: 950px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-content: start;
+}
+.slogan {
+  font-family: "Open Sans";
+  font-size: 50px;
+  font-weight: 400;
+  margin-top: 20px;
+  /*margin-left: 50px;*/
+}
+.description {
+  font-family: "Open Sans";
+  font-weight: 300;
+  position: relative;
+  top: -10px;
+}
+
 .loginButton {
   padding: 8px 20px;
   width: 275px;
