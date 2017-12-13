@@ -3,22 +3,13 @@ import { connect } from "react-redux";
 import * as actions from "../../actions";
 
 class DriversTripsHistory extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: true
-    };
-  }
-
   //need to figure out the promises here -__-
   componentDidMount() {
-    this.props
-      .fetchCompletedTrips()
-      .then(() => this.setState({ loading: false }));
+    this.props.fetchCompletedTrips();
   }
 
   render() {
-    if (this.state.loading) {
+    if (this.props.entities.trips === null) {
       return <div>loading</div>;
     }
 

@@ -12,10 +12,10 @@ module.exports = app => {
 
   app.get("/api/trips/completed", async (req, res) => {
     const trips = await Trip.find({
-      completed: false,
+      completed: true,
       _user: req.user.id
     });
-    console.log(trips);
+
     res.send(trips);
   });
 

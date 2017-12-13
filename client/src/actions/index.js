@@ -36,11 +36,25 @@ export const fetchAllTrips = () => dispatch => {
   //post it into the state
 };
 
-export const fetchCompletedTrips = () => dispatch => {
+export const fetchCompletedTrips = async () => dispatch => {
   axios
     .get("/api/trips/completed")
     .then(trips => dispatch({ type: FETCH_TRIPS, payload: trips.data }));
 };
+
+// export function fetchCompletedTrips(trips = []) {
+//   return function action(dispatch) {
+//     dispatch({ type: FETCH_TRIPS, payload: trips });
+//
+//     const request = axios({
+//       method: "GET",
+//       url: "/api/trips/completed",
+//       headers: []
+//     });
+//
+//     return request.then(response => dispatch(fetchCompletedTrips(response)));
+//   };
+// }
 
 export const fetchUpcomingTrips = () => dispatch => {
   axios
