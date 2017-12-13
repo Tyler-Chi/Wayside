@@ -11,11 +11,11 @@ const mapOptions = {
   center: {lat: 40.612969, lng: -96.455751 } //center at the US
 };
 
-
 class DriversTripsNew extends Component {
   constructor(props) {
     super(props);
     this.submitAndDisplay = this.submitAndDisplay.bind(this);
+    this.today = new Date().toJSON().split('T')[0];
   }
 
   componentDidMount() {
@@ -75,15 +75,18 @@ class DriversTripsNew extends Component {
 
         <input type="text" id="cust-start" placeholder="Start"></input>
         <input type="text" id="cust-end" placeholder="End"></input>
+
         <label> Trip Start Date
-          <input type="date" id="date-start" placeholder="Date Start"></input>
+          <input type="date" id="date-start" min={this.today}></input>
         </label>
+
         <label> Trip End Date
-          <input type="date" id="date-end" placeholder="Date End"></input>
+          <input type="date" id="date-end" min={this.today}></input>
         </label>
+
         <input type="submit" id="submit" value="Create New Trip"
           onClick={() => this.submitAndDisplay()} />
-        <br />
+
         <div ref="map" style={{width: 400, height: 400}}>
           Map
         </div>
