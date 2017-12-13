@@ -3,6 +3,10 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 
+import './Reset.css';
+import './Fonts.css';
+
+
 import Header from "./Header";
 import Splash from "./Greeting/Splash";
 import CustomersOrdersNew from "./Customers/CustomersOrdersNew";
@@ -11,6 +15,8 @@ import DriversTripsNew from "./Drivers/DriversTripsNew";
 import DriversTripsHistory from "./Drivers/DriversTripsHistory";
 import DriversNew from "./Drivers/DriversNew";
 import Test from "./test";
+
+
 
 class App extends Component {
   componentDidMount() {

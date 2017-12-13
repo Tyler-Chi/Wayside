@@ -1,0 +1,133 @@
+.mainSplashHeader {
+  font-weight: 700;
+
+}
+
+
+.bottom {
+  font-family: Open Sans;
+  padding-bottom: 40px;
+  width: 100%
+}
+
+.questions {
+  padding-bottom: 80px;
+}
+
+h2 {
+  font-family: barlow;
+  font-size: 60px;
+  font-weight: 800;
+}
+
+.first {
+  width: 100%;
+  background: #f4f4f4;
+  /*backgrou1nd: E8E8E8;*/
+  color: black;
+}
+.first > * , .human > *{
+  width: 1000px;
+}
+.human {
+  background: black;
+  color: white;
+}
+.about {
+  padding: 120px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.human2 > * {
+  text-align: left;
+  width: 800px;
+}
+.bottom-login-button {
+  margin-bottom: 40px;
+  padding: 8px 20px;
+  width: 275px;
+  border-radius: 5px;
+  border: 1px solid ##FF0000;
+  background: #FF0000;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+}
+
+h4 {
+  font-size: 35px;
+  font-weight: 500;
+}
+.midsentence {
+  margin: 20px 0 5px 0;
+}
+.midsentence2 {
+  margin: 5px 0 20px 0;
+}
+strong {
+  font-weight: 600;
+}
+.center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /*align-items: center;*/
+  /*align-content: center;*/
+  margin: 0 auto;
+}
+.human-photos {
+  position: relative;
+}
+
+
+@keyframes cf3FadeInOut {
+  0% {
+    opacity:1;
+  }
+  14.29% {
+    opacity:1;
+  }
+  20% {
+    opacity:0;
+  }
+  94.29% {
+    opacity:0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.human-photos > img {
+  width: 200px;
+  height: 200px;
+  border-radius: 200px;
+  border: 1px solid black;
+
+  position: absolute;
+  left: 0;
+  top: 25%;
+  animation-name: cf3FadeInOut;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 17.5s;
+  /*animation-direction: alternate;*/
+}
+.human-photos > img:nth-of-type(1) {
+  animation-delay: 14s;
+}
+.human-photos > img:nth-of-type(2) {
+  animation-delay: 10.5s;
+}
+.human-photos > img:nth-of-type(3) {
+  animation-delay: 7s;
+}
+.human-photos > img:nth-of-type(4) {
+  animation-delay: 3.5s;
+}
+.human-photos > img:nth-of-type(5) {
+  animation-delay: 0s;
+}
