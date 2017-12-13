@@ -19,12 +19,16 @@ module.exports = app => {
     res.send(trips);
   });
 
+  app.get("/api/trips/:tripId", async (req, res) => {
+    const trip = await Trip.findOne({ _id: req.params.tripId });
+    res.send(trip);
+  });
+
   app.get("/api/trips/upcoming", async (req, res) => {
     const trips = await Trip.find({
       completed: false,
       _user: req.user.id
     });
-    console.log(trips);
     res.send(trips);
   });
 

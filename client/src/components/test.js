@@ -20,6 +20,12 @@ class Test extends Component {
         <button onClick={() => this.props.fetchUpcomingTrips()}>
           fetchUpcoming
         </button>
+        <br />
+        <button
+          onClick={() => this.props.fetchTrip("5a3030ced24d259ce4928ed2")}
+        >
+          fetchTrip
+        </button>
       </div>
     );
   }
