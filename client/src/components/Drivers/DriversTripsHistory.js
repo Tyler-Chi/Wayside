@@ -11,9 +11,10 @@ class DriversTripsHistory extends Component {
   }
 
   //need to figure out the promises here -__-
-  componentWillMount() {
-    this.props.fetchCompletedTrips();
-    setTimeout(() => this.setState({ loading: false }), 2000);
+  componentDidMount() {
+    this.props
+      .fetchCompletedTrips()
+      .then(() => this.setState({ loading: false }));
   }
 
   render() {
