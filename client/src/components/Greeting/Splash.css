@@ -1,20 +1,44 @@
+.mainSplashHeader {
+  font-weight: 700;
+
+}
+
 
 .bottom {
   font-family: Open Sans;
+  padding-bottom: 40px;
+  width: 100%
+}
+
+.questions {
+  padding-bottom: 80px;
 }
 
 h2 {
-  font-family: sans-serif;
+  font-family: barlow;
   font-size: 60px;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .first {
-  margin-top: 100px;
+  width: 100%;
+  background: #f4f4f4;
+  /*backgrou1nd: E8E8E8;*/
+  color: black;
 }
-
+.first > * , .human > *{
+  width: 1000px;
+}
+.human {
+  background: black;
+  color: white;
+}
 .about {
-  margin-top: 80px;
+  padding: 120px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .bottom-login-button {
@@ -28,4 +52,18 @@ h2 {
   font-weight: 600;
   color: white;
   text-align: center;
+}
+
+h4 {
+  font-size: 35px;
+  font-weight: 500;
+}
+.midsentence {
+  margin: 20px 0 5px 0;
+}
+.midsentence2 {
+  margin: 5px 0 20px 0;
+}
+strong {
+  font-weight: 600;
 }

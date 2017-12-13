@@ -13,12 +13,12 @@ const style = {
     width: "100%",
     minWidth: "1020px",
     height: "570px",
-    background: "rgba(0,0,0, 0.5) url(//res.cloudinary.com/annaoh/image/upload/v1513098207/DSC03901_vcdzpy.jpg)",
+    background: "url(//res.cloudinary.com/annaoh/image/upload/v1513098207/DSC03901_vcdzpy.jpg)",
     backgroundPosition: "50%",
     backgroundSize: "cover",
   },
   mainSplashCover: {
-    background: "rgba(0,0,0,0.3)",
+    background: "rgba(0,0,0,0.45)",
     height: "100%",
     width: "100%",
     display: "flex",
@@ -27,7 +27,7 @@ const style = {
     alignItems: "center",
   },
   mainSplashHeader: {
-    fontSize: "80px",
+    fontSize: "90px",
     color: "white",
     textAlign: "center",
     marginBottom: "50px",
@@ -45,9 +45,6 @@ const style = {
     marginBottom: "15px",
     textAlign: "center",
   },
-  bottom: {
-    width: "1000px",
-  },
   questions: {
     marginTop: "40px",
     textAlign: "center",
@@ -58,7 +55,7 @@ const style = {
     borderBottom: "1px solid gray",
     width: "400px",
     margin: "0 auto 35px auto",
-    paddingBottom: "2px",
+    paddingBottom: "6px",
   },
 };
 
@@ -71,7 +68,7 @@ class Splash extends Component {
           className="mainSplashImg"
           style={style.mainSplashImg}>
           <div className="mainSplashCover" style={style.mainSplashCover}>
-            <h1 className="mainSplashHeader pacifico" style={style.mainSplashHeader}>Deliver and Ship Packages</h1>
+            <h1 className="mainSplashHeader barlow" style={style.mainSplashHeader}>Deliver & Ship Packages</h1>
 
             <button className="loginButton" style={style.loginButton}
               onClick={()=> '/auth/google'}>
@@ -88,19 +85,19 @@ class Splash extends Component {
           </div>
 
           <div className="about first" style={style.about}>
-            <h2>How It Works</h2>
-            <h4>WaySide matches drivers with preplanned routes, with packages that need to be delivered in that direction.</h4>
-            <h4>Prices are calculated based on the extra distance the driver had to go out of his way to pick up and drop off the packages.</h4>
+            <h2>HOW IT WORKS</h2>
+            <h4>WaySide matches drivers going in a certain direction with packages that need to be delivered in the same way.</h4>
+            <h4>Prices are calculated based on the extra distance the driver had to go out of his way to pick up and drop off the package.</h4>
           </div>
 
           <div className="about human" style={style.human}>
-            <h2>A More Human Approach</h2>
-            <h4>Your stuff is important,</h4>
-            <h4>Which is why customers can choose their drivers and know exactly who's handling their packages.</h4>
+            <h2>A MORE HUMAN APPROACH</h2>
+            <h4 className="midsentence">Your stuff is <strong>IMPORTANT</strong>,</h4>
+            <h4 className="midsentence2">Which is why you can choose your driver and know exactly who's handling your stuff.</h4>
           </div>
 
           <div className="about signUp" style={style.signUp}>
-            <h2>Why Wait?</h2>
+            <h2>WHY WAIT?</h2>
             <h4>Sign up now with your Google account!</h4>
             <button className="bottom-login-button"
               onClick={()=> '/auth/google'}>
