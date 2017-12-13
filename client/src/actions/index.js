@@ -49,7 +49,7 @@ export const fetchUpcomingTrips = () => dispatch => {
 };
 
 export const fetchTrip = tripId => dispatch => {
-  console.log("TRYING TO FETCH SINGLE TRIP :<");
-  axios.get(`/api/trips/${tripId}`);
-  // .then(trip => dispatch({ type: FETCH_TRIP, payload: trip.data }));
+  axios
+    .get(`/api/trips/${tripId}`)
+    .then(trip => dispatch({ type: FETCH_TRIP, payload: trip.data }));
 };
