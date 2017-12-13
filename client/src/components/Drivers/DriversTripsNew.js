@@ -16,12 +16,13 @@ class DriversTripsNew extends Component {
   constructor(props) {
     super(props);
     this.submitAndDisplay = this.submitAndDisplay.bind(this);
-
   }
 
   componentDidMount() {
     const map = this.refs.map;
+    //define where our initial map should be centered
     this.map = new google.maps.Map(map, mapOptions);
+    //DirectionsService take care of handling our map direction
     this.directionsService = new google.maps.DirectionsService();
 
   //DirectionsRenderer will take care of displaying the route onto
@@ -54,16 +55,11 @@ class DriversTripsNew extends Component {
     let tripStartDate = document.getElementById('date-start').value;
     let tripEndDate = document.getElementById('date-end').value;
 
-    console.log(origin);
-    console.log(destination);
-    console.log(tripStartDate);
-    console.log(tripEndDate);
-
     this.props.submitTrip({
-      origin: origin,
-      destination: destination,
-      tripStartDate: tripStartDate,
-      tripEndDate: tripEndDate,
+      origin,
+      destination,
+      tripStartDate,
+      tripEndDate,
       completed: false
     });
     this.displayRoute(
