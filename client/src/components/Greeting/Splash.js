@@ -90,11 +90,23 @@ class Splash extends Component {
             <h4>Prices are calculated based on the extra distance the driver had to go out of his way to pick up and drop off the package.</h4>
           </div>
 
-          <div className="about human" style={style.human}>
-            <h2>A MORE HUMAN APPROACH</h2>
-            <h4 className="midsentence">Your stuff is <strong>IMPORTANT</strong>,</h4>
-            <h4 className="midsentence2">Which is why you can choose your driver and know exactly who's handling your stuff.</h4>
-          </div>
+          <div className="row human" style={style.human}>
+            <div className="center">
+              <div className="about human2">
+                <h2>A MORE HUMAN APPROACH</h2>
+                <h4 className="midsentence">Your stuff is <strong>IMPORTANT</strong>,</h4>
+                <h4 className="midsentence2">Which is why you can choose your driver and know exactly who's handling your stuff.</h4>
+              </div>
+              <div className="human-photos">
+                <img src="http://res.cloudinary.com/annaoh/image/upload/c_crop,h_400,w_400,x_140,y_230/v1513143276/photo-1505503693641-1926193e8d57_iytfqb.jpg" />
+                <img src="http://res.cloudinary.com/annaoh/image/upload/c_scale,h_900/c_crop,h_400,w_400,x_120,y_200/v1513143277/charles-etoroma-390119_unevbl.jpg"/>
+                <img src="http://res.cloudinary.com/annaoh/image/upload/c_scale,h_600/c_crop,h_400,w_400/v1513143277/eduardo-dutra-461056_rcgcmz.jpg"/>
+                <img src="http://res.cloudinary.com/annaoh/image/upload/c_scale,w_600/c_crop,h_400,w_400/v1513143277/edward-cisneros-411013_wizbjz.jpg"/>
+                <img src="http://res.cloudinary.com/annaoh/image/upload/c_scale,w_700/c_crop,h_400,w_400,x_130,y_0/v1513143278/marius-ciocirlan-398931_z1lbhr.jpg"/>
+              </div>
+
+            </div>
+        </div>
 
           <div className="about signUp" style={style.signUp}>
             <h2>WHY WAIT?</h2>
