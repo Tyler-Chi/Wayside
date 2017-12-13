@@ -3,8 +3,8 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 
-import './Reset.css';
-import './Fonts.css';
+import './Overall_CSS/Reset.css';
+import './Overall_CSS/Fonts.css';
 
 
 import Header from "./Header";
@@ -27,8 +27,8 @@ class App extends Component {
     return (
       <div>
         <BrowserRouter>
-          <div>
-            <Header />
+          <div className="body">
+            <Header className="nav"/>
 
             <Route exact path="/test" component={Test} />
 

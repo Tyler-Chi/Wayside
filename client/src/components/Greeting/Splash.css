@@ -1,8 +1,29 @@
 .mainSplashHeader {
   font-weight: 700;
-
 }
-
+.loginButton {
+  padding: 8px 20px;
+  width: 275px;
+  border-radius: 5px;
+  border: 1px solid #FF0000;
+  /*box-shadow: 5px #000000;*/
+  background: #FF0000;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.loginButton:hover {
+  background: #6B0103;
+  border: 1px solid #6B0103;
+  border-radius: 5px;
+}
+.bottom-login-button:hover {
+  background: #6B0103;
+  border: 1px solid #6B0103;
+  border-radius: 5px;
+}
 
 .bottom {
   font-family: Open Sans;

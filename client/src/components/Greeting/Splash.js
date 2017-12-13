@@ -49,19 +49,6 @@ const style = {
     textAlign: "center",
     marginBottom: "50px",
   },
-  loginButton: {
-    padding: "8px 20px",
-    width: "275px",
-    borderRadius: "5px",
-    border: "1px solid #FF0000",
-    boxShadow: "5px #000000" ,
-    background: "#FF0000",
-    fontSize: "20px",
-    fontWeight: "600",
-    color: "white",
-    marginBottom: "15px",
-    textAlign: "center",
-  },
   questions: {
     marginTop: "40px",
     textAlign: "center",
@@ -80,9 +67,9 @@ let lastScrollPos = 0;
 let ticking  = false;
 let left = -1000;
 
-let doSomething = function(car, scrollPos){
+let moveCarLeft = function(car, scrollPos){
   // console.log(scrollPos);
-  car.style.left = `${left + scrollPos}px`;
+  car.style.left = `${left + scrollPos*1.1}px`;
 };
 
 class Splash extends Component {
@@ -93,17 +80,12 @@ class Splash extends Component {
       lastScrollPos = window.scrollY;
       if (!ticking) {
         window.requestAnimationFrame(function(){
-          doSomething(car, lastScrollPos);
+          moveCarLeft(car, lastScrollPos);
           ticking = false;
         });
         ticking = true;
       }
     });
-
-
-    console.log(car.scrollTop);
-    car.scrollTop = 1000;
-    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   }
 
   render() {
@@ -115,7 +97,7 @@ class Splash extends Component {
           <div className="mainSplashCover" style={style.mainSplashCover}>
             <h1 className="mainSplashHeader barlow" style={style.mainSplashHeader}>Deliver & Ship Packages</h1>
 
-            <button className="loginButton" style={style.loginButton}
+            <button className="loginButton"
               onClick={()=> '/auth/google'}>
               Log in with Google
             </button>
@@ -159,7 +141,7 @@ class Splash extends Component {
             <h4>Sign up now with your Google account!</h4>
             <button className="bottom-login-button"
               onClick={()=> '/auth/google'}>
-              Log in with Google
+              Sign up with Google
             </button>
           </div>
         </div>

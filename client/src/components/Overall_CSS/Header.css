@@ -1,0 +1,37 @@
+.nav {
+  height: 80px;
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 0 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 40px;
+}
+
+.login > * {
+  padding: 25px 15px;
+}
+.login > *:hover {
+  border-top: 5px solid red;
+}
+
+.nav-right {
+  display: flex;
+  flex-direction: row;
+}
+.nav-right > * {
+  padding: 27px 15px;
+}
+.nav-right > *:hover {
+  border-top: 5px solid red;
+}
