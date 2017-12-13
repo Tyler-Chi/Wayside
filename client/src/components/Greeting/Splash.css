@@ -1,0 +1,31 @@
+
+.bottom {
+  font-family: Open Sans;
+}
+
+h2 {
+  font-family: sans-serif;
+  font-size: 60px;
+  font-weight: 700;
+}
+
+.first {
+  margin-top: 100px;
+}
+
+.about {
+  margin-top: 80px;
+}
+
+.bottom-login-button {
+  margin-bottom: 40px;
+  padding: 8px 20px;
+  width: 275px;
+  border-radius: 5px;
+  border: 1px solid ##FF0000;
+  background: #FF0000;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+}

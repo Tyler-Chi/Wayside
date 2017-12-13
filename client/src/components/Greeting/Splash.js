@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import './Splash.css';
 
 const style = {
   splash: {
@@ -33,7 +34,7 @@ const style = {
   },
   loginButton: {
     padding: "8px 20px",
-    width: "250px",
+    width: "275px",
     borderRadius: "5px",
     border: "1px solid #FF0000",
     boxShadow: "5px #000000" ,
@@ -42,6 +43,7 @@ const style = {
     fontWeight: "600",
     color: "white",
     marginBottom: "15px",
+    textAlign: "center",
   },
   bottom: {
     width: "1000px",
@@ -52,9 +54,9 @@ const style = {
   },
   questionsTitle: {
     textAlign: "center",
-    fontSize: "90px",
+    fontSize: "100px",
     borderBottom: "1px solid gray",
-    width: "350px",
+    width: "400px",
     margin: "0 auto 35px auto",
     paddingBottom: "2px",
   },
@@ -69,7 +71,7 @@ class Splash extends Component {
           className="mainSplashImg"
           style={style.mainSplashImg}>
           <div className="mainSplashCover" style={style.mainSplashCover}>
-            <h2 className="mainSplashHeader pacifico" style={style.mainSplashHeader}>Deliver and Ship Packages</h2>
+            <h1 className="mainSplashHeader pacifico" style={style.mainSplashHeader}>Deliver and Ship Packages</h1>
 
             <button className="loginButton" style={style.loginButton}
               onClick={()=> '/auth/google'}>
@@ -80,28 +82,29 @@ class Splash extends Component {
 
         <div className="bottom" style={style.bottom}>
           <div className="questions" style={style.questions}>
-            <h2 className="questionsTitle pacifico" style={style.questionsTitle}>WaySide</h2>
+            <h1 className="questionsTitle pacifico" style={style.questionsTitle}>WaySide</h1>
             <h5>Have you ever went on a road trip and had some free space in your car?</h5>
             <h5>Have you ever wanted a cheaper, faster way to ship your packages?</h5>
           </div>
 
-          <div className="about" style={style.about}>
+          <div className="about first" style={style.about}>
+            <h2>How It Works</h2>
             <h4>WaySide matches drivers with preplanned routes, with packages that need to be delivered in that direction.</h4>
             <h4>Prices are calculated based on the extra distance the driver had to go out of his way to pick up and drop off the packages.</h4>
           </div>
 
-          <div className="human" style={style.human}>
+          <div className="about human" style={style.human}>
             <h2>A More Human Approach</h2>
-            <h4>Customers can see and pick their drivers based on their delivery date, price and rating.</h4>
+            <h4>Your stuff is important,</h4>
+            <h4>Which is why customers can choose their drivers and know exactly who's handling their packages.</h4>
           </div>
 
-          <div className="signUp" style={style.signUp}>
-            <h4>Easy, Hassle Free Shipping</h4>
-            <h4>Why wait?</h4>
-            <h4>Sign up is easy with your Google account!</h4>
-            <button className="login-button"
+          <div className="about signUp" style={style.signUp}>
+            <h2>Why Wait?</h2>
+            <h4>Sign up now with your Google account!</h4>
+            <button className="bottom-login-button"
               onClick={()=> '/auth/google'}>
-              Login with Google
+              Log in with Google
             </button>
           </div>
         </div>
