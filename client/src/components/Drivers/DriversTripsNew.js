@@ -53,13 +53,17 @@ class DriversTripsNew extends Component {
     let destination = document.getElementById('cust-end').value;
     let tripStartDate = document.getElementById('date-start').value;
     let tripEndDate = document.getElementById('date-end').value;
+
+    console.log(origin);
+    console.log(destination);
     console.log(tripStartDate);
     console.log(tripEndDate);
+
     this.props.submitTrip({
-      origin,
-      destination,
-      tripStartDate,
-      tripEndDate,
+      origin: origin,
+      destination: destination,
+      tripStartDate: tripStartDate,
+      tripEndDate: tripEndDate,
       completed: false
     });
     this.displayRoute(
