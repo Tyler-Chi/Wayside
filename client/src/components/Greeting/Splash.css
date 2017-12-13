@@ -23,6 +23,8 @@ h2 {
 .first {
   width: 100%;
   background: #f4f4f4;
+  /*background: #8A9B0F;*/
+  /*background: #F8CA00;*/
   /*backgrou1nd: E8E8E8;*/
   color: black;
 }
@@ -45,6 +47,7 @@ h2 {
   width: 800px;
 }
 .bottom-login-button {
+  margin-top: 10px;
   margin-bottom: 40px;
   padding: 8px 20px;
   width: 275px;
@@ -62,13 +65,14 @@ h4 {
   font-weight: 500;
 }
 .midsentence {
-  margin: 20px 0 5px 0;
+  margin: 20px 0 2px 0;
 }
 .midsentence2 {
-  margin: 5px 0 20px 0;
+  margin: 0px 0 20px 0;
 }
 strong {
   font-weight: 600;
+  font-size: 40px;
 }
 .center {
   display: flex;
@@ -80,6 +84,7 @@ strong {
 }
 .human-photos {
   position: relative;
+  width: 200px;
 }
 
 
@@ -102,9 +107,9 @@ strong {
 }
 
 .human-photos > img {
-  width: 200px;
-  height: 200px;
-  border-radius: 200px;
+  width: 220px;
+  height: 220px;
+  border-radius: 220px;
   border: 1px solid black;
 
   position: absolute;
@@ -130,4 +135,9 @@ strong {
 }
 .human-photos > img:nth-of-type(5) {
   animation-delay: 0s;
+}
+.car {
+  width:100px;
+  position: relative;
+  top: 100px;
 }
