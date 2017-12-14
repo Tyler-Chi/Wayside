@@ -36,13 +36,33 @@ class DriversTripsNew extends Component {
     //DirectionsService take care of handling our map direction
     this.directionsService = new google.maps.DirectionsService();
 
+    //Geocoder handlles translating from regular address to LatLng
+    this.geocoder = new google.maps.Geocoder();
+
   //DirectionsRenderer will take care of displaying the route onto
   //the map and direction onto panel, just comment out panel:... if dont wanna show direction
     this.directionsDisplay = new google.maps.DirectionsRenderer({
       map: this.map,
       // panel: document.getElementById('direction-panel'),
     });
+  }
 
+  geocodeAddress(geocoder, map, address) {
+    geocoder.geocode({ 'address': address }, (respons, status) => {
+      if (status !== 'OK') {
+        alert('INVALID ADDRESS DUE TO: ' + status);
+      } else {
+        console.log(response);
+      }
+    });
+  }
+
+  convertAddress() {
+    const map = this.refs.map;
+    this.map = new google.maps.Map(map, mapOptions);
+    this.directionsService = new google.maps.DirectionsService();
+    this.geocoder = new google.maps.Geocoder();
+    this.geocodeAddress(this.geocoder, this.map, "san francisco");
   }
 
 
@@ -100,6 +120,7 @@ class DriversTripsNew extends Component {
   }
 
   render() {
+    // this.convertAddress();
     return (
       <div className="trip-new">
 

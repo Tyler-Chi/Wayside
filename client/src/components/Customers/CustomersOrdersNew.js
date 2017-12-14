@@ -53,7 +53,7 @@ class CustomersOrdersNew extends Component {
 
   sortTrips() {
     let trips = this.props.entities.trips;
-    trips.forEach(trip => {
+    Object.values(trips).forEach(trip => {
       console.log(trip);
     });
   }
