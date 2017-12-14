@@ -4,8 +4,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
 import './DriversTripsNew.css';
-// const kmToMile = 0.621371/1000;
 
+const kmToMile = 0.621371/1000;
 const mapOptions = {
   zoom: 3,
   center: {lat: 40.612969, lng: -96.455751 } //center at the US
@@ -53,13 +53,19 @@ class DriversTripsNew extends Component {
       destination: destination,
       travelMode: 'DRIVING',
       avoidTolls: true
-    }, function(response, status) {
+    }, (response, status) => {
       if (status === 'OK') {
         display.setDirections(response);
+
+        var route = response.routes[0];
+        let tripDistance = Math.ceil((route.legs[0].distance.value * kmToMile));
+        console.log(tripDistance);
+        this.setState ({ tripDistance: tripDistance });
       } else {
         alert('Could not display directions due to: ' + status);
       }
     });
+    console.log(this.state);
   }
 
   handleInput(type) {
