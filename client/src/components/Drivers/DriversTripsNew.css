@@ -7,6 +7,10 @@
   align-items: left;*/
 }
 
+#driver-end, #driver-start, #date-start, #date-end {
+  font-size: 1.5rem;
+}
+
 .form-title {
   margin-top: 30px;
   font-size: 60px;
@@ -18,6 +22,10 @@
   font-weight: 400;
 }
 
+.form-start-loc {
+  margin-top: 30px;
+}
+
 .form-start-loc, .form-end-loc {
   font-size: 20px;
   position: relative;
@@ -26,6 +34,7 @@
 
 h3 {
   font-size: 20px;
+  margin: 20px 0 10px 0;
 }
 .form-dates {
   display: flex;
