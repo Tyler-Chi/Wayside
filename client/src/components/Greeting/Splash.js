@@ -3,22 +3,6 @@ import { connect } from "react-redux";
 import './Splash.css';
 
 
-
-
-
-// var windowHeight = window.innerHeight;
-// var windowWidth = window.innerWidth;
-// var scrollArea = 1000 - windowHeight;
-// var car = document.getElementsByClassName("car");
-//
-// window.addEventListener("scroll", function(){
-//   var scrollTop = window.pageYOffset || window.scrollTop;
-//   var scrollPercent = scrollTop/scrollArea || 0;
-//
-//   car.left = scrollPercent*window.innerWidth + "px";
-//
-// });
-
 const style = {
   splash: {
     display: "flex",

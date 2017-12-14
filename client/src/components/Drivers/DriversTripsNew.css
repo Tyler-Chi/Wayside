@@ -1,0 +1,40 @@
+.trip-new {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.form-title {
+  margin-top: 20px;
+  font-size: 60px;
+  font-weight: 700;
+}
+
+.form-description {
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.form-start-loc, .form-end-loc {
+  font-size: 20px;
+  position: relative;
+  top: 0px;
+}
+
+h3 {
+  font-size: 20px;
+}
+.form-dates {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+.form-date > input {
+
+}
+.form-date-input {
+  width: 450px;
+  display: flex;
+  flex-direction: column;,
+  justify-content: center;
+}

@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
-
+import './DriversTripsNew.css';
 // const kmToMile = 0.621371/1000;
 
 const mapOptions = {
@@ -31,7 +31,11 @@ class DriversTripsNew extends Component {
       map: this.map,
       panel: document.getElementById('direction-panel'),
     });
+
   }
+
+
+
 
   //this handles displaying the route onto the map.
   displayRoute(origin, destination, service, display) {
@@ -49,9 +53,10 @@ class DriversTripsNew extends Component {
     });
   }
 
+
   submitAndDisplay() {
-    let origin = document.getElementById('cust-start').value;
-    let destination = document.getElementById('cust-end').value;
+    let origin = document.getElementById('driver-start').value;
+    let destination = document.getElementById('driver-end').value;
     let tripStartDate = document.getElementById('date-start').value;
     let tripEndDate = document.getElementById('date-end').value;
 
@@ -66,32 +71,48 @@ class DriversTripsNew extends Component {
       origin, destination,
       this.directionsService, this.directionsDisplay
     );
+
+
+
   }
 
   render() {
-  
+
     return (
-      <div>
-        <h1>I am drivers trips new</h1>
+      <div className="trip-new">
 
-        <input type="text" id="cust-start" placeholder="Start"></input>
-        <input type="text" id="cust-end" placeholder="End"></input>
+        <h1 className="form-title barlow">DRIVERS</h1>
+        <h2 className="form-description open">Make bank by posting your trip route</h2>
+          <h3 className="form-start-loc">Starting Location</h3>
+            <input  type="text" id="driver-start" placeholder=""></input>
 
-        <label> Trip Start Date
-          <input type="date" id="date-start" min={this.today}></input>
-        </label>
+          <h3 className="form-end-loc open">Destination</h3>
+            <input  type="text" id="driver-end" placeholder=""></input>
 
-        <label> Trip End Date
-          <input type="date" id="date-end" min={this.today}></input>
-        </label>
+          <div className="form-dates open">
+            <div className="form-date-input">
+              <h3>Departure Date</h3>
+              <input type="date" id="date-start" min={this.today}></input>
+            </div>
 
-        <input type="submit" id="submit" value="Create New Trip"
-          onClick={() => this.submitAndDisplay()} />
+            <div className="form-date-input">
+              <h3>Arrival Date</h3>
+              <input type="date" id="date-end" min={this.today}></input>
+            </div>
+          </div>
+
+          <input
+            type="submit" id="submit"
+            value="Create New Trip"
+            onClick={() => this.submitAndDisplay()} />
+
+
 
         <div ref="map" style={{width: 400, height: 400}}>
           Map
         </div>
         <div id="direction-panel"></div>
+
       </div>
     );
   }
