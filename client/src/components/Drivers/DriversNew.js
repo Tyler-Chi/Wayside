@@ -11,7 +11,6 @@ class DriversNew extends Component {
   }
 
   componentDidMount() {
-
   }
 
   handleSubmit(e) {
