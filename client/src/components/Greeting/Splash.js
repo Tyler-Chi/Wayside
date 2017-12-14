@@ -2,6 +2,23 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import './Splash.css';
 
+
+
+
+
+// var windowHeight = window.innerHeight;
+// var windowWidth = window.innerWidth;
+// var scrollArea = 1000 - windowHeight;
+// var car = document.getElementsByClassName("car");
+//
+// window.addEventListener("scroll", function(){
+//   var scrollTop = window.pageYOffset || window.scrollTop;
+//   var scrollPercent = scrollTop/scrollArea || 0;
+//
+//   car.left = scrollPercent*window.innerWidth + "px";
+//
+// });
+
 const style = {
   splash: {
     display: "flex",
@@ -32,19 +49,6 @@ const style = {
     textAlign: "center",
     marginBottom: "50px",
   },
-  loginButton: {
-    padding: "8px 20px",
-    width: "275px",
-    borderRadius: "5px",
-    border: "1px solid #FF0000",
-    boxShadow: "5px #000000" ,
-    background: "#FF0000",
-    fontSize: "20px",
-    fontWeight: "600",
-    color: "white",
-    marginBottom: "15px",
-    textAlign: "center",
-  },
   questions: {
     marginTop: "40px",
     textAlign: "center",
@@ -59,7 +63,31 @@ const style = {
   },
 };
 
+let lastScrollPos = 0;
+let ticking  = false;
+let left = -1200;
+
+let moveCarLeft = function(car, scrollPos){
+  // console.log(scrollPos);
+  car.style.left = `${left + scrollPos*1.1}px`;
+};
+
 class Splash extends Component {
+
+  componentDidMount(){
+    var car = document.querySelector(".car");
+    window.addEventListener("scroll", function(e){
+      lastScrollPos = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(function(){
+          moveCarLeft(car, lastScrollPos);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  }
+
   render() {
     return (
       <div className="splash" style={style.splash}>
@@ -67,9 +95,10 @@ class Splash extends Component {
           className="mainSplashImg"
           style={style.mainSplashImg}>
           <div className="mainSplashCover" style={style.mainSplashCover}>
-            <h1 className="mainSplashHeader barlow" style={style.mainSplashHeader}>Deliver & Ship Packages</h1>
+            <h1 className="mainSplashHeader barlow" style={style.mainSplashHeader}>
+              DELIVER & SHIP PACKAGES</h1>
 
-            <button className="loginButton" style={style.loginButton}
+            <button className="loginButton"
               onClick={()=> '/auth/google'}>
               Log in with Google
             </button>
@@ -87,14 +116,15 @@ class Splash extends Component {
             <h2>HOW IT WORKS</h2>
             <h4>WaySide matches drivers going in a certain direction with packages that need to be delivered in the same way.</h4>
             <h4>Prices are calculated based on the extra distance the driver had to go out of his way to pick up and drop off the package.</h4>
-          </div>
+            <img className="car" alt="car" src="http://res.cloudinary.com/annaoh/image/upload/v1513148713/car-2386838_960_720_vddt3q.png"/>
+        </div>
 
           <div className="row human" style={style.human}>
             <div className="center">
               <div className="about human2">
                 <h2>A MORE HUMAN APPROACH</h2>
                 <h4 className="midsentence">Your stuff is <strong>IMPORTANT</strong>,</h4>
-                <h4 className="midsentence2">Which is why you can choose your driver and know exactly who's handling your stuff.</h4>
+                <h4 className="midsentence2">which is why you can choose your driver and know exactly who's handling your stuff.</h4>
               </div>
               <div className="human-photos">
                 <img alt="human-photos" src="http://res.cloudinary.com/annaoh/image/upload/c_crop,h_400,w_400,x_140,y_230/v1513143276/photo-1505503693641-1926193e8d57_iytfqb.jpg" />
@@ -107,12 +137,25 @@ class Splash extends Component {
             </div>
         </div>
 
+        <div className="nav-extender">
+          <h2 className="slogan">Going the distance</h2>
+          <h4 className="description">Request pickup. Ship. Repeat.</h4>
+          <div className="ratings barlow">
+            <h4>Live Reviews</h4>
+            <h5>Cheap.   <h6>-Christine</h6></h5>
+            <h5>Super quick and easy   <h6>-Tyler</h6></h5>
+            <h5>5/5 would use again   <h6>-Anna</h6></h5>
+            <h5>Weekend shipping is the best   <h6>-Trung</h6></h5>
+            <h5>Great service!!!   <h6>-Edan</h6></h5>
+          </div>
+        </div>
+
           <div className="about signUp" style={style.signUp}>
             <h2>WHY WAIT?</h2>
             <h4>Sign up now with your Google account!</h4>
             <button className="bottom-login-button"
               onClick={()=> '/auth/google'}>
-              Log in with Google
+              Sign up with Google
             </button>
           </div>
         </div>
