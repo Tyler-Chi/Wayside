@@ -91,17 +91,6 @@ class Splash extends Component {
   render() {
     return (
       <div className="splash" style={style.splash}>
-        <div className="nav-extender">
-          <h2 className="slogan">Going the distance</h2>
-          <h4 className="description">Request pickup. Ship. Repeat.</h4>
-          <div className="ratings">
-            <h4>Live Reviews</h4>
-            <h5>Cheap. $ent a box from LA to SF for 6 bucks.</h5>
-            <h5>Super quick and easy</h5>
-            <h5>Would try again</h5>
-            <h5>Weekend shipping is the best</h5>
-          </div>
-        </div>
         <div
           className="mainSplashImg"
           style={style.mainSplashImg}>
@@ -146,6 +135,19 @@ class Splash extends Component {
               </div>
 
             </div>
+        </div>
+
+        <div className="nav-extender">
+          <h2 className="slogan">Going the distance</h2>
+          <h4 className="description">Request pickup. Ship. Repeat.</h4>
+          <div className="ratings barlow">
+            <h4>Live Reviews</h4>
+            <h5>Cheap.   <h6>-Christine</h6></h5>
+            <h5>Super quick and easy   <h6>-Tyler</h6></h5>
+            <h5>5/5 would use again   <h6>-Anna</h6></h5>
+            <h5>Weekend shipping is the best   <h6>-Trung</h6></h5>
+            <h5>Great service!!!   <h6>-Edan</h6></h5>
+          </div>
         </div>
 
           <div className="about signUp" style={style.signUp}>

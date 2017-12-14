@@ -1,10 +1,76 @@
 .mainSplashHeader {
   font-weight: 700;
 }
+.ratings {
+  background: #f4f4f4;
+  position: relative;
+  top: -150px;
+  left: 600px;
+  max-width: 350px;
+  height: 400px;
+  padding: 20px;
+}
+.ratings > h4 {
+  padding-bottom: 100px;
+}
+
+@keyframes cf4FadeInOut {
+  0% {
+    opacity:1;
+  }
+  18.82% {
+    opacity:1;
+  }
+  20% {
+    opacity:0;
+  }
+  98.82% {
+    opacity:0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.ratings > h5 {
+  position: absolute;
+  top: 90px;
+  padding: 5px;
+  opacity: 0;
+  animation-name: cf4FadeInOut;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 42.5s;
+}
+.ratings > h5 > h6 {
+  width: 340px;
+  text-align: right;
+  font-size: 25px;
+}
+
+.ratings > h5:nth-of-type(1) {
+animation-delay: 33.2s;
+}
+.ratings > h5:nth-of-type(2) {
+animation-delay: 24.9s;
+}
+.ratings > h5:nth-of-type(3) {
+animation-delay: 16.6s;
+}
+.ratings > h5:nth-of-type(4) {
+animation-delay: 8.3s;
+}
+.ratings > h5:nth-of-type(5) {
+animation-delay: 0s;
+}
+
+
+
+
 
 .nav-extender {
   height: 200px;
   width: 950px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -15,7 +81,6 @@
   font-size: 50px;
   font-weight: 400;
   margin-top: 20px;
-  /*margin-left: 50px;*/
 }
 .description {
   font-family: "Open Sans";
@@ -29,7 +94,6 @@
   width: 275px;
   border-radius: 5px;
   border: 1px solid #FF0000;
-  /*box-shadow: 5px #000000;*/
   background: #FF0000;
   font-size: 20px;
   font-weight: 600;
@@ -183,5 +247,5 @@ strong {
 .car {
   width:100px;
   position: relative;
-  top: 100px;
+  top: 120px;
 }
