@@ -1,10 +1,14 @@
 .trip-new {
   max-width: 1000px;
   margin: 0 auto;
+  /*display: flex;*/
+  /*flex-direction: column;
+  justify-content: center;
+  align-items: left;*/
 }
 
 .form-title {
-  margin-top: 20px;
+  margin-top: 30px;
   font-size: 60px;
   font-weight: 700;
 }
@@ -37,4 +41,45 @@ h3 {
   display: flex;
   flex-direction: column;,
   justify-content: center;
+}
+
+.map-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.map-button {
+  /*margin: 10px;*/
+  margin: 20px auto 50px auto;
+  padding: 10px 25px;
+  width: 200px;
+  text-align: center;
+  background: red;
+  /*border: 1px solid red;*/
+  border-radius: 3px;
+  color: white;
+  font-size: 20px;
+  font-style: 600;
+}
+
+.map {
+  left: 150px;
+}
+
+.confirm-q {
+  margin: 30px 0 20px 0;
+  text-align: center;
+}
+.confirm-trip {
+  margin: 0 auto 100px auto;
+  padding: 10px 25px;
+  background: red;
+  color: white;
+  width: 200px;
+  text-align: center;
+  border-radius: 3px;
+  font-size: 20px;
+  font-style: 600;
 }

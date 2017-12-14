@@ -29,7 +29,7 @@ class DriversTripsNew extends Component {
   //the map and direction onto panel, just comment out panel:... if dont wanna show direction
     this.directionsDisplay = new google.maps.DirectionsRenderer({
       map: this.map,
-      panel: document.getElementById('direction-panel'),
+      // panel: document.getElementById('direction-panel'),
     });
 
   }
@@ -100,18 +100,27 @@ class DriversTripsNew extends Component {
               <input type="date" id="date-end" min={this.today}></input>
             </div>
           </div>
+          <div className="map-div">
+            <input
+              type="submit" id="submit"
+              value="Next"
+              className="map-button"
+              onClick={() => this.submitAndDisplay()} />
 
-          <input
-            type="submit" id="submit"
-            value="Create New Trip"
-            onClick={() => this.submitAndDisplay()} />
+            <div className="map" ref="map" style={{width: 700, height: 700}}>
+              Map
+            </div>
+            <div id="direction-panel"></div>
 
+            <h5 className="confirm-q">Is this the route you're taking?</h5>
+            <button className="confirm-trip" onClick={()=> this.nothing}>
+              Confirm Trip
+            </button>
 
-
-        <div ref="map" style={{width: 400, height: 400}}>
-          Map
         </div>
-        <div id="direction-panel"></div>
+
+
+
 
       </div>
     );
