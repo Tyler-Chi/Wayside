@@ -132,6 +132,7 @@ class DriversTripsNew extends Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div className="trip-new">
 

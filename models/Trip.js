@@ -14,6 +14,7 @@ const tripSchema = new Schema({
   lngO: Number,
   latD: Number,
   lngD: Number,
+  price: Number,
   _user: { type: Schema.Types.ObjectId, ref: "User" }
 });
 

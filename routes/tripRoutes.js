@@ -110,7 +110,8 @@ module.exports = app => {
       lngO,
       latD,
       lngD,
-      tripDistance
+      tripDistance,
+      price
     } = req.body;
 
     const trip = new Trip({
@@ -124,6 +125,7 @@ module.exports = app => {
       lngO,
       latD,
       lngD,
+      price,
       _user: req.user.id
     });
 
