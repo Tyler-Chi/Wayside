@@ -32,7 +32,7 @@ class Test extends Component {
             this.props.submitOrder({
               accepted: true,
               deliveredBy: Date.now(),
-              startLoc: "bob",
+              startLoc: "bobb",
               endLoc: "bob",
               deliveredStatus: true,
               rating: 5,

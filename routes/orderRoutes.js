@@ -87,6 +87,10 @@ module.exports = app => {
     const trip = await Trip.findById(order._tripId);
     console.log(trip);
 
+    trip.orders.push(order._id);
+
+    trip.save();
+
     res.send(order);
   });
 };
