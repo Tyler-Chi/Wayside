@@ -30,7 +30,7 @@ export const fetchUser = () => async dispatch => {
 export const submitTrip = (values, history) => dispatch => {
   axios
     .post("/api/trips", values)
-    .then(values => dispatch({ type: FETCH_USER, payload: values.data }));
+    .then(trip => dispatch({ type: FETCH_TRIP, payload: trip.data }));
 
   //where do we want to push them after this?
 };

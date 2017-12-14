@@ -11,7 +11,7 @@ class DriversTripsUpcoming extends Component {
 
   render() {
     if (this.props.entities.trips === null) {
-      return <div> Loading</div>;
+      return <div> Loading </div>;
     }
 
     const { trips } = this.props.entities;

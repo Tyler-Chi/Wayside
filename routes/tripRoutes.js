@@ -101,5 +101,7 @@ module.exports = app => {
     });
 
     trip.save();
+
+    res.send(trip);
   });
 };
