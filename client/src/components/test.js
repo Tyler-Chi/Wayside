@@ -38,7 +38,8 @@ class Test extends Component {
               rating: 5,
               price: 100,
               comments: [],
-              requestPending: true
+              requestPending: true,
+              _tripId: "5a31cbd03eff95a2ac643b26"
             })
           }
         >
