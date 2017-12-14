@@ -10,6 +10,8 @@ const tripSchema = new Schema({
   tripEndDate: Date,
   completed: Boolean,
   tripDistance: Number,
+  lat: Number,
+  lng: Number,
   _user: { type: Schema.Types.ObjectId, ref: "User" }
 });
 

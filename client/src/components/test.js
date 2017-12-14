@@ -50,6 +50,12 @@ class Test extends Component {
         </button>
         <br />
         <button onClick={() => this.props.fetchOrders()}>fetchOrders</button>
+        <br />
+        <button
+          onClick={() => this.props.updateTrip("5a323b7a55691727ee7c9f2a")}
+        >
+          UpdateTrip (this takes an id, turns it to true.)
+        </button>
       </div>
     );
   }

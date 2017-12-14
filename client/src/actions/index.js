@@ -1,5 +1,11 @@
 import axios from "axios";
-import { FETCH_USER, FETCH_TRIPS, FETCH_TRIP, FETCH_ORDERS } from "./types";
+import {
+  FETCH_USER,
+  FETCH_TRIPS,
+  FETCH_TRIP,
+  FETCH_ORDERS,
+  FETCH_ORDER
+} from "./types";
 
 //making api call to grab the current user
 //need to make sure it goes to localhost:5000, not 3000
@@ -35,10 +41,16 @@ export const submitTrip = (values, history) => dispatch => {
   //where do we want to push them after this?
 };
 
+export const updateTrip = tripId => dispatch => {
+  axios
+    .put(`/api/trips/${tripId}`)
+    .then(trip => dispatch({ type: FETCH_TRIP, payload: trip.data }));
+};
+
 export const submitOrder = (values, history) => dispatch => {
   axios
     .post("/api/orders", values)
-    .then(order => dispatch({ type: FETCH_USER, payload: order.data }));
+    .then(order => dispatch({ type: FETCH_ORDER, payload: order.data }));
 };
 
 export const fetchAllTrips = () => dispatch => {

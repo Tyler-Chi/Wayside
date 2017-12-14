@@ -72,6 +72,18 @@ module.exports = app => {
     res.send(output);
   });
 
+  app.put("/api/trips/:tripId", async (req, res) => {
+    console.log("params", req.params);
+
+    const queryTrip = await Trip.findById(req.params.tripId);
+
+    queryTrip.completed = true;
+
+    queryTrip.save(function(saveErr, savedTrip) {
+      return res.send(savedTrip);
+    });
+  });
+
   app.post("/api/trips", (req, res) => {
     //first check that the user is logged in, otherwise
     //they should not be able to make a trip
@@ -87,6 +99,8 @@ module.exports = app => {
       tripStartDate,
       tripEndDate,
       completed,
+      lat,
+      lng,
       tripDistance
     } = req.body;
 
@@ -97,6 +111,8 @@ module.exports = app => {
       tripEndDate,
       completed,
       tripDistance,
+      lat,
+      lng,
       _user: req.user.id
     });
 
