@@ -38,7 +38,7 @@ export const submitTrip = (values, history) => dispatch => {
 export const submitOrder = (values, history) => dispatch => {
   axios
     .post("/api/orders", values)
-    .then(values => dispatch({ type: FETCH_USER, payload: values.data }));
+    .then(order => dispatch({ type: FETCH_USER, payload: order.data }));
 };
 
 export const fetchAllTrips = () => dispatch => {
