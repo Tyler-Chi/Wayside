@@ -15,10 +15,15 @@ module.exports = app => {
       _driverId: req.user.id
     });
 
-    const output = requestOrders.concat(deliverOrders);
-    console.log("deliver orders", output);
+    const allOrders = requestOrders.concat(deliverOrders);
 
-    res.send(requestOrders.concat(deliverOrders));
+    let output = {};
+
+    allOrders.forEach(order => {
+      output[order._id] = order;
+    });
+
+    res.send(output);
   });
 
   //logic for accepting an order

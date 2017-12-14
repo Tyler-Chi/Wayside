@@ -8,15 +8,30 @@ module.exports = app => {
     const trips = await Trip.find({
       _user: req.user.id
     });
-    console.log(trips);
-    res.send(trips);
+
+    let output = {};
+
+    trips.forEach(trip => {
+      output[trip._id] = trip;
+    });
+
+    console.log("here i am", output);
+    res.send(output);
   });
 
   app.get("/api/trips/allUpcoming", async (req, res) => {
     const trips = await Trip.find({
       completed: false
     });
-    res.send(trips);
+
+    let output = {};
+
+    trips.forEach(trip => {
+      output[trip._id] = trip;
+    });
+
+    console.log("here i am", output);
+    res.send(output);
   });
 
   app.get("/api/trips/completed", async (req, res) => {
@@ -25,7 +40,14 @@ module.exports = app => {
       _user: req.user.id
     });
 
-    res.send(trips);
+    let output = {};
+
+    trips.forEach(trip => {
+      output[trip._id] = trip;
+    });
+
+    console.log("here i am", output);
+    res.send(output);
   });
 
   app.get("/api/trips/:tripId", async (req, res) => {
@@ -39,7 +61,15 @@ module.exports = app => {
       completed: false,
       _user: req.user.id
     });
-    res.send(trips);
+
+    let output = {};
+
+    trips.forEach(trip => {
+      output[trip._id] = trip;
+    });
+
+    console.log("here i am", output);
+    res.send(output);
   });
 
   app.post("/api/trips", (req, res) => {

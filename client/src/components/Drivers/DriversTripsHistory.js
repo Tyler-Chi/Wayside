@@ -15,6 +15,9 @@ class DriversTripsHistory extends Component {
     }
 
     const { trips } = this.props.entities;
+
+    let tripsArray = Object.values(trips);
+
     console.log("props", this.props);
     console.log("trips", trips);
 
@@ -22,7 +25,7 @@ class DriversTripsHistory extends Component {
       <div className="drivers-trips-history-index-area">
         <p className="past-deliveries">Past Deliveries</p>
         <ul className="dth-ul">
-          {trips.map(trip => (
+          {tripsArray.map(trip => (
             <DriversTripsHistoryIndexItem trip={trip} key={trip._id} />
           ))}
         </ul>
