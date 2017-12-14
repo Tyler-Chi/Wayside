@@ -47,6 +47,12 @@ export const updateTrip = (tripId, values) => dispatch => {
     .then(trip => dispatch({ type: FETCH_TRIP, payload: trip.data }));
 };
 
+export const updateOrder = (orderId, values) => dispatch => {
+  axios
+    .put(`/api/orders/${orderId}`, values)
+    .then(order => dispatch({ type: FETCH_ORDER, payload: order.data }));
+};
+
 export const submitOrder = (values, history) => dispatch => {
   axios
     .post("/api/orders", values)
