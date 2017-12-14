@@ -10,6 +10,13 @@ module.exports = app => {
     res.send(trips);
   });
 
+  app.get("/api/trips/allUpcoming", async (req, res) => {
+    const trips = await Trip.find({
+      completed: false
+    });
+    res.send(trips);
+  });
+
   app.get("/api/trips/completed", async (req, res) => {
     const trips = await Trip.find({
       completed: true,
