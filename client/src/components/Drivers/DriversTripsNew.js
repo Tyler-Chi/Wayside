@@ -45,25 +45,26 @@ class DriversTripsNew extends Component {
       map: this.map,
       // panel: document.getElementById('direction-panel'),
     });
+
+    this.geocodeAddress(this.geocoder, this.map, "825 battery st, san francisco, ca");
   }
 
   geocodeAddress(geocoder, map, address) {
-    geocoder.geocode({ 'address': address }, (respons, status) => {
+    geocoder.geocode({ 'address': address }, (result, status) => {
       if (status !== 'OK') {
         alert('INVALID ADDRESS DUE TO: ' + status);
       } else {
-        console.log(response);
+        console.log(result[0].geometry.location.lat());
       }
     });
   }
 
-  convertAddress() {
-    const map = this.refs.map;
-    this.map = new google.maps.Map(map, mapOptions);
-    this.directionsService = new google.maps.DirectionsService();
-    this.geocoder = new google.maps.Geocoder();
-    this.geocodeAddress(this.geocoder, this.map, "san francisco");
-  }
+  // convertAddress() {
+  //   const map = this.refs.map;
+  //   this.map = new google.maps.Map(map, mapOptions);
+  //   this.geocoder = new google.maps.Geocoder();
+  //   this.geocodeAddress(this.geocoder, this.map, "san francisco");
+  // }
 
 
   //this handles displaying the route onto the map.
@@ -120,7 +121,6 @@ class DriversTripsNew extends Component {
   }
 
   render() {
-    // this.convertAddress();
     return (
       <div className="trip-new">
 
