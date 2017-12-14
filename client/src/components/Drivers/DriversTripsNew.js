@@ -44,8 +44,8 @@ class DriversTripsNew extends Component {
     //Geocoder handlles translating from regular address to LatLng
     this.geocoder = new google.maps.Geocoder();
 
-  //DirectionsRenderer will take care of displaying the route onto
-  //the map and direction onto panel, just comment out panel:... if dont wanna show direction
+    //DirectionsRenderer will take care of displaying the route onto
+    //the map and direction onto panel, just comment out panel:... if dont wanna show direction
     this.directionsDisplay = new google.maps.DirectionsRenderer({
       map: this.map,
       // panel: document.getElementById('direction-panel'),
@@ -132,7 +132,6 @@ class DriversTripsNew extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="trip-new">
 
