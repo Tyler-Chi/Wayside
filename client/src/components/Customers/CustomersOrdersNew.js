@@ -75,8 +75,12 @@ class CustomersOrdersNew extends Component {
     let leg2 = Math.sqrt(Math.pow((latS- latE),2) + Math.pow((lngS - lngE),2));
     let leg3 = Math.sqrt(Math.pow((latE - latD),2) + Math.pow((lngE - lngD),2));
 
+    console.log();
+    console.log(leg1);
+    console.log(leg2);
+    console.log(leg3);
     let newDistance = leg1 + leg2 + leg3;
-    console.log(newDistance);
+    this.setState({ newDistance: newDistance });
   }
 
   displayRoute(origin, destination, service, display) {
