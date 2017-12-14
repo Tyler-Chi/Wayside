@@ -57,15 +57,14 @@ class DriversTripsNew extends Component {
       if (status === 'OK') {
         display.setDirections(response);
 
-        var route = response.routes[0];
+        let route = response.routes[0];
+        //use Math ceil to round up the total miles of the trip
         let tripDistance = Math.ceil((route.legs[0].distance.value * kmToMile));
-        console.log(tripDistance);
         this.setState ({ tripDistance: tripDistance });
       } else {
         alert('Could not display directions due to: ' + status);
       }
     });
-    console.log(this.state);
   }
 
   handleInput(type) {
@@ -74,14 +73,18 @@ class DriversTripsNew extends Component {
     };
   }
 
-
   handleDisplay() {
     let origin = this.state.origin;
     let destination = this.state.destination;
-    this.displayRoute(
-      origin, destination,
-      this.directionsService, this.directionsDisplay
-    );
+    if (this.state.tripStartDate < this.today ||
+        this.state.tripEndDate < this.state.tripStartDate) {
+          alert('Invalid Start or End Date');
+        } else {
+      this.displayRoute(
+        origin, destination,
+        this.directionsService, this.directionsDisplay
+      );
+    }
   }
 
   handleSubmit() {
@@ -90,12 +93,13 @@ class DriversTripsNew extends Component {
       destination: this.state.destination,
       tripStartDate: this.state.tripStartDate,
       tripEndDate: this.state.tripEndDate,
+      tripDistance: this.state.tripDistance,
       completed: false
     });
   }
 
   render() {
-
+    console.log(this.state);
     return (
       <div className="trip-new">
 
@@ -122,7 +126,7 @@ class DriversTripsNew extends Component {
             <div className="form-date-input">
               <h3>Arrival Date</h3>
               <input type="date" id="date-end"
-                min={this.today}
+                min={this.state.tripStartDate}
                 onChange={this.handleInput('tripEndDate')}></input>
             </div>
           </div>
