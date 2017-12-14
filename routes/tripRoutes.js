@@ -78,7 +78,13 @@ module.exports = app => {
 
     const queryTrip = await Trip.findById(req.params.tripId);
 
-    queryTrip.completed = req.body.completed;
+    //this is kind of buggy ><, need to specify
+
+    //maybe i can use object.assign....?
+
+    Object.assign(queryTrip, req.body);
+
+    console.log(queryTrip.completed);
 
     queryTrip.save(function(saveErr, savedTrip) {
       return res.send(savedTrip);

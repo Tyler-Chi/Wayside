@@ -56,13 +56,26 @@ class Test extends Component {
         <button
           onClick={() =>
             this.props.updateTrip("5a323b7a55691727ee7c9f2a", {
-              completed: true
+              completed: false
             })
           }
         >
           update trip: first argument is the trip id. the second argument is an
-          object with the new values of that trip. if unspecified, the trip
-          object will default back to its original values.
+          object with the new values of that trip. the completed key needs to be
+          specified, even if it is staying the same. kind of weird on the
+          backend
+        </button>
+        <br />
+        <br />
+        <br />
+        <button
+          onClick={() =>
+            this.props.updateOrder("5a31d3f784f23ab19f0013a2", { rating: 3 })
+          }
+        >
+          update order, works very similar to the update trip. first argument is
+          the order id, the second argument is an object with the keys and
+          values of the stuff you wanna change :D
         </button>
       </div>
     );
