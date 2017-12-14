@@ -119,6 +119,7 @@ class DriversTripsNew extends Component {
             <div className="form-date-input">
               <h3>Departure Date</h3>
               <input type="date" id="date-start"
+
                 min={this.today}
                 onChange={this.handleInput('tripStartDate')}></input>
             </div>
@@ -126,6 +127,7 @@ class DriversTripsNew extends Component {
             <div className="form-date-input">
               <h3>Arrival Date</h3>
               <input type="date" id="date-end"
+                value={this.state.tripStartDate}
                 min={this.state.tripStartDate}
                 onChange={this.handleInput('tripEndDate')}></input>
             </div>

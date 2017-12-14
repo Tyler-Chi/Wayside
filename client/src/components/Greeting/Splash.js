@@ -125,12 +125,12 @@ class Splash extends Component {
           <h2 className="slogan">Going the distance</h2>
           <h4 className="description">Request pickup. Ship. Repeat.</h4>
           <div className="ratings barlow">
-            <h4>Live Reviews</h4>
-            <h5>Cheap.   <h6>-Christine</h6></h5>
-            <h5>Super quick and easy   <h6>-Tyler</h6></h5>
-            <h5>5/5 would use again   <h6>-Anna</h6></h5>
-            <h5>Weekend shipping is the best   <h6>-Trung</h6></h5>
-            <h5>Great service!!!   <h6>-Edan</h6></h5>
+            <h4>Reviews</h4>
+            <h5>Cheap.   <p>-Christine</p></h5>
+            <h5>Super quick and easy   <p>-Tyler</p></h5>
+            <h5>5/5 would use again   <p>-Anna</p></h5>
+            <h5>Weekend shipping is the best   <p>-Trung</p></h5>
+            <h5>Great service!!!   <p>-Edan</p></h5>
           </div>
         </div>
 
