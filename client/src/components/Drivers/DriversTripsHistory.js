@@ -6,7 +6,8 @@ import DriversTripsHistoryIndexItem from "./DriversTripsHistoryIndexItem";
 class DriversTripsHistory extends Component {
   //need to figure out the promises here -__-
   componentDidMount() {
-    this.props.fetchCompletedTrips();
+    //fetch all trips fetchs all the trips where the current user is the driver of that trip.
+    this.props.fetchAllTrips();
   }
 
   render() {
@@ -18,9 +19,7 @@ class DriversTripsHistory extends Component {
 
     let tripsArray = Object.values(trips);
 
-    console.log("props", this.props);
-    console.log("trips", trips);
-
+    console.log("tripsArray", tripsArray);
     return (
       <div className="drivers-trips-history-index-area">
         <p className="past-deliveries">Past Deliveries</p>
