@@ -14,7 +14,18 @@ const mapOptions = {
 class DriversTripsNew extends Component {
   constructor(props) {
     super(props);
-    this.submitAndDisplay = this.submitAndDisplay.bind(this);
+
+    this.state = {
+      origin: "",
+      destination: "",
+      tripStartDate: "",
+      tripEndDate: "",
+      tripDistance: 0
+    };
+
+    this.handleDisplay = this.handleDisplay.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
     this.today = new Date().toJSON().split('T')[0];
   }
 
@@ -35,8 +46,6 @@ class DriversTripsNew extends Component {
   }
 
 
-
-
   //this handles displaying the route onto the map.
   displayRoute(origin, destination, service, display) {
     service.route({
@@ -53,27 +62,30 @@ class DriversTripsNew extends Component {
     });
   }
 
+  handleInput(type) {
+    return (event) => {
+      this.setState({ [type]: event.target.value});
+    };
+  }
 
-  submitAndDisplay() {
-    let origin = document.getElementById('driver-start').value;
-    let destination = document.getElementById('driver-end').value;
-    let tripStartDate = document.getElementById('date-start').value;
-    let tripEndDate = document.getElementById('date-end').value;
 
-    this.props.submitTrip({
-      origin,
-      destination,
-      tripStartDate,
-      tripEndDate,
-      completed: false
-    });
+  handleDisplay() {
+    let origin = this.state.origin;
+    let destination = this.state.destination;
     this.displayRoute(
       origin, destination,
       this.directionsService, this.directionsDisplay
     );
+  }
 
-
-
+  handleSubmit() {
+    this.props.submitTrip({
+      origin: this.state.origin,
+      destination: this.state.destination,
+      tripStartDate: this.state.tripStartDate,
+      tripEndDate: this.state.tripEndDate,
+      completed: false
+    });
   }
 
   render() {
@@ -84,20 +96,28 @@ class DriversTripsNew extends Component {
         <h1 className="form-title barlow">DRIVERS</h1>
         <h2 className="form-description open">Make bank by posting your trip route</h2>
           <h3 className="form-start-loc">Starting Location</h3>
-            <input  type="text" id="driver-start" placeholder=""></input>
+            <input  type="text" id="driver-start"
+              placeholder=""
+              onChange={this.handleInput('origin')}></input>
 
           <h3 className="form-end-loc open">Destination</h3>
-            <input  type="text" id="driver-end" placeholder=""></input>
+            <input  type="text" id="driver-end"
+              placeholder=""
+              onChange={this.handleInput('destination')}></input>
 
           <div className="form-dates open">
             <div className="form-date-input">
               <h3>Departure Date</h3>
-              <input type="date" id="date-start" min={this.today}></input>
+              <input type="date" id="date-start"
+                min={this.today}
+                onChange={this.handleInput('tripStartDate')}></input>
             </div>
 
             <div className="form-date-input">
               <h3>Arrival Date</h3>
-              <input type="date" id="date-end" min={this.today}></input>
+              <input type="date" id="date-end"
+                min={this.today}
+                onChange={this.handleInput('tripEndDate')}></input>
             </div>
           </div>
           <div className="map-div">
@@ -105,7 +125,7 @@ class DriversTripsNew extends Component {
               type="submit" id="submit"
               value="Next"
               className="map-button"
-              onClick={() => this.submitAndDisplay()} />
+              onClick={this.handleDisplay} />
 
             <div className="map" ref="map" style={{width: 700, height: 700}}>
               Map
@@ -113,7 +133,7 @@ class DriversTripsNew extends Component {
             <div id="direction-panel"></div>
 
             <h5 className="confirm-q">Is this the route you're taking?</h5>
-            <button className="confirm-trip" onClick={()=> this.nothing}>
+            <button className="confirm-trip" onClick={this.handleSubmit}>
               Confirm Trip
             </button>
 
