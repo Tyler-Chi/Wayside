@@ -30,7 +30,6 @@ class Test extends Component {
         <button
           onClick={() =>
             this.props.submitOrder({
-              _driverId: "5a2f15ca75745dceb3a90157",
               accepted: true,
               deliveredBy: Date.now(),
               startLoc: "bob",
@@ -39,12 +38,15 @@ class Test extends Component {
               rating: 5,
               price: 100,
               comments: [],
-              requestPending: true,
-              _tripId: "5a30382eae36e9aa3ca08279"
+              requestPending: true
             })
           }
         >
           SUBMIT ORDER
+        </button>
+        <br />
+        <button onClick={() => this.props.fetchAllUpcoming()}>
+          fetchAllUpcoming
         </button>
       </div>
     );
