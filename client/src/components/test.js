@@ -26,6 +26,26 @@ class Test extends Component {
         >
           fetchTrip
         </button>
+        <br />
+        <button
+          onClick={() =>
+            this.props.submitOrder({
+              _driverId: "5a2f15ca75745dceb3a90157",
+              accepted: true,
+              deliveredBy: Date.now(),
+              startLoc: "bob",
+              endLoc: "bob",
+              deliveredStatus: true,
+              rating: 5,
+              price: 100,
+              comments: [],
+              requestPending: true,
+              _tripId: 5
+            })
+          }
+        >
+          SUBMIT ORDER
+        </button>
       </div>
     );
   }

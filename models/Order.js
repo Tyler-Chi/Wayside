@@ -2,11 +2,18 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const orderSchema = new Schema({
-  _driver: { type: Schema.Types.ObjectId, ref: "User" },
-  _owner: { type: Schema.Types.ObjectId, ref: "User" },
+  _driverId: { type: Schema.Types.ObjectId, ref: "User" },
+  _ownerId: { type: Schema.Types.ObjectId, ref: "User" },
   accepted: Boolean,
   deliveredBy: Date,
   startLoc: String,
   endLoc: String,
-  deliveredStatus: Boolean
+  deliveredStatus: Boolean,
+  rating: Number,
+  price: Number,
+  comments: Array,
+  requestPending: Boolean,
+  _tripId: { type: Schema.Types.ObjectId, ref: "Trip" }
 });
+
+mongoose.model("orders", orderSchema);
