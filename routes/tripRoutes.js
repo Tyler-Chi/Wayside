@@ -100,8 +100,10 @@ module.exports = app => {
       tripStartDate,
       tripEndDate,
       completed,
-      lat,
-      lng,
+      latO,
+      lngO,
+      latD,
+      lngD,
       tripDistance
     } = req.body;
 
@@ -112,8 +114,10 @@ module.exports = app => {
       tripEndDate,
       completed,
       tripDistance,
-      lat,
-      lng,
+      latO,
+      lngO,
+      latD,
+      lngD,
       _user: req.user.id
     });
 
