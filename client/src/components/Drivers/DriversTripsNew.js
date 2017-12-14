@@ -62,7 +62,7 @@ class DriversTripsNew extends Component {
         let tripDistance = Math.ceil((route.legs[0].distance.value * kmToMile));
         this.setState ({ tripDistance: tripDistance });
       } else {
-        alert('Could not display directions due to: ' + status);
+        alert('COULD NOT DISPLAY DIRECTIONS DUE TO: ' + status);
       }
     });
   }
@@ -78,13 +78,14 @@ class DriversTripsNew extends Component {
     let destination = this.state.destination;
     if (this.state.tripStartDate < this.today ||
         this.state.tripEndDate < this.state.tripStartDate) {
-          alert('Invalid Start or End Date');
+          alert('INVALID START OR END DATE');
         } else {
       this.displayRoute(
         origin, destination,
         this.directionsService, this.directionsDisplay
       );
     }
+    window.scrollTo(0,800);
   }
 
   handleSubmit() {
@@ -99,7 +100,6 @@ class DriversTripsNew extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="trip-new">
 
