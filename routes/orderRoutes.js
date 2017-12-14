@@ -84,5 +84,6 @@ module.exports = app => {
     });
 
     order.save();
+    res.send(order);
   });
 };

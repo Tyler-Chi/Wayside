@@ -12,6 +12,7 @@ export default function(oldState = {}, action) {
       // Object.assign(newState, {action.payload._id: action.payload});
 
       newState[action.payload._id] = action.payload;
+      return newState;
 
     case FETCH_TRIPS:
       return action.payload;
