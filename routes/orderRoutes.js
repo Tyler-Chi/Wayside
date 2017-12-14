@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const Order = mongoose.model("orders");
-
+const Trip = mongoose.model("trips");
 module.exports = app => {
   //my request orders
   app.get("/api/orders", async (req, res) => {
@@ -45,7 +45,7 @@ module.exports = app => {
     });
   });
 
-  app.post("/api/orders", (req, res) => {
+  app.post("/api/orders", async (req, res) => {
     console.log("i am in order routes :D");
     console.log("req", req.body);
 
@@ -78,8 +78,15 @@ module.exports = app => {
       requestPending,
       _tripId
     });
-
+    //save posts it into the data base
     order.save();
+
+    //now I want to push it into the corresponding trip's array of orders. the trip will only have ID's, with these ID's, we will access the orders held inside the state.
+
+    console.log("i am in the order routes, here is the trip");
+    const trip = await Trip.findById(order._tripId);
+    console.log(trip);
+
     res.send(order);
   });
 };
