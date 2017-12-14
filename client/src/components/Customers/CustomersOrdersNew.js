@@ -15,13 +15,14 @@ class CustomersOrdersNew extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newTime: 0,
       newDistance: 0,
-      originalDistance: 0,
-      originalTime: 0,
       deliveredBy: "",
       startLoc: "",
-      endLoc: ""
+      endLoc: "",
+      latS: 0,
+      lngS: 0,
+      latE: 0,
+      lngE: 0,
     };
     this.today = new Date().toJSON().split('T')[0];
     this.handleSearch = this.handleSearch.bind(this);
@@ -29,6 +30,53 @@ class CustomersOrdersNew extends Component {
 
   componentDidMount() {
     this.props.fetchAllUpcoming();
+    const map = this.refs.map;
+    this.map = new google.maps.Map(map, mapOptions);
+    this.directionsService = new google.maps.DirectionsService();
+    this.geocoder = new google.maps.Geocoder();
+
+    this.directionsDisplay = new google.maps.DirectionsRenderer({
+      map: this.map
+    });
+    window.scrollTo(0,0);
+  }
+
+  geocodeAddress(geocoder, map, address, type) {
+    geocoder.geocode({ 'address': address }, (result, status) => {
+      if (status !== 'OK') {
+        alert('INVALID ADDRESS DUE TO: ' + status);
+      } else {
+        let lat = result[0].geometry.location.lat();
+        let lng = result[0].geometry.location.lng();
+        if (type === 'start') {
+          this.setState({
+            latS: lat,
+            lngS: lng,
+          });
+        } else if (type === 'end') {
+          this.setState({
+            latE: lat,
+            lngE: lng,
+          });
+        }
+      }
+    });
+  }
+
+  //O is Original location, D is original Destination
+  //S is the customer Starting location, E is customer Ending location
+  calculateDistance(latO, lngO, latD, lngD) {
+    let latS = this.state.latS;
+    let latE = this.state.latE;
+    let lngS = this.state.lngS;
+    let lngE = this.state.lngE;
+
+    let leg1 = Math.sqrt(Math.pow((latO - latS),2) + Math.pow((lngO - lngS),2));
+    let leg2 = Math.sqrt(Math.pow((latS- latE),2) + Math.pow((lngS - lngE),2));
+    let leg3 = Math.sqrt(Math.pow((latE - latD),2) + Math.pow((lngE - lngD),2));
+
+    let newDistance = leg1 + leg2 + leg3;
+    console.log(newDistance);
   }
 
   displayRoute(origin, destination, service, display) {
@@ -50,11 +98,10 @@ class CustomersOrdersNew extends Component {
     });
   }
 
-
   sortTrips() {
     let trips = this.props.entities.trips;
     Object.values(trips).forEach(trip => {
-      console.log(trip);
+      // console.log(trip);
     });
   }
 
@@ -65,20 +112,18 @@ class CustomersOrdersNew extends Component {
   }
 
   handleSearch() {
-    const map = this.refs.map;
-    this.map = new google.maps.Map(map, mapOptions);
-    this.directionsService = new google.maps.DirectionsService();
-
-    this.directionsDisplay = new google.maps.DirectionsRenderer({
-      map: this.map
-    });
-
     this.displayRoute(
       this.state.startLoc,
       this.state.endLoc,
       this.directionsService,
       this.directionsDisplay
     );
+
+    this.geocodeAddress(this.geocoder, this.map, this.state.startLoc, 'start');
+    this.geocodeAddress(this.geocoder, this.map, this.state.endLoc, 'end');
+
+    this.calculateDistance(37.7989666, -122.40135180, 37.4296964, -121.9171665);
+
     // this.props.submitOrder({
     //   accepted: false,
     //   deliveredBy,
@@ -96,8 +141,8 @@ class CustomersOrdersNew extends Component {
     if (this.props.entities.trips === null) {
       return <div>loading</div>;
     }
-    this.sortTrips();
-    // console.log(this.props.entities.trips);
+    console.log(this.state);
+    // this.sortTrips();
     return (
       <div>
         <h1>Send a Package Today</h1>
@@ -134,28 +179,3 @@ function mapStateToProps({ auth, entities }) {
 }
 
 export default connect(mapStateToProps, actions)(CustomersOrdersNew);
-
-
-  // checkDistance(origin, checkpoint) {
-  //   //DistanceMatrixService will check the distance between
-  //   //array of origins and array of destinations (cross-check)
-  //   var checkDistance;
-  //   let serviceMatrix = new google.maps.DistanceMatrixService();
-  //
-  //   serviceMatrix.getDistanceMatrix({
-  //     origins: [origin],
-  //     destinations: [checkpoint],
-  //     travelMode: 'DRIVING',
-  //     unitSystem: google.maps.UnitSystem.IMPERIAL,
-  //     avoidHighways: false,
-  //     avoidTolls: true
-  //   }, function(response, status) {
-  //     if (status !== 'OK') {
-  //       alert('Error was: ' + status);
-  //     } else {
-  //       checkDistance = response.rows[0].elements[0].distance.value;
-  //       checkDistance = Math.ceil(checkDistance * kmToMile);
-  //     }
-  //   });
-  //   return checkDistance;
-  // }
