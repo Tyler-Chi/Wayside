@@ -10,6 +10,7 @@ const passport = require("passport");
 const keys = require("./config/keys");
 require("./models/User");
 require("./models/Trip");
+require("./models/Order");
 require("./services/passport");
 
 //models/User needs to be first, so that the schema is run!
@@ -34,6 +35,7 @@ app.use(passport.session());
 
 require("./routes/authRoutes")(app);
 require("./routes/tripRoutes")(app);
+require("./routes/orderRoutes")(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);

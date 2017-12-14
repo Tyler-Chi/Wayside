@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FETCH_USER, FETCH_TRIPS, FETCH_TRIP } from "./types";
+import { FETCH_USER, FETCH_TRIPS, FETCH_TRIP, FETCH_ORDER } from "./types";
 
 //making api call to grab the current user
 //need to make sure it goes to localhost:5000, not 3000
@@ -26,6 +26,12 @@ export const submitTrip = (values, history) => dispatch => {
     .then(values => dispatch({ type: FETCH_USER, payload: values.data }));
 
   //where do we want to push them after this?
+};
+
+export const submitOrder = (values, history) => dispatch => {
+  axios
+    .post("/api/orders", values)
+    .then(values => dispatch({ type: FETCH_USER, payload: values.data }));
 };
 
 export const fetchAllTrips = () => dispatch => {
