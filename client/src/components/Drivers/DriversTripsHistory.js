@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
+import DriversTripsHistoryIndexItem from "./DriversTripsHistoryIndexItem";
 
 class DriversTripsHistory extends Component {
   //need to figure out the promises here -__-
@@ -14,12 +15,17 @@ class DriversTripsHistory extends Component {
     }
 
     const { trips } = this.props.entities;
+    console.log("props", this.props);
     console.log("trips", trips);
 
     return (
       <div className="drivers-trips-history-index-area">
         <p className="past-deliveries">Past Deliveries</p>
-        {trips.map(trip => <p> hi </p>)}
+        <ul className="dth-ul">
+          {trips.map(trip => (
+            <DriversTripsHistoryIndexItem trip={trip} key={trip._id} />
+          ))}
+        </ul>
       </div>
     );
   }
