@@ -52,9 +52,15 @@ class Test extends Component {
         <button onClick={() => this.props.fetchOrders()}>fetchOrders</button>
         <br />
         <button
-          onClick={() => this.props.updateTrip("5a323b7a55691727ee7c9f2a")}
+          onClick={() =>
+            this.props.updateTrip("5a323b7a55691727ee7c9f2a", {
+              completed: true
+            })
+          }
         >
-          UpdateTrip (this takes an id, turns it to true.)
+          update trip: first argument is the trip id. the second argument is an
+          object with the new values of that trip. if unspecified, the trip
+          object will default back to its original values.
         </button>
       </div>
     );

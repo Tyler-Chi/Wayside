@@ -41,9 +41,9 @@ export const submitTrip = (values, history) => dispatch => {
   //where do we want to push them after this?
 };
 
-export const updateTrip = tripId => dispatch => {
+export const updateTrip = (tripId, values) => dispatch => {
   axios
-    .put(`/api/trips/${tripId}`)
+    .put(`/api/trips/${tripId}`, values)
     .then(trip => dispatch({ type: FETCH_TRIP, payload: trip.data }));
 };
 

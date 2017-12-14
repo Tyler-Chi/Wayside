@@ -74,10 +74,11 @@ module.exports = app => {
 
   app.put("/api/trips/:tripId", async (req, res) => {
     console.log("params", req.params);
+    console.log("body", req.body.completed);
 
     const queryTrip = await Trip.findById(req.params.tripId);
 
-    queryTrip.completed = true;
+    queryTrip.completed = req.body.completed;
 
     queryTrip.save(function(saveErr, savedTrip) {
       return res.send(savedTrip);
