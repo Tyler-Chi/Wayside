@@ -20,7 +20,11 @@ class DriversTripsNew extends Component {
       destination: "",
       tripStartDate: "",
       tripEndDate: "",
-      tripDistance: 0
+      tripDistance: 0,
+      latO: 0,
+      lngO: 0,
+      latD: 0,
+      lngD: 0,
     };
 
     this.handleDisplay = this.handleDisplay.bind(this);
@@ -30,6 +34,7 @@ class DriversTripsNew extends Component {
   }
 
   componentDidMount() {
+
     const map = this.refs.map;
     //define where our initial map should be centered
     this.map = new google.maps.Map(map, mapOptions);
@@ -45,27 +50,31 @@ class DriversTripsNew extends Component {
       map: this.map,
       // panel: document.getElementById('direction-panel'),
     });
-
-    this.geocodeAddress(this.geocoder, this.map, "825 battery st, san francisco, ca");
+    window.scrollTo(0,0);
   }
 
-  geocodeAddress(geocoder, map, address) {
+  //take in the address and the type (whether origin or destination) and get the Lat-Lng accordingly
+  geocodeAddress(geocoder, map, address, type) {
     geocoder.geocode({ 'address': address }, (result, status) => {
       if (status !== 'OK') {
         alert('INVALID ADDRESS DUE TO: ' + status);
       } else {
-        console.log(result[0].geometry.location.lat());
+        let lat = result[0].geometry.location.lat();
+        let lng = result[0].geometry.location.lng();
+        if (type === 'origin') {
+          this.setState({
+            latO: lat,
+            lngO: lng,
+          });
+        } else if (type === 'destination') {
+          this.setState({
+            latD: lat,
+            lngD: lng,
+          });
+        }
       }
     });
   }
-
-  // convertAddress() {
-  //   const map = this.refs.map;
-  //   this.map = new google.maps.Map(map, mapOptions);
-  //   this.geocoder = new google.maps.Geocoder();
-  //   this.geocodeAddress(this.geocoder, this.map, "san francisco");
-  // }
-
 
   //this handles displaying the route onto the map.
   displayRoute(origin, destination, service, display) {
@@ -106,6 +115,8 @@ class DriversTripsNew extends Component {
         this.directionsService, this.directionsDisplay
       );
     }
+    this.geocodeAddress(this.geocoder, this.map, this.state.origin, 'origin');
+    this.geocodeAddress(this.geocoder, this.map, this.state.destination, 'destination');
     window.scrollTo(0,800);
   }
 
@@ -121,6 +132,7 @@ class DriversTripsNew extends Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div className="trip-new">
 
@@ -148,7 +160,6 @@ class DriversTripsNew extends Component {
             <div className="form-date-input">
               <h3>Arrival Date</h3>
               <input type="date" id="date-end"
-                value={this.state.tripStartDate}
                 min={this.state.tripStartDate}
                 onChange={this.handleInput('tripEndDate')}></input>
             </div>
@@ -171,8 +182,6 @@ class DriversTripsNew extends Component {
             </button>
 
         </div>
-
-
 
 
       </div>
