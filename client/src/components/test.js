@@ -40,7 +40,7 @@ class Test extends Component {
               price: 100,
               comments: [],
               requestPending: true,
-              _tripId: 5
+              _tripId: "5a30382eae36e9aa3ca08279"
             })
           }
         >

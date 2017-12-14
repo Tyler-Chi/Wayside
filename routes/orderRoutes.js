@@ -5,7 +5,7 @@ const Order = mongoose.model("orders");
 module.exports = app => {
   app.post("/api/orders", (req, res) => {
     console.log("i am in order routes :D");
-    console.log("req", req);
+    console.log("req", req.body);
 
     const {
       _driverId,
