@@ -48,6 +48,8 @@ class Test extends Component {
         <button onClick={() => this.props.fetchAllUpcoming()}>
           fetchAllUpcoming
         </button>
+        <br />
+        <button onClick={() => this.props.fetchOrders()}>fetchOrders</button>
       </div>
     );
   }

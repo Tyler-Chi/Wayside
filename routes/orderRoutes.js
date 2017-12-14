@@ -3,6 +3,24 @@ const mongoose = require("mongoose");
 const Order = mongoose.model("orders");
 
 module.exports = app => {
+  //my request orders
+  app.get("/api/orders", async (req, res) => {
+    console.log("i am in the routes");
+    const requestOrders = await Order.find({
+      _ownerId: req.user.id
+    });
+    console.log("req orders", requestOrders);
+
+    const deliverOrders = await Order.find({
+      _driverId: req.user.id
+    });
+
+    const output = requestOrders.concat(deliverOrders);
+    console.log("deliver orders", output);
+
+    res.send(requestOrders.concat(deliverOrders));
+  });
+
   //logic for accepting an order
   app.put("/api/orders/:orderId", (req, res) => {
     console.log("im trying to update an order :<");
