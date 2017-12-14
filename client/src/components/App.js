@@ -3,9 +3,8 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 
-import './Overall_CSS/Reset.css';
-import './Overall_CSS/Fonts.css';
-
+import "./Overall_CSS/Reset.css";
+import "./Overall_CSS/Fonts.css";
 
 import Header from "./Header";
 import Splash from "./Greeting/Splash";
@@ -14,9 +13,8 @@ import CustomersOrdersHistory from "./Customers/CustomersOrdersHistory";
 import DriversTripsNew from "./Drivers/DriversTripsNew";
 import DriversTripsHistory from "./Drivers/DriversTripsHistory";
 import DriversNew from "./Drivers/DriversNew";
+import DriversTripsUpcoming from "./Drivers/DriversTripsUpcoming";
 import Test from "./test";
-
-
 
 class App extends Component {
   componentDidMount() {
@@ -28,7 +26,7 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <div className="body">
-            <Header className="nav"/>
+            <Header className="nav" />
 
             <Route exact path="/test" component={Test} />
 
@@ -37,6 +35,12 @@ class App extends Component {
               exact
               path="/customers/orders/new"
               component={CustomersOrdersNew}
+            />
+
+            <Route
+              exact
+              path="/drivers/trips/upcoming"
+              component={DriversTripsUpcoming}
             />
 
             <Route
