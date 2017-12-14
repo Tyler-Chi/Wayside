@@ -5,7 +5,9 @@ const Trip = mongoose.model("trips");
 module.exports = app => {
   app.get("/api/trips/all", async (req, res) => {
     //here, inside find, can specify which trips we want :D
-    const trips = await Trip.find();
+    const trips = await Trip.find({
+      _user: req.user.id
+    });
     console.log(trips);
     res.send(trips);
   });
@@ -32,6 +34,7 @@ module.exports = app => {
   });
 
   app.get("/api/trips/upcoming", async (req, res) => {
+    console.log("i am in upcoming");
     const trips = await Trip.find({
       completed: false,
       _user: req.user.id

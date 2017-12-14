@@ -10,6 +10,17 @@ class DriversTripsUpcoming extends Component {
   }
 
   render() {
+    if (this.props.entities.trips === null) {
+      return <div> Loading</div>;
+    }
+
+    const { trips } = this.props.entities;
+    console.log("drivers trips all", trips);
+
+    const upcomingTrips = trips.filter(trip => trip.completed === false);
+
+    console.log("drivers upcoming trips", upcomingTrips);
+
     return <div>soy eldriverstripsupcoming si si si </div>;
   }
 }

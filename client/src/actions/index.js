@@ -49,6 +49,7 @@ export const fetchAllTrips = () => dispatch => {
   //post it into the state
 };
 
+//this one fetches literally all of them in the database that are upcoming
 export const fetchAllUpcoming = () => dispatch => {
   axios
     .get("/api/trips/allUpcoming")
@@ -61,7 +62,9 @@ export const fetchCompletedTrips = async () => dispatch => {
     .then(trips => dispatch({ type: FETCH_TRIPS, payload: trips.data }));
 };
 
+//this one just fetches the ones pertaining to the user.
 export const fetchUpcomingTrips = () => dispatch => {
+  console.log("i am in upcoming trips");
   axios
     .get("/api/trips/upcoming")
     .then(trips => dispatch({ type: FETCH_TRIPS, payload: trips.data }));
