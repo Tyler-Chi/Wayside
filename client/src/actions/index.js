@@ -61,20 +61,6 @@ export const fetchCompletedTrips = async () => dispatch => {
     .then(trips => dispatch({ type: FETCH_TRIPS, payload: trips.data }));
 };
 
-// export function fetchCompletedTrips(trips = []) {
-//   return function action(dispatch) {
-//     dispatch({ type: FETCH_TRIPS, payload: trips });
-//
-//     const request = axios({
-//       method: "GET",
-//       url: "/api/trips/completed",
-//       headers: []
-//     });
-//
-//     return request.then(response => dispatch(fetchCompletedTrips(response)));
-//   };
-// }
-
 export const fetchUpcomingTrips = () => dispatch => {
   axios
     .get("/api/trips/upcoming")

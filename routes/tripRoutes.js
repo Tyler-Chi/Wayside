@@ -53,7 +53,8 @@ module.exports = app => {
       destination,
       tripStartDate,
       tripEndDate,
-      completed
+      completed,
+      tripDistance
     } = req.body;
 
     const trip = new Trip({
@@ -62,6 +63,7 @@ module.exports = app => {
       tripStartDate,
       tripEndDate,
       completed,
+      tripDistance,
       _user: req.user.id
     });
 
