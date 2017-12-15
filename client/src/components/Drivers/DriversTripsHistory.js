@@ -21,10 +21,10 @@ class DriversTripsHistory extends Component {
     let tripsArray = Object.values(trips);
     console.log("tripsArray", tripsArray);
     const pastTrips = tripsArray.filter(trip => trip.completed === true);
-    console.log('pasttrip', pastTrips);
+    // console.log('pasttrip', pastTrips);
     const pastTrips2 = tripsArray.filter(trip => trip.completed === true).sort(function(a,b) {
       return a.tripStartDate > b.tripStartDate; });
-    console.log(pastTrips2);
+    // console.log(pastTrips2);
 
     return (
       <div className="driver-history-all">
