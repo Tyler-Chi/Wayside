@@ -33,6 +33,7 @@ class CustomersOrdersNew extends Component {
     this.handleSearch = this.handleSearch.bind(this);
     this.setState = this.setState.bind(this);
     this.calculateDistance = this.calculateDistance.bind(this);
+    this.checkAndCalculate = this.checkAndCalculate.bind(this);
   }
 
   componentDidMount() {
@@ -89,7 +90,7 @@ class CustomersOrdersNew extends Component {
     console.log(leg1);
     console.log(leg2);
     console.log(leg3);
-    let newDistance = leg1 + leg2 + leg3;
+    let newDistance = (leg1 + leg2 + leg3) * 69;
     console.log("NEW DISTANCE", newDistance);
     this.setState({ newDistance: newDistance });
   }
@@ -129,6 +130,22 @@ class CustomersOrdersNew extends Component {
     };
   }
 
+  checkAndCalculate() {
+    if (
+      this.state.latS + this.state.latE + this.state.lngS + this.state.lngE ===
+      0
+    ) {
+      setTimeout(() => this.checkAndCalculate(), 100);
+    } else {
+      this.calculateDistance(
+        37.7989666,
+        -122.4013518,
+        37.4296964,
+        -121.9171665
+      );
+    }
+  }
+
   handleSearch() {
     this.displayRoute(
       this.state.startLoc,
@@ -140,17 +157,19 @@ class CustomersOrdersNew extends Component {
     this.geocodeAddress(this.geocoder, this.map, this.state.startLoc, "start");
     this.geocodeAddress(this.geocoder, this.map, this.state.endLoc, "end");
 
-    setTimeout(
-      function() {
-        this.calculateDistance(
-          37.7989666,
-          -122.4013518,
-          37.4296964,
-          -121.9171665
-        );
-      }.bind(this),
-      3000
-    );
+    this.checkAndCalculate();
+
+    // setTimeout(
+    //   function() {
+    //     this.calculateDistance(
+    //       37.7989666,
+    //       -122.4013518,
+    //       37.4296964,
+    //       -121.9171665
+    //     );
+    //   }.bind(this),
+    //   3000
+    // );
 
     // this.props.submitOrder({
     //   accepted: false,
