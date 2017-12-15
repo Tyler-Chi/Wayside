@@ -68,7 +68,7 @@ class CustomersOrdersNew extends Component {
             lngE: await result[0].geometry.location.lng()
           });
         }
-        console.log("state", this.state);
+        // console.log("state", this.state);
         //when state is logged here, the state is what it should be.
       }
     });
@@ -86,10 +86,10 @@ class CustomersOrdersNew extends Component {
     let leg2 = Math.sqrt(Math.pow(latS - latE, 2) + Math.pow(lngS - lngE, 2));
     let leg3 = Math.sqrt(Math.pow(latE - latD, 2) + Math.pow(lngE - lngD, 2));
 
-    console.log();
-    console.log(leg1);
-    console.log(leg2);
-    console.log(leg3);
+    // console.log();
+    // console.log(leg1);
+    // console.log(leg2);
+    // console.log(leg3);
     let newDistance = (leg1 + leg2 + leg3) * 69;
     console.log("NEW DISTANCE", newDistance);
     this.setState({ newDistance: newDistance });
@@ -119,9 +119,22 @@ class CustomersOrdersNew extends Component {
 
   sortTrips() {
     let trips = this.props.entities.trips;
+    let filterTrips = [];
+
     Object.values(trips).forEach(trip => {
       // console.log(trip);
+      let newDistance = this.checkAndCalculate(trip.latO, trip.lngO, trip.latD, trip.lngD);
+      console.log('newDistance', newDistance);
+      let oldDistance = trip.tripDistance;
+      console.log('oldDistance', oldDistance);
+      let diff = newDistance - oldDistance;
+      if ( (diff <= 50) && (this.deliveredBy <= trip.tripEndDate) ) {
+        // console.log(diff);
+        // console.log(trip);
+        // filterTrips.push(trip);
+      }
     });
+    return filterTrips;
   }
 
   handleInput(type) {
@@ -130,7 +143,7 @@ class CustomersOrdersNew extends Component {
     };
   }
 
-  checkAndCalculate() {
+  checkAndCalculate(latO, lngO, latD, lngD) {
     if (
       this.state.latS + this.state.latE + this.state.lngS + this.state.lngE ===
       0
@@ -138,10 +151,7 @@ class CustomersOrdersNew extends Component {
       setTimeout(() => this.checkAndCalculate(), 100);
     } else {
       this.calculateDistance(
-        37.7989666,
-        -122.4013518,
-        37.4296964,
-        -121.9171665
+        latO, lngO, latD, lngD
       );
     }
   }
@@ -157,7 +167,8 @@ class CustomersOrdersNew extends Component {
     this.geocodeAddress(this.geocoder, this.map, this.state.startLoc, "start");
     this.geocodeAddress(this.geocoder, this.map, this.state.endLoc, "end");
 
-    this.checkAndCalculate();
+    // this.checkAndCalculate();
+    this.sortTrips();
 
     // setTimeout(
     //   function() {
@@ -188,7 +199,7 @@ class CustomersOrdersNew extends Component {
     if (this.props.entities.trips === null) {
       return <div>loading</div>;
     }
-    console.log(this.state);
+    // console.log(this.state);
     // this.sortTrips();
     return (
       <div>
