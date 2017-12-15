@@ -4,17 +4,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
 
-const kmToMile = 0.621371 / 1000;
+// const kmToMile = 0.621371 / 1000;
 
 const mapOptions = {
   zoom: 3,
   center: { lat: 40.612969, lng: -96.455751 } //center of US
 };
-
-var LATS;
-var LNGS;
-var LATE;
-var LNGE;
 
 class CustomersOrdersNew extends Component {
   constructor(props) {
@@ -122,9 +117,10 @@ class CustomersOrdersNew extends Component {
     let filterTrips = [];
 
     Object.values(trips).forEach(trip => {
-      // console.log(trip);
+      console.log(trip);
       let newDistance = this.checkAndCalculate(trip.latO, trip.lngO, trip.latD, trip.lngD);
       console.log('newDistance', newDistance);
+      console.log(trip.latO, trip.lngO, trip.latD, trip.lngD);
       let oldDistance = trip.tripDistance;
       console.log('oldDistance', oldDistance);
       let diff = newDistance - oldDistance;
@@ -150,6 +146,7 @@ class CustomersOrdersNew extends Component {
     ) {
       setTimeout(() => this.checkAndCalculate(), 100);
     } else {
+      console.log('Hi');
       this.calculateDistance(
         latO, lngO, latD, lngD
       );
@@ -168,6 +165,7 @@ class CustomersOrdersNew extends Component {
     this.geocodeAddress(this.geocoder, this.map, this.state.endLoc, "end");
 
     // this.checkAndCalculate();
+    // setTimeout(() =>)
     this.sortTrips();
 
     // setTimeout(

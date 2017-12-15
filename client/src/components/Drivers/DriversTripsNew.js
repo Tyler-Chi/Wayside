@@ -25,6 +25,7 @@ class DriversTripsNew extends Component {
       lngO: 0,
       latD: 0,
       lngD: 0,
+      price: 0,
     };
 
     this.handleDisplay = this.handleDisplay.bind(this);
@@ -127,12 +128,16 @@ class DriversTripsNew extends Component {
       tripStartDate: this.state.tripStartDate,
       tripEndDate: this.state.tripEndDate,
       tripDistance: this.state.tripDistance,
+      latO: this.state.latO,
+      lngO: this.state.lngO,
+      latD: this.state.latD,
+      lngD: this.state.lngD,
+      price: 0,
       completed: false
     });
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="trip-new">
 
