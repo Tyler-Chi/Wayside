@@ -91,6 +91,9 @@ module.exports = app => {
 
     trip.save();
 
+    //maybe here, I can also send the trip into the actions...and update the trip there as well :O
+    //if I don't do this, then even when an order is added to a trip, the trip won't immediately update...which isn't a big deal though because they are two seperate users?
+
     res.send(order);
   });
 };

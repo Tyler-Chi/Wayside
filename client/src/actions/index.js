@@ -53,6 +53,8 @@ export const updateOrder = (orderId, values) => dispatch => {
     .then(order => dispatch({ type: FETCH_ORDER, payload: order.data }));
 };
 
+//also need this to update the orders array of the trip.
+
 export const submitOrder = (values, history) => dispatch => {
   axios
     .post("/api/orders", values)
