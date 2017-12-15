@@ -31,7 +31,6 @@ class DriversTripsUpcoming extends Component {
               trip={trip}
             />
           ))}
-
         </ul>
       </div>);
   }
