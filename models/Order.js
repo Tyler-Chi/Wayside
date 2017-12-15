@@ -13,7 +13,8 @@ const orderSchema = new Schema({
   price: Number,
   comments: Array,
   requestPending: Boolean,
-  _tripId: { type: Schema.Types.ObjectId, ref: "Trip" }
+  _tripId: { type: Schema.Types.ObjectId, ref: "Trip" },
+  tripObject: Object
 });
 
 mongoose.model("orders", orderSchema);

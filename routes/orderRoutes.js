@@ -79,7 +79,6 @@ module.exports = app => {
       _tripId
     });
     //save posts it into the data base
-    order.save();
 
     //now I want to push it into the corresponding trip's array of orders. the trip will only have ID's, with these ID's, we will access the orders held inside the state.
 
@@ -88,9 +87,10 @@ module.exports = app => {
     console.log(trip);
 
     trip.orders.push(order._id);
+    order.tripObject = trip;
 
     trip.save();
-
+    order.save();
     //maybe here, I can also send the trip into the actions...and update the trip there as well :O
     //if I don't do this, then even when an order is added to a trip, the trip won't immediately update...which isn't a big deal though because they are two seperate users?
 

@@ -8,12 +8,18 @@ class CustomersOrdersHistory extends Component {
   }
 
   render() {
-    return(
-      <div className="">
-        Customers Orders History
-      </div>
-    );
+    if (this.props.entities.orders === null) {
+      return <div> LOADING </div>;
+    }
+
+    return <div className="">Customers Orders History</div>;
   }
 }
+function mapStateToProps({ auth, entities }) {
+  return {
+    auth,
+    entities
+  };
+}
 
-export default connect(null, actions)(CustomersOrdersHistory);
+export default connect(mapStateToProps, actions)(CustomersOrdersHistory);
