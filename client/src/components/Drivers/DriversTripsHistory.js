@@ -23,12 +23,12 @@ class DriversTripsHistory extends Component {
     const pastTrips = tripsArray.filter(trip => trip.completed === true);
     console.log('pasttrip', pastTrips);
     const pastTrips2 = tripsArray.filter(trip => trip.completed === true).sort(function(a,b) {
-      return a.tripStartDate - b.tripStartDate; });
+      return a.tripStartDate > b.tripStartDate; });
     console.log(pastTrips2);
 
     return (
-      <div className="drivers-trips-history-index-area">
-        <h2 className="past-deliveries">Past Deliveries</h2>
+      <div className="driver-history-all">
+        <h2 className="driver-history-title barlow">TRIP HISTORY</h2>
 
         <ul className="dth-ul">
           {pastTrips.map(trip => (
