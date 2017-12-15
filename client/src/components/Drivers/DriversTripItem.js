@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
+import './DriversTripItem.css';
+
 
 class DriversTripItem extends Component {
   constructor(props) {
@@ -19,16 +21,8 @@ class DriversTripItem extends Component {
         <h3>{tripStartDate}</h3>
         <h3>{tripEndDate}</h3>
 
-        <div className="down">
-          <div className="drop-content">
-            <h4>Not Picked Up</h4>
-            <h4>On Route</h4>
-            <h4>Delievered</h4>
-          </div>
-          <button className="drop-button">
-            Package Status
-          </button>
-        </div>
+        <h3>Package Status</h3>
+
 
       </div>
     );
