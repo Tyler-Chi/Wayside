@@ -21,7 +21,7 @@ class DriversTripItem extends Component {
         <h3>{tripStartDate}</h3>
         <h3>{tripEndDate}</h3>
 
-        <h3>Package Status</h3>
+        <h3>Packages</h3>
 
 
       </div>
