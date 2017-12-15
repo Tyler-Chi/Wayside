@@ -72,7 +72,7 @@ class DriversTripItem extends Component {
             <div className="trip-etc">
               <div className="column">
                 <h4>PENDING REQUESTS</h4>
-                <h3 className="trip-requests"> {ordersRequested.length} </h3>
+                <h3 className="trip-packages"> {ordersRequested.length} </h3>
               </div>
 
               <div className="column">

@@ -10,19 +10,24 @@ class DriversTripsUpcoming extends Component {
     //this fills the trips slice of state with this users
     //trips that they will go on in the future.
     this.props.fetchAllTrips();
+    this.props.fetchOrders();
   }
 
   render() {
-    if (this.props.entities.trips === null) {
+    if (this.props.entities.trips === null || this.props.entities.orders === null) {
       return <div> Loading </div>;
     }
 
     const { trips } = this.props.entities;
+
+    console.log('trips',trips);
+
     const tripsArray = Object.values(trips);
     const upcomingTrips = tripsArray
                         .filter(trip => trip.completed === false)
                         .sort(function(a, b) { return a.tripStartDate > b.tripStartDate; });
 
+    const ordersArray = Object.values(this.props.entities.orders);
 
 
     return(
@@ -34,6 +39,7 @@ class DriversTripsUpcoming extends Component {
             <DriversTripItem
               key={trip._id}
               trip={trip}
+              orders = {ordersArray.filter(order => order._tripId === trip._id)}
             />
           ))}
         </ul>

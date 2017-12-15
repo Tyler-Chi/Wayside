@@ -56,7 +56,7 @@ class Test extends Component {
         <br />
         <button
           onClick={() =>
-            this.props.updateTrip("5a340804540b4f1619c75a5f", {
+            this.props.updateTrip("5a341d43a68c5aeb861f1ad8", {
               completed: true
             })
           }

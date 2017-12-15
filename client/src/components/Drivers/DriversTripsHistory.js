@@ -6,6 +6,14 @@ import "./DriversTripItem.css";
 
 class DriversTripsHistory extends Component {
   //need to figure out the promises here -__-
+
+  constructor(props){
+    super(props);
+    this.state = {
+      type: 'history'
+    }
+  }
+
   componentDidMount() {
     //fetch all trips fetchs all the trips where the current user is the driver of that trip.
     this.props.fetchAllTrips();
