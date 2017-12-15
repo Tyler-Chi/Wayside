@@ -149,3 +149,8 @@ class Splash extends Component {
 }
 
 export default connect()(Splash);
+
+// Add this in later
+// <h5>Quick, fast and easy. Lemon Squeezy <p>-Joey</p></h5>
+// <h5>Muy bueno   <p>-Omar</p></h5>
+// This has been by far the best way to deliver grass in the Western continenal United States -Jeff

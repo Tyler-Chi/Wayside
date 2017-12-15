@@ -16,13 +16,46 @@ class DriversTripItem extends Component {
 
     return(
       <div className="trip-item">
-        <h3>{trip.origin}</h3>
-        <h3>{trip.destination}</h3>
-        <h3>{tripStartDate}</h3>
-        <h3>{tripEndDate}</h3>
 
-        <h3>Packages</h3>
+        <div className="trip-date">
+          <div className="column trip-departure-div">
+            <h4>DEPARTURE DATE</h4>
+            <h3 className="trip-departure">  {tripStartDate}</h3>
+          </div>
 
+          <div className="column trip-arrival-div">
+            <h4>ARRIVAL DATE:</h4>
+            <h3 className="trip-arrival">  {tripEndDate}</h3>
+          </div>
+        </div>
+
+
+        <div className="trip-item-bottom">
+          <div className="column">
+            <h4>STARTING LOCATION</h4>
+            <h3 className="trip-start">{trip.origin}</h3>
+          </div>
+
+          <div className="column">
+            <h4>DESTINATION</h4>
+            <h3 className="trip-end"> {trip.destination}</h3>
+          </div>
+
+          <div className="trip-etc">
+            <div className="column">
+              <h4>PENDING REQUESTS</h4>
+              <h3 className="trip-requests">  </h3>
+            </div>
+
+            <div className="column">
+              <h4>PACKAGES</h4>
+              <h3 className="trip-packages">{trip.orders.length}</h3>
+            </div>
+
+            <button className="trip-button">See Trip Information</button>
+
+        </div>
+        </div>
 
       </div>
     );

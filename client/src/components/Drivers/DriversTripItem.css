@@ -1,0 +1,132 @@
+
+
+.driver-upcoming-all {
+  width: 1000px;
+  margin: 30px auto;
+}
+
+.driver-upcoming-title {
+  font-size: 60px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: black;
+  margin-left: 30px;
+}
+
+
+
+
+
+
+
+/*Styling for the Trip Item*/
+
+.trip-item > h3, button {
+  font-size: 25px;
+  font-family: "Open Sans";
+}
+
+
+.trip-departure-div, .trip-arrival-div {
+  width: 440px;
+}
+
+.trip-requests, .trip-packages {
+  padding-right: 137px;
+}
+
+.trip-item {
+  /*border: 1px solid white;*/
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 255, .2);
+}
+
+.trip-date, .trip-etc {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+.trip-etc > h3, .trip-item-bottom > h3 {
+  font-size: 25px;
+  font-family: "Open Sans";
+  margin: 0px;
+
+}
+.trip-start, .trip-end {
+  font-size: 25px;
+  font-family: "Open Sans";
+  margin: 0px;
+
+}
+.trip-arrival, .trip-departure, .trip-requets, .trip-packages {
+  font-size: 25px;
+  font-family: 25px;
+  margin: 0px;
+
+
+}
+
+.trip-requets, .trip-packages {
+
+}
+
+
+.trip-etc {
+  display: flex;
+  flex-direction: row;
+}
+
+.trip-button {
+  padding: 10px 25px;
+  width: 200px;
+  text-align: center;
+  background: #E7204E;
+  bacground: #A71A5B;
+  color: white;
+  font-size: 20px;
+  border-radius: 5px;
+  height: 30px;
+  margin-top: 15px;
+  box-shadow: 1px 3px 2px 2px rgba(0, 0, 255, .2);
+}
+.trip-button:hover {
+  background: #6B0103;
+}
+
+.trip-date {
+  background: #651366;
+
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  padding: 5px 30px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.trip-item {
+  font-size: 15px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.column > h4 {
+  font-size: 16px;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.trip-item-bottom {
+  padding: 0 30px;
+}
+
+.trip-etc > .column {
+  margin-right: 162px;
+  margin-bottom: 30px;
+}

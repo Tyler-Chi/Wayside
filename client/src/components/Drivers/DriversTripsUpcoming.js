@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
 import DriversTripItem from "./DriversTripItem";
+import './DriversTripItem.css';
 
 class DriversTripsUpcoming extends Component {
   componentDidMount() {
@@ -16,18 +17,14 @@ class DriversTripsUpcoming extends Component {
     }
 
     const { trips } = this.props.entities;
-    console.log("drivers trips all", trips);
-
     const tripsArray = Object.values(trips);
-
     const upcomingTrips = tripsArray.filter(trip => trip.completed === false);
-    console.log("drivers upcoming trips", upcomingTrips);
 
     return(
-      <div className="">
-        <h2>Upcoming Trips</h2>
+      <div className="driver-upcoming-all">
+        <h2 className="driver-upcoming-title barlow">YOUR UPCOMING TRIPS</h2>
 
-        <ul className="drivers-trips-upcoming-list">
+        <ul className="driver-upcoming-list">
           {upcomingTrips.map(trip => (
             <DriversTripItem
               key={trip._id}

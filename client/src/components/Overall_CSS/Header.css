@@ -19,7 +19,8 @@
 }
 
 .login > * {
-  padding: 25px 15px;
+  padding: 35px 15px;
+  font-size: 18px;
 }
 .login > *:hover {
   border-top: 5px solid red;
@@ -30,8 +31,15 @@
   flex-direction: row;
 }
 .nav-right > * {
-  padding: 27px 15px;
+  padding: 25px 15px;
+  font-size: 18px;
 }
 .nav-right > *:hover {
   border-top: 5px solid red;
+}
+
+.logout {
+  font-size: 18px;
+  font-family: "Open Sans";
+
 }
