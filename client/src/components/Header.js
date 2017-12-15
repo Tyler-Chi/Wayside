@@ -20,7 +20,7 @@ class Header extends Component {
           <button>Past Deliveries</button>
           <button>Send a Package</button>
 
-          <a href="/api/logout">Logout</a>
+          <a className="logout" href="/api/logout">Log out</a>
 
         </div>
       );
@@ -31,7 +31,7 @@ class Header extends Component {
           <button>Past Packages</button>
           <button>Become a Driver</button>
 
-          <a href="/api/logout">Logout</a>
+          <a className="logout" href="/api/logout">Log out</a>
         </div>
 
       );
