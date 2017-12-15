@@ -29,6 +29,7 @@ class CustomersOrdersNew extends Component {
     this.setState = this.setState.bind(this);
     this.calculateDistance = this.calculateDistance.bind(this);
     this.checkAndCalculate = this.checkAndCalculate.bind(this);
+    this.sortTrips = this.sortTrips.bind(this);
   }
 
   componentDidMount() {
@@ -69,6 +70,27 @@ class CustomersOrdersNew extends Component {
     });
   }
 
+  sortTrips() {
+    let trips = this.props.entities.trips;
+    let filterTrips = [];
+
+    Object.values(trips).forEach(async trip => {
+      console.log(trip);
+      // console.log(this.state);
+      let newDistance = await this.checkAndCalculate(trip.latO, trip.lngO, trip.latD, trip.lngD);
+      console.log('newDistance', newDistance);
+      // console.log(trip.latO, trip.lngO, trip.latD, trip.lngD);
+      let oldDistance = trip.tripDistance;
+      let diff = newDistance - oldDistance;
+      if ( (diff <= 50) && (this.deliveredBy <= trip.tripEndDate) ) {
+        // console.log(diff);
+        // console.log(trip);
+        // filterTrips.push(trip);
+      }
+    });
+    return filterTrips;
+  }
+
   //O is Original location, D is original Destination
   //S is the customer Starting location, E is customer Ending location
   calculateDistance(latO, lngO, latD, lngD) {
@@ -81,13 +103,24 @@ class CustomersOrdersNew extends Component {
     let leg2 = Math.sqrt(Math.pow(latS - latE, 2) + Math.pow(lngS - lngE, 2));
     let leg3 = Math.sqrt(Math.pow(latE - latD, 2) + Math.pow(lngE - lngD, 2));
 
-    // console.log();
-    // console.log(leg1);
-    // console.log(leg2);
-    // console.log(leg3);
+    //convert from lattitude to miles by * by 69
     let newDistance = (leg1 + leg2 + leg3) * 69;
     console.log("NEW DISTANCE", newDistance);
-    this.setState({ newDistance: newDistance });
+    // this.updateTrip({ newDistance: newDistance });
+  }
+
+  checkAndCalculate(latO, lngO, latD, lngD) {
+    if (
+      this.state.latS + this.state.latE + this.state.lngS + this.state.lngE ===
+      0
+    ) {
+      setTimeout(() => this.checkAndCalculate(), 100);
+    } else {
+      console.log(latO, lngO, latD, lngD);
+      return this.calculateDistance(
+        latO, lngO, latD, lngD
+      );
+    }
   }
 
   displayRoute(origin, destination, service, display) {
@@ -112,45 +145,16 @@ class CustomersOrdersNew extends Component {
     );
   }
 
-  sortTrips() {
-    let trips = this.props.entities.trips;
-    let filterTrips = [];
-
-    Object.values(trips).forEach(trip => {
-      console.log(trip);
-      let newDistance = this.checkAndCalculate(trip.latO, trip.lngO, trip.latD, trip.lngD);
-      console.log('newDistance', newDistance);
-      console.log(trip.latO, trip.lngO, trip.latD, trip.lngD);
-      let oldDistance = trip.tripDistance;
-      console.log('oldDistance', oldDistance);
-      let diff = newDistance - oldDistance;
-      if ( (diff <= 50) && (this.deliveredBy <= trip.tripEndDate) ) {
-        // console.log(diff);
-        // console.log(trip);
-        // filterTrips.push(trip);
-      }
-    });
-    return filterTrips;
-  }
-
   handleInput(type) {
     return event => {
       this.setState({ [type]: event.target.value });
     };
   }
 
-  checkAndCalculate(latO, lngO, latD, lngD) {
-    if (
-      this.state.latS + this.state.latE + this.state.lngS + this.state.lngE ===
-      0
-    ) {
-      setTimeout(() => this.checkAndCalculate(), 100);
-    } else {
-      console.log('Hi');
-      this.calculateDistance(
-        latO, lngO, latD, lngD
-      );
-    }
+  async getGeo() {
+    await this.geocodeAddress(this.geocoder, this.map, this.state.startLoc, "start");
+    await this.geocodeAddress(this.geocoder, this.map, this.state.endLoc, "end");
+    this.sortTrips();
   }
 
   handleSearch() {
@@ -161,12 +165,12 @@ class CustomersOrdersNew extends Component {
       this.directionsDisplay
     );
 
-    this.geocodeAddress(this.geocoder, this.map, this.state.startLoc, "start");
-    this.geocodeAddress(this.geocoder, this.map, this.state.endLoc, "end");
+    this.getGeo();
+
 
     // this.checkAndCalculate();
     // setTimeout(() =>)
-    this.sortTrips();
+
 
     // setTimeout(
     //   function() {
@@ -230,7 +234,14 @@ class CustomersOrdersNew extends Component {
         <input
           type="submit"
           id="submit-search"
-          value="Search for a Driver"
+          value="Next"
+          onClick={this.handleSearch}
+        />
+      <br/>
+        <input
+          type="submit"
+          id="submit-search"
+          value="Finish"
           onClick={this.handleSearch}
         />
 
