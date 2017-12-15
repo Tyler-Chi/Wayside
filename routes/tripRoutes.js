@@ -128,7 +128,8 @@ module.exports = app => {
       lngD,
       price,
       orders,
-      _user: req.user.id
+      _user: req.user.id,
+      userObject: req.user
     });
 
     trip.save();

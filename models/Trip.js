@@ -16,7 +16,8 @@ const tripSchema = new Schema({
   lngD: Number,
   price: Number,
   orders: Array,
-  _user: { type: Schema.Types.ObjectId, ref: "User" }
+  _user: { type: Schema.Types.ObjectId, ref: "User" },
+  userObject: Object
 });
 
 mongoose.model("trips", tripSchema);
