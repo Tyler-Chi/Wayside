@@ -5,6 +5,7 @@ import DriversTripItem from "./DriversTripItem";
 import './DriversTripItem.css';
 
 class DriversTripsUpcoming extends Component {
+
   componentDidMount() {
     //this fills the trips slice of state with this users
     //trips that they will go on in the future.
@@ -18,11 +19,10 @@ class DriversTripsUpcoming extends Component {
 
     const { trips } = this.props.entities;
     const tripsArray = Object.values(trips);
-    const upcomingTrips = tripsArray.filter(trip => trip.completed === false);
-    console.log('pasttrip', upcomingTrips);
-    const upcomingTrips2 = upcomingTrips.sort(function(a, b) {
-      return a.tripStartDate > b.tripStartDate; });
-    console.log(upcomingTrips2);
+    const upcomingTrips = tripsArray
+                        .filter(trip => trip.completed === false)
+                        .sort(function(a, b) { return a.tripStartDate > b.tripStartDate; });
+
 
 
     return(
