@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import * as actions from "../../actions";
 
 // const kmToMile = 0.621371 / 1000;
-
+const rate = 0.25;
 const mapOptions = {
   zoom: 3,
   center: { lat: 40.612969, lng: -96.455751 } //center of US
@@ -30,6 +30,7 @@ class CustomersOrdersNew extends Component {
     this.calculateDistance = this.calculateDistance.bind(this);
     this.checkAndCalculate = this.checkAndCalculate.bind(this);
     this.sortTrips = this.sortTrips.bind(this);
+    this.getGeo = this.getGeo.bind(this);
   }
 
   componentDidMount() {
@@ -74,20 +75,29 @@ class CustomersOrdersNew extends Component {
     let trips = this.props.entities.trips;
     let filterTrips = [];
 
-    Object.values(trips).forEach(async trip => {
-      console.log(trip);
+    Object.values(trips).forEach(trip => {
+      // console.log(trip);
       // console.log(this.state);
-      let newDistance = await this.checkAndCalculate(trip.latO, trip.lngO, trip.latD, trip.lngD);
-      console.log('newDistance', newDistance);
-      // console.log(trip.latO, trip.lngO, trip.latD, trip.lngD);
+      let newDistance = this.checkAndCalculate(trip.latO, trip.lngO, trip.latD, trip.lngD);
+      // let newDistance = trip.tripNewDistance;
+      // console.log('tripNewDistance', newDistance);
       let oldDistance = trip.tripDistance;
+      // console.log('tripOldDistance', oldDistance);
       let diff = newDistance - oldDistance;
-      if ( (diff <= 50) && (this.deliveredBy <= trip.tripEndDate) ) {
+      // console.log('diff', diff);
+      // console.log('deliver', this.state.deliveredBy);
+      // console.log('endDate', trip.tripEndDate);
+      let tripPrice = diff * rate;
+      console.log(tripPrice);
+      if ( (diff <= 50) && (this.state.deliveredBy >= trip.tripEndDate) ) {
+
+        this.props.updateTrip(trip._id, {price: tripPrice});
         // console.log(diff);
-        // console.log(trip);
-        // filterTrips.push(trip);
+        console.log(trip);
+        filterTrips.push(trip);
       }
     });
+    console.log(filterTrips);
     return filterTrips;
   }
 
@@ -103,24 +113,28 @@ class CustomersOrdersNew extends Component {
     let leg2 = Math.sqrt(Math.pow(latS - latE, 2) + Math.pow(lngS - lngE, 2));
     let leg3 = Math.sqrt(Math.pow(latE - latD, 2) + Math.pow(lngE - lngD, 2));
 
+    // console.log(leg1*69, leg2*69, leg3*69);
     //convert from lattitude to miles by * by 69
     let newDistance = (leg1 + leg2 + leg3) * 69;
     console.log("NEW DISTANCE", newDistance);
-    // this.updateTrip({ newDistance: newDistance });
+    return newDistance;
   }
 
   checkAndCalculate(latO, lngO, latD, lngD) {
+    let newDistance;
     if (
       this.state.latS + this.state.latE + this.state.lngS + this.state.lngE ===
       0
     ) {
       setTimeout(() => this.checkAndCalculate(), 100);
     } else {
-      console.log(latO, lngO, latD, lngD);
-      return this.calculateDistance(
+      // console.log(latO, lngO, latD, lngD);
+      newDistance = this.calculateDistance(
         latO, lngO, latD, lngD
       );
+      return newDistance;
     }
+    return newDistance;
   }
 
   displayRoute(origin, destination, service, display) {
@@ -154,7 +168,12 @@ class CustomersOrdersNew extends Component {
   async getGeo() {
     await this.geocodeAddress(this.geocoder, this.map, this.state.startLoc, "start");
     await this.geocodeAddress(this.geocoder, this.map, this.state.endLoc, "end");
-    this.sortTrips();
+    this.displayRoute(
+      this.state.startLoc,
+      this.state.endLoc,
+      this.directionsService,
+      this.directionsDisplay
+    );
   }
 
   handleSearch() {
@@ -165,7 +184,7 @@ class CustomersOrdersNew extends Component {
       this.directionsDisplay
     );
 
-    this.getGeo();
+    this.sortTrips();
 
 
     // this.checkAndCalculate();
@@ -235,7 +254,7 @@ class CustomersOrdersNew extends Component {
           type="submit"
           id="submit-search"
           value="Next"
-          onClick={this.handleSearch}
+          onClick={this.getGeo}
         />
       <br/>
         <input
