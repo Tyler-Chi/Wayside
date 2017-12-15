@@ -8,7 +8,11 @@ class CustomersOrdersHistory extends Component {
   }
 
   render() {
-    return <div>I AM CUSTOMERS ORDERS HISTORY</div>;
+    return(
+      <div className="">
+        Customers Orders History
+      </div>
+    );
   }
 }
 
