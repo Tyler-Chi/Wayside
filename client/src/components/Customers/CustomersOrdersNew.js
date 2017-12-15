@@ -51,8 +51,6 @@ class CustomersOrdersNew extends Component {
       if (status !== "OK") {
         alert("INVALID ADDRESS DUE TO: " + status);
       } else {
-        // let lat = await result[0].geometry.location.lat();
-        // let lng = await result[0].geometry.location.lng();
 
         if (type === "start") {
           this.setState({
@@ -65,8 +63,6 @@ class CustomersOrdersNew extends Component {
             lngE: await result[0].geometry.location.lng()
           });
         }
-        // console.log("state", this.state);
-        //when state is logged here, the state is what it should be.
       }
     });
   }
@@ -76,24 +72,14 @@ class CustomersOrdersNew extends Component {
     let filterTrips = [];
 
     Object.values(trips).forEach(trip => {
-      // console.log(trip);
-      // console.log(this.state);
+  ;
       let newDistance = this.checkAndCalculate(trip.latO, trip.lngO, trip.latD, trip.lngD);
-      // let newDistance = trip.tripNewDistance;
-      // console.log('tripNewDistance', newDistance);
       let oldDistance = trip.tripDistance;
-      // console.log('tripOldDistance', oldDistance);
       let diff = newDistance - oldDistance;
-      // console.log('diff', diff);
-      // console.log('deliver', this.state.deliveredBy);
-      // console.log('endDate', trip.tripEndDate);
-      let tripPrice = diff * rate;
-      console.log(tripPrice);
-      if ( (diff <= 50) && (this.state.deliveredBy >= trip.tripEndDate) ) {
 
+      let tripPrice = diff * rate;
+      if ( (diff <= 50) && (this.state.deliveredBy >= trip.tripEndDate) ) {
         this.props.updateTrip(trip._id, {price: tripPrice});
-        // console.log(diff);
-        console.log(trip);
         filterTrips.push(trip);
       }
     });
@@ -113,7 +99,6 @@ class CustomersOrdersNew extends Component {
     let leg2 = Math.sqrt(Math.pow(latS - latE, 2) + Math.pow(lngS - lngE, 2));
     let leg3 = Math.sqrt(Math.pow(latE - latD, 2) + Math.pow(lngE - lngD, 2));
 
-    // console.log(leg1*69, leg2*69, leg3*69);
     //convert from lattitude to miles by * by 69
     let newDistance = (leg1 + leg2 + leg3) * 69;
     console.log("NEW DISTANCE", newDistance);
@@ -128,7 +113,6 @@ class CustomersOrdersNew extends Component {
     ) {
       setTimeout(() => this.checkAndCalculate(), 100);
     } else {
-      // console.log(latO, lngO, latD, lngD);
       newDistance = this.calculateDistance(
         latO, lngO, latD, lngD
       );
@@ -185,11 +169,6 @@ class CustomersOrdersNew extends Component {
     );
 
     this.sortTrips();
-
-
-    // this.checkAndCalculate();
-    // setTimeout(() =>)
-
 
     // setTimeout(
     //   function() {
