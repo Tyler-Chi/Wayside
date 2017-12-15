@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
 import DriversTripItem from "./DriversTripItem";
-import './DriversTripItem.css';
+import "./DriversTripItem.css";
 
 class DriversTripsHistory extends Component {
   //need to figure out the promises here -__-
@@ -13,17 +13,28 @@ class DriversTripsHistory extends Component {
   }
 
   render() {
-    if (this.props.entities.trips === null) {
+    if (
+      this.props.entities.trips === null ||
+      this.props.entities.orders === null
+    ) {
       return <div>loading</div>;
     }
     console.log("HELLLO WORLDDDDDDDDDDDDDDDD");
     const { trips } = this.props.entities;
+
+    const ordersArray = Object.values(this.props.entities.orders);
+
+    console.log("ordersArray", ordersArray);
+
     let tripsArray = Object.values(trips);
     console.log("tripsArray", tripsArray);
     const pastTrips = tripsArray.filter(trip => trip.completed === true);
     // console.log('pasttrip', pastTrips);
-    const pastTrips2 = tripsArray.filter(trip => trip.completed === true).sort(function(a,b) {
-      return a.tripStartDate > b.tripStartDate; });
+    const pastTrips2 = tripsArray
+      .filter(trip => trip.completed === true)
+      .sort(function(a, b) {
+        return a.tripStartDate > b.tripStartDate;
+      });
     // console.log(pastTrips2);
 
     return (
@@ -34,7 +45,9 @@ class DriversTripsHistory extends Component {
           {pastTrips.map(trip => (
             <DriversTripItem
               key={trip._id}
-              trip={trip} />
+              trip={trip}
+              orders = {ordersArray.filter(order => order._tripId === trip._id )}
+            />
           ))}
         </ul>
       </div>

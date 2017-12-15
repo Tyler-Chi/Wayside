@@ -32,14 +32,14 @@ class Test extends Component {
             this.props.submitOrder({
               accepted: true,
               deliveredBy: Date.now(),
-              startLoc: "bobb",
-              endLoc: "bob",
+              startLoc: "San Jose",
+              endLoc: "Tijuana",
               deliveredStatus: true,
               rating: 5,
               price: 100,
               comments: [],
               requestPending: true,
-              _tripId: "5a337a3c314be3a136cd7865"
+              _tripId: "5a340804540b4f1619c75a5f"
             })
           }
         >
@@ -56,8 +56,8 @@ class Test extends Component {
         <br />
         <button
           onClick={() =>
-            this.props.updateTrip("5a323b7a55691727ee7c9f2a", {
-              completed: false
+            this.props.updateTrip("5a340804540b4f1619c75a5f", {
+              completed: true
             })
           }
         >

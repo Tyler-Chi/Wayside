@@ -25,6 +25,18 @@ class DriversTripItem extends Component {
 
 
   render() {
+
+    const { orders } = this.props;
+
+    console.log('orders',orders);
+    // console.log('DTI ORDERS',orders);
+
+    const ordersRequested = orders.filter(order => order.requestPending)
+    const ordersAccepted = orders.filter(order => order.accepted)
+
+    console.log('ordersAccepted', ordersAccepted);
+    console.log('ordersRequested',ordersRequested);
+
     let trip = this.props.trip;
     let tripStartDate = this.props.trip.tripStartDate.toString().slice(0, 10);
     let tripEndDate = trip.tripEndDate.toString().slice(0, 10);
@@ -60,12 +72,12 @@ class DriversTripItem extends Component {
             <div className="trip-etc">
               <div className="column">
                 <h4>PENDING REQUESTS</h4>
-                <h3 className="trip-requests">  </h3>
+                <h3 className="trip-requests"> {ordersRequested.length} </h3>
               </div>
 
               <div className="column">
                 <h4>PACKAGES</h4>
-                <h3 className="trip-packages">{trip.orders.length}</h3>
+                <h3 className="trip-packages">{ordersAccepted.length}</h3>
               </div>
 
               <button className="trip-button" onClick={this.openModal}> See Trip Information </button>
@@ -109,13 +121,13 @@ class DriversTripItem extends Component {
 
             <div className="trip-etc">
               <div className="column">
-                <h4>PENDING REQUESTS</h4>
-                <h3 className="trip-requests">  </h3>
+                <h4>PENDING REQUESTS {ordersRequested.length} </h4>
+                <h3 className="trip-requests"> {ordersRequested.length}</h3>
               </div>
 
               <div className="column">
                 <h4>PACKAGES</h4>
-                <h3 className="trip-packages">{trip.orders.length}</h3>
+                <h3 className="trip-packages">{ordersAccepted.length}</h3>
               </div>
             </div>
 
