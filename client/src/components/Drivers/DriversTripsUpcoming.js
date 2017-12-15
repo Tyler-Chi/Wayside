@@ -19,6 +19,11 @@ class DriversTripsUpcoming extends Component {
     const { trips } = this.props.entities;
     const tripsArray = Object.values(trips);
     const upcomingTrips = tripsArray.filter(trip => trip.completed === false);
+    console.log('pasttrip', upcomingTrips);
+    const upcomingTrips2 = upcomingTrips.sort(function(a, b) {
+      return a.tripStartDate > b.tripStartDate; });
+    console.log(upcomingTrips2);
+
 
     return(
       <div className="driver-upcoming-all">

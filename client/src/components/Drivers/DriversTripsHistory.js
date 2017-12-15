@@ -16,12 +16,15 @@ class DriversTripsHistory extends Component {
     if (this.props.entities.trips === null) {
       return <div>loading</div>;
     }
-
+    console.log("HELLLO WORLDDDDDDDDDDDDDDDD");
     const { trips } = this.props.entities;
     let tripsArray = Object.values(trips);
     console.log("tripsArray", tripsArray);
     const pastTrips = tripsArray.filter(trip => trip.completed === true);
-
+    console.log('pasttrip', pastTrips);
+    const pastTrips2 = tripsArray.filter(trip => trip.completed === true).sort(function(a,b) {
+      return a.tripStartDate - b.tripStartDate; });
+    console.log(pastTrips2);
 
     return (
       <div className="drivers-trips-history-index-area">
