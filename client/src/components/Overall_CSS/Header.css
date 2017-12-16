@@ -7,6 +7,9 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  /*border-bottom: 1px smadolid black;*/
+  margin-bottom: 5px;
+  /*background-color: #FF0000;*/
 }
 
 .left {

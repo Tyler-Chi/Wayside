@@ -45,8 +45,12 @@ class Header extends Component {
           <button
             onClick={()=> this.props.history.replace('/drivers/trips/upcoming')}
             >Pending Requests ({allOrders.length})</button>
-          <button>Past Packages</button>
-          <button>Become a Driver</button>
+          <button
+            onClick={()=> this.props.history.replace('/drivers/trips/history')}
+            >Past Packages</button>
+          <button
+            onClick={()=> this.props.history.replace('/drivers/trips/new')}
+            >Become a Driver</button>
 
           <a className="logout" href="/api/logout">Log out</a>
         </div>
@@ -57,6 +61,7 @@ class Header extends Component {
 
 
   loginLogout(){
+    //do this if they are already logged in.
     if (this.props.auth){
       return (
         this.customerDriver()
