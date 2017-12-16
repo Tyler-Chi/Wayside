@@ -142,7 +142,7 @@ class DriversTripsNew extends Component {
       <div className="trip-new">
 
         <h1 className="form-title barlow">DRIVERS</h1>
-        <h2 className="form-description open">Make bank by posting your trip route</h2>
+        <h2 className="form-description open">Turn Kilometers Into Cash</h2>
           <h3 className="form-start-loc">Starting Location</h3>
             <input  type="text" id="driver-start"
               placeholder=""

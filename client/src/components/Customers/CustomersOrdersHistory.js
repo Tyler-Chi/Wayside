@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
-import CustomersOrdersHistoryIndexItem from "./CustomersOrdersHistoryIndexItem";
+import CustomersOrderItem from "./CustomersOrderItem";
+import "./CustomersOrderItem.css";
 
 class CustomersOrdersHistory extends Component {
   componentWillMount() {
@@ -15,27 +16,23 @@ class CustomersOrdersHistory extends Component {
 
     const { orders } = this.props.entities;
     const ordersArray = Object.values(orders);
-
-    //once we are able to have drivers 'complete' orders
-    //we can filter this ordersArray by that.
-
-    //TODO here is what that would look like:
-
-    //just have to specify the condition
-    // ordersArray.filter(order => order.'condition')
-
-    ordersArray.sort(function(a, b) {
-      return a.deliveredBy - b.deliveredBy;
-    });
-
-    console.log("orders", ordersArray);
+    const ordersHistory = ordersArray
+      .filter(order => order._ownerId === this.props.auth._id)
+      .sort(function(a,b) { return a.deliveredBy > b.deliveredBy; });
 
     return (
-      <div className="">
-        Customers Orders History
-        {ordersArray.map(order => (
-          <CustomersOrdersHistoryIndexItem key={order._id} order={order} />
-        ))}
+      <div className="customer-orders-all">
+        <h2 className="customer-orders-title barlow">ORDER HISTORY</h2>
+
+        <ul className="customer-orders-list">
+          {ordersHistory.map(order => (
+            <CustomersOrderItem
+              key={order._id}
+              order={order}
+            />
+          ))}
+        </ul>
+
       </div>
     );
   }

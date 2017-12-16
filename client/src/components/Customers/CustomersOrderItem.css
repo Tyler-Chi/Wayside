@@ -1,0 +1,65 @@
+
+.customer-orders-all {
+  width: 1000px;
+  margin: 30px auto;
+}
+
+.order-item {
+  margin: 30px;
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 255, .2);
+  border-radius: 5px;
+}
+
+.order-date {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: #651366;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  padding: 5px 30px;
+  color: white;
+  margin-bottom: 20px;
+}
+.order-item-bottom {
+  padding: 0px 30px;
+}
+.order-deliverby, .order-startLoc, .order-endLoc,
+.order-request, .order-status, .order-price, .order-driver {
+  margin: 0px;
+  font-size: 25px;
+}
+
+
+.order-etc {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.request {
+
+}
+.price {
+  margin-right: 100px;
+}
+.driver-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 100px;
+  margin: auto 20px auto 0px ;
+  /*margin-bottom: 30px;*/
+  /*margin-top: 20px;*/
+}
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.driver-row {
+  margin: 5px 0;
+  padding-bottom: 15px;
+}
+.driver-rating > i {
+  font-size: 20px;
+  color: yellow;
+  margin: auto 3px;
+}

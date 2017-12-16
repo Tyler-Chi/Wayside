@@ -32,10 +32,15 @@
   top: 0px;
 }
 
-h3 {
+.form-description > h3 {
   font-size: 20px;
   margin: 20px 0 10px 0;
 }
+.form-date-input > h3 {
+  font-size: 20px;
+  margin: 20px 0 10px 0;
+}
+
 .form-dates {
   display: flex;
   flex-direction: row;
