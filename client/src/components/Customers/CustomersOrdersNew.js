@@ -3,9 +3,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
+import CustomersOrdersNewIndex from './CustomersOrdersNewIndex';
 
 // const kmToMile = 0.621371 / 1000;
-const rate = 0.25;
+const rate = 0.50;
 const mapOptions = {
   zoom: 3,
   center: { lat: 40.612969, lng: -96.455751 } //center of US
@@ -22,7 +23,7 @@ class CustomersOrdersNew extends Component {
       latS: 0,
       lngS: 0,
       latE: 0,
-      lngE: 0
+      lngE: 0,
     };
     this.today = new Date().toJSON().split("T")[0];
 
@@ -74,55 +75,20 @@ class CustomersOrdersNew extends Component {
 
     Object.values(trips).forEach(trip => {
   ;
-      this.newDistance = this.checkAndCalculate(trip.latO, trip.lngO, trip.latD, trip.lngD);
+      this.newDistance = Math.ceil(this.checkAndCalculate(trip.latO, trip.lngO, trip.latD, trip.lngD));
+      // this.newDistance = this.newDistance.toFixed(2);
       let oldDistance = trip.tripDistance;
       this.difference = this.newDistance - oldDistance;
 
       let tripPrice = (this.difference * rate).toFixed(2);
       if ( (this.difference <= 50) && (this.state.deliveredBy >= trip.tripEndDate) ) {
-        this.props.updateTrip(trip._id, {price: tripPrice});
+        this.props.updateTrip(trip._id, { price: tripPrice,
+        tripNewDistance: this.newDistance });
         filterTrips.push(trip);
       }
     });
     this.searchTrips = filterTrips;
     return filterTrips;
-  }
-
-  populateSearch() {
-    let filterTrips = this.searchTrips;
-    console.log('filter', filterTrips);
-    if (!filterTrips) {
-      return (<div></div>);
-    }
-    else
-    { filterTrips.forEach(trip => {
-      console.log('trip', trip);
-      return (
-        <li>
-          <h2>Matched Drivers</h2>
-          <div>Driver Name: {trip.userObject.name}</div>
-          <div>Driver Rating: </div>
-          <div>Delivered By: {trip.tripEndDate}</div>
-          <div>Original trip distance: {trip.tripDistance} miles</div>
-          <div>New trip distance: {this.newDistance} miles</div>
-          <div>Price: ${trip.price}</div>
-          <input type="submit" id="display-detail-search"
-            value="View Detail Map"
-            onClick={() => this.displayNewRoute(
-              trip.origin,
-              trip.destination,
-              this.state.startLoc,
-              this.state.endLoc,
-              this.directionsService,
-              this.directionsDisplay
-            )}></input>
-          <input type="submit" id="submit-order"
-            value="Confirm Selection"
-            onClick={this.handleSubmit}></input>
-        </li>
-      )
-      });
-    }
   }
 
   //O is Original location, D is original Destination
@@ -217,32 +183,15 @@ class CustomersOrdersNew extends Component {
   }
 
   handleSearch() {
-    this.sortTrips()
+    this.sortTrips();
     // this.populateSearch();
-  }
-
-  handleSubmit() {
-    this.props.submitOrder({
-      accepted: false,
-      deliveredBy,
-      startLoc,
-      endLoc,
-      deliveredStatus: false,
-      requestPending: false,
-      rating: 0,
-      price: price,
-      comments: [],
-      _driverId: driver,
-      _tripId: trip,
-    });
   }
 
   render() {
     if (this.props.entities.trips === null) {
       return <div>loading</div>;
     }
-    // console.log(this.state);
-    // this.sortTrips();
+
     return (
       <div>
         <h1>Send a Package Today</h1>
@@ -287,9 +236,16 @@ class CustomersOrdersNew extends Component {
 
         <div ref="map" style={{ width: 400, height: 400 }} />
 
-        <ul>
-          {this.populateSearch()}
-        </ul>
+        <CustomersOrdersNewIndex
+          filterTrips={this.searchTrips}
+          startLoc={this.state.startLoc}
+          endLoc={this.state.endLoc}
+          map={this.map}
+          service={this.directionsService}
+          display={this.directionsService}
+          submitOrder={this.props.submitOrder}
+          />
+
       </div>
     );
   }
