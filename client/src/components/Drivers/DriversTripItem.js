@@ -59,7 +59,7 @@ class DriversTripItem extends Component {
 
       //TODO maybe turn this green, green = money.
       return (
-        <h3 className="trip-packages"> ${cashTotal} </h3>
+        cashTotal
 
       )
     }
