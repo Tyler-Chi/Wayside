@@ -1,6 +1,9 @@
 
 import React, { Component } from 'react';
 
+const RATE = 0.25;
+
+
 class CustomersOrdersNewIndex extends Component {
   constructor(props) {
     super(props);
@@ -51,7 +54,7 @@ class CustomersOrdersNewIndex extends Component {
         <div></div>
       );
     }
-    if (this.props.filterTrips.length === 0) {
+    if (this.props.displayMessage === true && this.props.filterTrips.length === 0) {
       return (
         <h3>Sorry! Couldn't find any matching trip for this route. Maybe adjust your date or locations?</h3>
       );
@@ -67,8 +70,9 @@ class CustomersOrdersNewIndex extends Component {
               <div>Driver Rating: </div>
               <div>Delivered By: {trip.tripEndDate.split('T')[0]}</div>
               <div>Original trip distance: {trip.tripDistance} miles</div>
-              <div>New trip distance: {trip.tripNewDistance} miles</div>
-              <div>Price: ${trip.price.toFixed(2)}</div>
+              <div>New trip distance: {Math.ceil(trip.tripNewDistance)} miles</div>
+              <div>Differences: {Math.ceil(trip.tripNewDistance) - trip.tripDistance} miles</div>
+              <div>Price (${RATE}/mile): ${trip.price.toFixed(2)}</div>
 
               <input
                 type="submit"

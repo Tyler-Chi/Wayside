@@ -5,12 +5,14 @@ import { connect } from "react-redux";
 import * as actions from "../../actions";
 import CustomersOrdersNewIndex from './CustomersOrdersNewIndex';
 
-// const kmToMile = 0.621371 / 1000;
-const rate = 0.50;
-const mapOptions = {
+const MAPOPTIONS = {
   zoom: 3,
   center: { lat: 40.612969, lng: -96.455751 } //center of US
 };
+//rate per mile
+const RATE = 0.25;
+//radius of trip finding
+const RADIUS = 100;
 
 class CustomersOrdersNew extends Component {
   constructor(props) {
@@ -39,7 +41,7 @@ class CustomersOrdersNew extends Component {
   componentDidMount() {
     this.props.fetchAllUpcoming();
     const map = this.refs.map;
-    this.map = new google.maps.Map(map, mapOptions);
+    this.map = new google.maps.Map(map, MAPOPTIONS);
     this.directionsService = new google.maps.DirectionsService();
     this.geocoder = new google.maps.Geocoder();
 
@@ -81,20 +83,14 @@ class CustomersOrdersNew extends Component {
       let oldDistance = trip.tripDistance;
       this.difference = this.newDistance - oldDistance;
 
-      let tripPrice = (this.difference * rate).toFixed(2);
-      if ( (this.difference <= 50) && (this.state.deliveredBy >= trip.tripEndDate) ) {
+      let tripPrice = (this.difference * RATE).toFixed(2);
+      if ( (this.difference <= RADIUS) && (this.state.deliveredBy >= trip.tripEndDate) ) {
         this.props.updateTrip(trip._id, { price: tripPrice,
         tripNewDistance: this.newDistance });
         filterTrips.push(trip);
       }
     });
     this.searchTrips = filterTrips;
-
-    //if there is no matching trip, toggles display so that state changes => re-render
-    if (filterTrips.length === 0) {
-      this.setState({ display: true });
-    }
-    //need to change it back incase next time customer still enters the non-matching route
     this.setState({ display: false });
 
     return filterTrips;
@@ -170,11 +166,16 @@ class CustomersOrdersNew extends Component {
       this.directionsService,
       this.directionsDisplay
     );
+    this.sortTrips();
   }
 
   handleSearch() {
     this.sortTrips();
-    // this.populateSearch();
+    //if there is no matching trip, toggles display so that state changes => re-render
+    if (this.searchTrips.length === 0) {
+      this.setState({ display: true });
+    }
+    //need to change it back incase next time customer still enters the non-matching route
   }
 
   render() {
@@ -234,6 +235,7 @@ class CustomersOrdersNew extends Component {
           service={this.directionsService}
           display={this.directionsDisplay}
           submitOrder={this.props.submitOrder}
+          displayMessage={this.state.display}
           />
 
       </div>
