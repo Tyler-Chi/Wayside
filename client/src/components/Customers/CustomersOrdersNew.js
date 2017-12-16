@@ -32,7 +32,7 @@ class CustomersOrdersNew extends Component {
     this.checkAndCalculate = this.checkAndCalculate.bind(this);
     this.sortTrips = this.sortTrips.bind(this);
     this.getGeo = this.getGeo.bind(this);
-    this.displayNewRoute = this.displayNewRoute.bind(this);
+
   }
 
   componentDidMount() {
@@ -146,25 +146,6 @@ class CustomersOrdersNew extends Component {
     );
   }
 
-  displayNewRoute(origin, destination, startLoc, endLoc, service, display) {
-    service.route(
-      {
-        origin,
-        destination,
-        waypoints: [{location: startLoc}, {location: endLoc}],
-        travelMode: "DRIVING",
-        avoidTolls: true
-      },
-      (response, status) => {
-        if (status === "OK") {
-          display.setDirections(response);
-        } else {
-          alert("COULD NOT DISPLAY DIRECTIONS DUE TO: " + status);
-        }
-      }
-    );
-  }
-
   handleInput(type) {
     return event => {
       this.setState({ [type]: event.target.value });
@@ -242,7 +223,7 @@ class CustomersOrdersNew extends Component {
           endLoc={this.state.endLoc}
           map={this.map}
           service={this.directionsService}
-          display={this.directionsService}
+          display={this.directionsDisplay}
           submitOrder={this.props.submitOrder}
           />
 

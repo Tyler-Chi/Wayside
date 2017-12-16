@@ -5,7 +5,38 @@ import React, { Component } from 'react';
 class CustomersOrdersNewIndex extends Component {
   constructor(props) {
     super(props);
+
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.displayNewRoute = this.displayNewRoute.bind(this);
+  }
+
+  // componentDidMount() {
+  //   this.map = this.props.map;
+  //   this.directionsService = this.props.service;
+  //   this.directionsDisplay = this.props.display;
+  //
+  //   this.directionsDisplay = new google.maps.DirectionsRenderer({
+  //     map: this.map
+  //   });
+  // }
+
+  displayNewRoute(origin, destination, startLoc, endLoc, service, display) {
+    service.route(
+      {
+        origin,
+        destination,
+        waypoints: [{location: startLoc}, {location: endLoc}],
+        travelMode: "DRIVING",
+        avoidTolls: true
+      },
+      (response, status) => {
+        if (status === "OK") {
+          display.setDirections(response);
+        } else {
+          alert("COULD NOT DISPLAY DIRECTIONS DUE TO: " + status);
+        }
+      }
+    );
   }
 
   handleSubmit(trip) {
@@ -49,6 +80,20 @@ class CustomersOrdersNewIndex extends Component {
                 id="order-submit"
                 value="Pick this driver"
                 onClick={() => this.handleSubmit(trip)}>
+              </input>
+
+              <input
+                type="submit"
+                id="order-view-map"
+                value="View map"
+                onClick={() => this.displayNewRoute(
+                    trip.origin,
+                    trip.destination,
+                    this.props.startLoc,
+                    this.props.endLoc,
+                    this.props.service,
+                    this.props.display
+                  )}>
               </input>
             </li>
           )
