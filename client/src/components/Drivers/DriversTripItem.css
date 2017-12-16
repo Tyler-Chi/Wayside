@@ -43,7 +43,7 @@
   width: 440px;
 }
 
-.trip-requests, .trip-packages {
+.trip-requests{
   padding-right: 137px;
 }
 
@@ -56,11 +56,18 @@
   box-shadow: 3px 3px 3px 3px rgba(0, 0, 255, .2);
 }
 
-.trip-date, .trip-etc {
+.trip-date {
   display: flex;
   flex-direction: row;
   justify-content: left;
 }
+
+.trip-etc {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .trip-etc > h3, .trip-item-bottom > h3 {
   font-size: 25px;
   font-family: "Open Sans";
@@ -93,7 +100,7 @@
 
 .trip-button {
   padding: 10px 25px;
-  width: 200px;
+  min-width: 200px;
   text-align: center;
   background: #E7204E;
   /*background: #A71A5B;*/
@@ -136,7 +143,7 @@
 
 .trip-item-bottom {
   padding: 0 30px;
-  
+
 }
 
 .trip-etc > .column {
