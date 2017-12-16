@@ -6,6 +6,13 @@ import './DriversTripItem.css';
 
 class DriversTripsUpcoming extends Component {
 
+  constructor(props){
+    super(props);
+    this.state = {
+      type: 'upcoming'
+    }
+  }
+
   componentDidMount() {
     //this fills the trips slice of state with this users
     //trips that they will go on in the future.
@@ -40,6 +47,7 @@ class DriversTripsUpcoming extends Component {
               key={trip._id}
               trip={trip}
               orders = {ordersArray.filter(order => order._tripId === trip._id)}
+              type = {this.state.type}
             />
           ))}
         </ul>

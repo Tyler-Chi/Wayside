@@ -23,6 +23,47 @@ class DriversTripItem extends Component {
     this.setState({modalISOpen: false});
   }
 
+  // <h4>PENDING REQUESTS</h4>
+  // <h3 className="trip-packages"> {ordersRequested.length} </h3>
+
+
+  variedTitle(){
+    if (this.props.type === "upcoming"){
+      return (
+        <h4> PENDING REQUESTS</h4>
+      )
+    } else { //goes here if the trip has been completed, so show money.
+      return (
+        <h4> MONEY EARNED </h4>
+      )
+    }
+  }
+
+  variedBody(){
+
+    const { orders } = this.props;
+    const ordersRequested = orders.filter(order => order.requestPending)
+    const ordersAccepted = orders.filter(order => order.accepted)
+
+    if (this.props.type === "upcoming"){
+      return (
+        <h3 className="trip-packages"> {ordersRequested.length} </h3>
+      )
+    } else { //goes here if the trip has been completed, so show money.
+
+      console.log('ordersAccepted123123',ordersAccepted);
+      let cashTotal = 0;
+
+      ordersAccepted.forEach(order => cashTotal += order.price)
+      //here should show the total amount of mone accepted from the ordersAccepted
+
+      //TODO maybe turn this green, green = money.
+      return (
+        <h3 className="trip-packages"> ${cashTotal} </h3>
+
+      )
+    }
+  }
 
   render() {
 
@@ -71,8 +112,8 @@ class DriversTripItem extends Component {
 
             <div className="trip-etc">
               <div className="column">
-                <h4>PENDING REQUESTS</h4>
-                <h3 className="trip-packages"> {ordersRequested.length} </h3>
+                {this.variedTitle()}
+                <h3 className="trip-packages"> {this.variedBody()} </h3>
               </div>
 
               <div className="column">
