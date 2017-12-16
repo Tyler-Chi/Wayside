@@ -236,7 +236,7 @@ class CustomersOrdersNew extends Component {
           display={this.directionsDisplay}
           submitOrder={this.props.submitOrder}
           displayMessage={this.state.display}
-          check={this.props.history}
+          history={this.props.history}
           />
 
       </div>
