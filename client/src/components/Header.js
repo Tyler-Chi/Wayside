@@ -43,7 +43,7 @@ class Header extends Component {
       return (
         <div className="nav-right">
           <button
-            onClick={()=> this.props.history.replace('drivers/trips/upcoming')}
+            onClick={()=> this.props.history.replace('/drivers/trips/upcoming')}
             >Pending Requests ({allOrders.length})</button>
           <button>Past Packages</button>
           <button>Become a Driver</button>
