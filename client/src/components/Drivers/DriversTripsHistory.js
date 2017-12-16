@@ -27,7 +27,6 @@ class DriversTripsHistory extends Component {
     ) {
       return <div>loading</div>;
     }
-    console.log("HELLLO WORLDDDDDDDDDDDDDDDD");
     const { trips } = this.props.entities;
 
     const ordersArray = Object.values(this.props.entities.orders);

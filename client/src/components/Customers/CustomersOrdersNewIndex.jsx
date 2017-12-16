@@ -67,7 +67,6 @@ class CustomersOrdersNewIndex extends Component {
             <li key={trip._id}>
               <h3>Matched Drivers</h3>
               <div>Driver Name: {trip.userObject.name}</div>
-              <div>Driver Rating: </div>
               <div>Delivered By: {trip.tripEndDate.split('T')[0]}</div>
               <div>Original trip distance: {trip.tripDistance} miles</div>
               <div>New trip distance: {Math.ceil(trip.tripNewDistance)} miles</div>

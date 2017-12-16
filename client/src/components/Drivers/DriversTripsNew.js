@@ -135,6 +135,7 @@ class DriversTripsNew extends Component {
       price: 0,
       completed: false
     });
+    this.props.history.push('/drivers/trips/upcoming');
   }
 
   render() {
