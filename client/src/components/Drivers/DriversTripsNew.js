@@ -5,8 +5,8 @@ import { connect } from "react-redux";
 import * as actions from "../../actions";
 import './DriversTripsNew.css';
 
-const kmToMile = 0.621371/1000;
-const mapOptions = {
+const KMTOMILE = 0.621371/1000;
+const MAPOPTIONS = {
   zoom: 3,
   center: {lat: 40.612969, lng: -96.455751 } //center at the US
 };
@@ -30,6 +30,7 @@ class DriversTripsNew extends Component {
 
     this.handleDisplay = this.handleDisplay.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.computeTotalDistance = this.computeTotalDistance.bind(this);
 
     this.today = new Date().toJSON().split('T')[0];
   }
@@ -38,7 +39,7 @@ class DriversTripsNew extends Component {
 
     const map = this.refs.map;
     //define where our initial map should be centered
-    this.map = new google.maps.Map(map, mapOptions);
+    this.map = new google.maps.Map(map, MAPOPTIONS);
     //DirectionsService take care of handling our map direction
     this.directionsService = new google.maps.DirectionsService();
 
@@ -49,10 +50,16 @@ class DriversTripsNew extends Component {
     //the map and direction onto panel, just comment out panel:... if dont wanna show direction
     this.directionsDisplay = new google.maps.DirectionsRenderer({
       map: this.map,
+      draggable: true,
       // panel: document.getElementById('direction-panel'),
     });
+
+    this.directionsDisplay.addListener('directions_changed', () => {
+          this.computeTotalDistance(this.directionsDisplay.getDirections());
+        });
     window.scrollTo(0,0);
   }
+
 
   //take in the address and the type (whether origin or destination) and get the Lat-Lng accordingly
   geocodeAddress(geocoder, map, address, type) {
@@ -87,15 +94,18 @@ class DriversTripsNew extends Component {
     }, (response, status) => {
       if (status === 'OK') {
         display.setDirections(response);
-
-        let route = response.routes[0];
-        //use Math ceil to round up the total miles of the trip
-        let tripDistance = Math.ceil((route.legs[0].distance.value * kmToMile));
-        this.setState ({ tripDistance: tripDistance });
       } else {
         alert('COULD NOT DISPLAY DIRECTIONS DUE TO: ' + status);
       }
     });
+  }
+
+  computeTotalDistance(result) {
+    let route = result.routes[0];
+    //use Math ceil to round up the total miles of the trip
+    let tripDistance = Math.ceil((route.legs[0].distance.value * KMTOMILE));
+    this.setState ({ tripDistance: tripDistance });
+    console.log(this.state);
   }
 
   handleInput(type) {
