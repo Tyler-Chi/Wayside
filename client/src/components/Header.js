@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Overall_CSS/Header.css";
-
+import * as actions from '../actions';
 //here, have access to this.props.auth
 //if it is false, the user is not logged in
 //otherwise, there is a user and you can access the username and other data
@@ -9,6 +9,7 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.loginLogout = this.loginLogout.bind(this);
+    this.props.fetchOrders();
   }
 
 
@@ -25,9 +26,22 @@ class Header extends Component {
         </div>
       );
     } else {
+
+      console.log('header props',this.props);
+      const allOrders = Object.values(this.props.entities.orders);
+      console.log('allOrders',allOrders);
+
+      //first, filter them out by request pending, and accepted is false
+
+      allOrders.filter(order => order.requestPending === true)
+      //filter them where the current user is the driver of the trip of the order.
+      allOrders.filter(order => this.props.auth._id === order.tripObject._ownerId)
+
+      console.log('completed filtered allOrders',allOrders);
+
       return (
         <div className="nav-right">
-          <button>Pending Requests</button>
+          <button>Pending Requests {allOrders.length}</button>
           <button>Past Packages</button>
           <button>Become a Driver</button>
 
@@ -45,6 +59,8 @@ class Header extends Component {
         this.customerDriver()
       );
     } else {
+
+
       return (
         <div className="login">
           <a className="login-demo" href="">Demo Login</a>
@@ -85,8 +101,8 @@ class Header extends Component {
 //this is essentially our container.
 //connect gives mapStateToProps and mapDispatchToProps access to the store's state
 //here, we are just passing in the auth portion of state into this component Header.
-function mapStateToProps({ auth }) {
-  return { auth };
+function mapStateToProps({ auth, entities }) {
+  return { auth , entities};
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps,actions)(Header);
