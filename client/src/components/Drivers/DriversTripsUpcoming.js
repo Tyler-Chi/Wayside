@@ -23,11 +23,9 @@ class DriversTripsUpcoming extends Component {
                         .filter(trip => trip.completed === false)
                         .sort(function(a, b) { return a.tripStartDate > b.tripStartDate; });
 
-
-
     return(
       <div className="driver-upcoming-all">
-        <h2 className="driver-upcoming-title barlow">YOUR UPCOMING TRIPS</h2>
+        <h2 className="driver-upcoming-title barlow">UPCOMING TRIPS</h2>
 
         <ul className="driver-upcoming-list">
           {upcomingTrips.map(trip => (
@@ -37,7 +35,8 @@ class DriversTripsUpcoming extends Component {
             />
           ))}
         </ul>
-      </div>);
+      </div>
+    );
   }
 }
 
@@ -49,9 +48,3 @@ function mapStateToProps({ auth, entities }) {
 }
 
 export default connect(mapStateToProps, actions)(DriversTripsUpcoming);
-
-// .map(trip => (
-//   <DriversTripItem
-//     key={trip.id}
-//     trip={trip}
-//   />
