@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 
 import React, { Component } from 'react';
 
@@ -10,16 +9,7 @@ class CustomersOrdersNewIndex extends Component {
     this.displayNewRoute = this.displayNewRoute.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.map = this.props.map;
-  //   this.directionsService = this.props.service;
-  //   this.directionsDisplay = this.props.display;
-  //
-  //   this.directionsDisplay = new google.maps.DirectionsRenderer({
-  //     map: this.map
-  //   });
-  // }
-
+  //this one will handle displaying the new map, taking customer start and end location as waypoints
   displayNewRoute(origin, destination, startLoc, endLoc, service, display) {
     service.route(
       {
@@ -59,6 +49,11 @@ class CustomersOrdersNewIndex extends Component {
     if (!this.props.filterTrips) {
       return (
         <div></div>
+      );
+    }
+    if (this.props.filterTrips.length === 0) {
+      return (
+        <h3>Sorry! Couldn't find any matching trip for this route. Maybe adjust your date or locations?</h3>
       );
     }
 
@@ -104,17 +99,3 @@ class CustomersOrdersNewIndex extends Component {
 }
 
 export default CustomersOrdersNewIndex;
-
-// <input
-//   type="submit"
-//   id="display-detail-search"
-//   value="View Detail Map"
-//   onClick={() => this.displayNewRoute(
-//     trip.origin,
-//     trip.destination,
-//     this.state.startLoc,
-//     this.state.endLoc,
-//     this.directionsService,
-//     this.directionsDisplay
-//   )}>
-// </input>

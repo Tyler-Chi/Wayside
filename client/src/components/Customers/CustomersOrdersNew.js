@@ -24,6 +24,7 @@ class CustomersOrdersNew extends Component {
       lngS: 0,
       latE: 0,
       lngE: 0,
+      display: false
     };
     this.today = new Date().toJSON().split("T")[0];
 
@@ -88,6 +89,14 @@ class CustomersOrdersNew extends Component {
       }
     });
     this.searchTrips = filterTrips;
+
+    //if there is no matching trip, toggles display so that state changes => re-render
+    if (filterTrips.length === 0) {
+      this.setState({ display: true });
+    }
+    //need to change it back incase next time customer still enters the non-matching route
+    this.setState({ display: false });
+
     return filterTrips;
   }
 
@@ -114,7 +123,7 @@ class CustomersOrdersNew extends Component {
       this.state.latS + this.state.latE + this.state.lngS + this.state.lngE ===
       0
     ) {
-      setTimeout(() => this.checkAndCalculate(), 100);
+      setTimeout(() => this.checkAndCalculate(), 50);
     } else {
       newDistance = this.calculateDistance(
         latO, lngO, latD, lngD
