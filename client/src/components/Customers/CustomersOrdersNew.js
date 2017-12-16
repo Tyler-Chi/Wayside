@@ -3,9 +3,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
+import CustomersOrdersNewIndex from './CustomersOrdersNewIndex';
 
 // const kmToMile = 0.621371 / 1000;
-const rate = 0.25;
+const rate = 0.50;
 const mapOptions = {
   zoom: 3,
   center: { lat: 40.612969, lng: -96.455751 } //center of US
@@ -22,15 +23,16 @@ class CustomersOrdersNew extends Component {
       latS: 0,
       lngS: 0,
       latE: 0,
-      lngE: 0
+      lngE: 0,
     };
     this.today = new Date().toJSON().split("T")[0];
+
     this.handleSearch = this.handleSearch.bind(this);
-    this.setState = this.setState.bind(this);
     this.calculateDistance = this.calculateDistance.bind(this);
     this.checkAndCalculate = this.checkAndCalculate.bind(this);
     this.sortTrips = this.sortTrips.bind(this);
     this.getGeo = this.getGeo.bind(this);
+    this.displayNewRoute = this.displayNewRoute.bind(this);
   }
 
   componentDidMount() {
@@ -73,17 +75,19 @@ class CustomersOrdersNew extends Component {
 
     Object.values(trips).forEach(trip => {
   ;
-      let newDistance = this.checkAndCalculate(trip.latO, trip.lngO, trip.latD, trip.lngD);
+      this.newDistance = Math.ceil(this.checkAndCalculate(trip.latO, trip.lngO, trip.latD, trip.lngD));
+      // this.newDistance = this.newDistance.toFixed(2);
       let oldDistance = trip.tripDistance;
-      let diff = newDistance - oldDistance;
+      this.difference = this.newDistance - oldDistance;
 
-      let tripPrice = diff * rate;
-      if ( (diff <= 50) && (this.state.deliveredBy >= trip.tripEndDate) ) {
-        this.props.updateTrip(trip._id, {price: tripPrice});
+      let tripPrice = (this.difference * rate).toFixed(2);
+      if ( (this.difference <= 50) && (this.state.deliveredBy >= trip.tripEndDate) ) {
+        this.props.updateTrip(trip._id, { price: tripPrice,
+        tripNewDistance: this.newDistance });
         filterTrips.push(trip);
       }
     });
-    console.log(filterTrips);
+    this.searchTrips = filterTrips;
     return filterTrips;
   }
 
@@ -101,7 +105,6 @@ class CustomersOrdersNew extends Component {
 
     //convert from lattitude to miles by * by 69
     let newDistance = (leg1 + leg2 + leg3) * 69;
-    console.log("NEW DISTANCE", newDistance);
     return newDistance;
   }
 
@@ -143,6 +146,25 @@ class CustomersOrdersNew extends Component {
     );
   }
 
+  displayNewRoute(origin, destination, startLoc, endLoc, service, display) {
+    service.route(
+      {
+        origin,
+        destination,
+        waypoints: [{location: startLoc}, {location: endLoc}],
+        travelMode: "DRIVING",
+        avoidTolls: true
+      },
+      (response, status) => {
+        if (status === "OK") {
+          display.setDirections(response);
+        } else {
+          alert("COULD NOT DISPLAY DIRECTIONS DUE TO: " + status);
+        }
+      }
+    );
+  }
+
   handleInput(type) {
     return event => {
       this.setState({ [type]: event.target.value });
@@ -161,46 +183,15 @@ class CustomersOrdersNew extends Component {
   }
 
   handleSearch() {
-    this.displayRoute(
-      this.state.startLoc,
-      this.state.endLoc,
-      this.directionsService,
-      this.directionsDisplay
-    );
-
     this.sortTrips();
-
-    // setTimeout(
-    //   function() {
-    //     this.calculateDistance(
-    //       37.7989666,
-    //       -122.4013518,
-    //       37.4296964,
-    //       -121.9171665
-    //     );
-    //   }.bind(this),
-    //   3000
-    // );
-
-    // this.props.submitOrder({
-    //   accepted: false,
-    //   deliveredBy,
-    //   startLoc,
-    //   endLoc,
-    //   deliveredStatus: false,
-    //   requestPending: false,
-    //   rating: 0,
-    //   price: 0,
-    //   comments: []
-    // });
+    // this.populateSearch();
   }
 
   render() {
     if (this.props.entities.trips === null) {
       return <div>loading</div>;
     }
-    // console.log(this.state);
-    // this.sortTrips();
+
     return (
       <div>
         <h1>Send a Package Today</h1>
@@ -239,11 +230,22 @@ class CustomersOrdersNew extends Component {
         <input
           type="submit"
           id="submit-search"
-          value="Finish"
+          value="Finish/ Display Search"
           onClick={this.handleSearch}
         />
 
         <div ref="map" style={{ width: 400, height: 400 }} />
+
+        <CustomersOrdersNewIndex
+          filterTrips={this.searchTrips}
+          startLoc={this.state.startLoc}
+          endLoc={this.state.endLoc}
+          map={this.map}
+          service={this.directionsService}
+          display={this.directionsService}
+          submitOrder={this.props.submitOrder}
+          />
+
       </div>
     );
   }
