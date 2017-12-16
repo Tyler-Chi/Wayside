@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Overall_CSS/Header.css";
 import * as actions from '../actions';
+import { Redirect } from 'react-router';
 //here, have access to this.props.auth
 //if it is false, the user is not logged in
 //otherwise, there is a user and you can access the username and other data
@@ -41,7 +42,9 @@ class Header extends Component {
 
       return (
         <div className="nav-right">
-          <button>Pending Requests {allOrders.length}</button>
+          <button
+            onClick={()=> <Redirect to="/drivers/trips/upcoming"/>}
+            >Pending Requests ({allOrders.length})</button>
           <button>Past Packages</button>
           <button>Become a Driver</button>
 
