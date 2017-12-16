@@ -20,8 +20,6 @@ class DriversNew extends Component {
     user.address = document.getElementById('home-address').value;
     user.vehicle = document.getElementById('vehicle-detail').value;
     user.plate = document.getElementById('license-plate').value;
-    // window.history.push('/drivers/trips/new');
-    // console.log(user);
   }
 
   render() {

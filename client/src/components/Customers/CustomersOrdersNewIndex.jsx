@@ -1,5 +1,8 @@
 
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import * as actions from "../../actions";
+
 
 const RATE = 0.25;
 
@@ -46,6 +49,7 @@ class CustomersOrdersNewIndex extends Component {
       _driverId: trip._user,
       _tripId: trip._id,
     });
+    this.props.check.push('/customers/orders/history');
   }
 
   render() {
@@ -67,6 +71,7 @@ class CustomersOrdersNewIndex extends Component {
             <li key={trip._id}>
               <h3>Matched Drivers</h3>
               <div>Driver Name: {trip.userObject.name}</div>
+              <div>Rating: </div>
               <div>Delivered By: {trip.tripEndDate.split('T')[0]}</div>
               <div>Original trip distance: {trip.tripDistance} miles</div>
               <div>New trip distance: {Math.ceil(trip.tripNewDistance)} miles</div>
@@ -101,4 +106,4 @@ class CustomersOrdersNewIndex extends Component {
   }
 }
 
-export default CustomersOrdersNewIndex;
+export default connect(null, actions)(CustomersOrdersNewIndex);
