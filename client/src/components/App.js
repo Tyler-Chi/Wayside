@@ -8,8 +8,11 @@ import "./Overall_CSS/Fonts.css";
 
 import Header from "./Header";
 import Splash from "./Greeting/Splash";
+
 import CustomersOrdersNew from "./Customers/CustomersOrdersNew";
+import CustomersOrdersUpcoming from "./Customers/CustomersOrdersUpcoming";
 import CustomersOrdersHistory from "./Customers/CustomersOrdersHistory";
+
 import DriversTripsNew from "./Drivers/DriversTripsNew";
 import DriversTripsHistory from "./Drivers/DriversTripsHistory";
 import DriversNew from "./Drivers/DriversNew";
@@ -42,8 +45,8 @@ class App extends Component {
 
             <Route
               exact
-              path="/drivers/trips/upcoming"
-              component={DriversTripsUpcoming}
+              path="/customers/orders/upcoming"
+              component={CustomersOrdersUpcoming}
             />
 
             <Route
@@ -56,6 +59,12 @@ class App extends Component {
               exact
               path="/drivers/trips/new"
               component={DriversTripsNew}
+            />
+
+            <Route
+              exact
+              path="/drivers/trips/upcoming"
+              component={DriversTripsUpcoming}
             />
 
             <Route

@@ -83,7 +83,7 @@ class Splash extends Component {
               DELIVER & SHIP PACKAGES</h1>
 
             <button className="loginButton"
-              onClick={()=> '/auth/google'}>
+              onClick={()=> this.props.history.push('/auth/google')}>
               Log in with Google
             </button>
           </div>
@@ -138,7 +138,7 @@ class Splash extends Component {
             <h2>WHY WAIT?</h2>
             <h4>Sign up now with your Google account!</h4>
             <button className="bottom-login-button"
-              onClick={()=> '/auth/google'}>
+              onClick={()=> this.props.history.push('/auth/google')}>
               Sign up with Google
             </button>
           </div>
@@ -148,7 +148,14 @@ class Splash extends Component {
   }
 }
 
-export default connect()(Splash);
+function mapStateToProps({ auth, entities }) {
+  return {
+    auth,
+    entities
+  };
+}
+
+export default connect(mapStateToProps, null)(Splash);
 
 // Add this in later
 // <h5>Quick, fast and easy. Lemon Squeezy <p>-Joey</p></h5>
