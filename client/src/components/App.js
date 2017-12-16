@@ -26,7 +26,8 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <div className="body">
-            <Header className="nav" />
+
+            <Route path = "/" component={Header} />
 
             <Route exact path="/test" component={Test} />
 

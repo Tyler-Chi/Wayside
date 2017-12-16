@@ -43,7 +43,7 @@ class Header extends Component {
       return (
         <div className="nav-right">
           <button
-            onClick={()=> <Redirect to="/drivers/trips/upcoming"/>}
+            onClick={()=> this.props.history.replace('drivers/trips/upcoming')}
             >Pending Requests ({allOrders.length})</button>
           <button>Past Packages</button>
           <button>Become a Driver</button>
@@ -78,7 +78,7 @@ class Header extends Component {
 
 
   render() {
-    console.log(this.props);
+    console.log('I AM HEADER PROPS',this.props);
 
     //the a href thing makes the get request to /auth/google
     //this get request executes the google Login
@@ -104,7 +104,7 @@ class Header extends Component {
 //this is essentially our container.
 //connect gives mapStateToProps and mapDispatchToProps access to the store's state
 //here, we are just passing in the auth portion of state into this component Header.
-function mapStateToProps({ auth, entities }) {
+function mapStateToProps({ auth, entities}) {
   return { auth , entities};
 }
 
