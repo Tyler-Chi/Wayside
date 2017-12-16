@@ -30,8 +30,7 @@ class CustomersOrdersNewIndex extends Component {
         <div></div>
       );
     }
-    console.log('inside index', this.props.filterTrips);
-    this.props.filterTrips.map(trip => console.log(trip));
+
     return (
       <ul>
         {
@@ -61,27 +60,6 @@ class CustomersOrdersNewIndex extends Component {
 
 export default CustomersOrdersNewIndex;
 
-
-// <CustomersOrdersNewIndexItem
-//   key={trip._id}
-//   startLoc={this.props.startLoc}
-//   endLoc={this.props.endLoc}
-//   origin={trip.origin}
-//   destination={trip.destination}
-//   map={this.props.map}
-//   service={this.props.service}
-//   display={this.props.display}
-//   />)
-
-// this.props.filterTrips.map( trip =>
-//   <CustomersOrdersNewIndexItem
-//     key={trip._id}
-//     startLoc={this.props.startLoc}
-//     endLoc={this.props.endLoc}
-//     origin={trip.origin}
-//     destination={trip.destination}
-//     />)
-
 // <input
 //   type="submit"
 //   id="display-detail-search"
@@ -94,11 +72,4 @@ export default CustomersOrdersNewIndex;
 //     this.directionsService,
 //     this.directionsDisplay
 //   )}>
-// </input>
-//
-// <input
-//   type="submit"
-//   id="submit-order"
-//   value="Confirm Selection"
-//   onClick={() => this.handleSubmit(trip)}>
 // </input>
