@@ -16,6 +16,8 @@ import DriversNew from "./Drivers/DriversNew";
 import DriversTripsUpcoming from "./Drivers/DriversTripsUpcoming";
 import Test from "./test";
 
+import { AuthRoute, ProtectedRoute } from './Route';
+
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
@@ -32,13 +34,13 @@ class App extends Component {
             <Route exact path="/test" component={Test} />
 
             <Route exact path="/" component={Splash} />
-            <Route
+            <ProtectedRoute
               exact
               path="/customers/orders/new"
               component={CustomersOrdersNew}
             />
 
-            <Route
+            <ProtectedRoute
               exact
               path="/drivers/trips/upcoming"
               component={DriversTripsUpcoming}

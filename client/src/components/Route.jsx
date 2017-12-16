@@ -5,30 +5,44 @@ import { Redirect } from 'react-router';
 import { Route, withRouter } from 'react-router-dom';
 
 
-const Auth = ({ path, component: Component }) => (
-  <Route
-    path={path}
-    render={props => (
-      this.props.auth ? <Redirect to='/customers/orders/new' /> : <Component {...props} />
+const Protected = ({ auth, path, component: Component }) => {
+  console.log('protected auth', auth);
+  console.log('protected path', path);
+  console.log('protected component', Component);
+
+  return (
+    <Route
+      path={path}
+      render={props => (
+        auth ? <Component {...props} /> : <Redirect to='/' />
     )}
-  />
-);
-
-const Protected = ({ path, component: Component }) => (
-  <Route
-    path={path}
-    render={props => (
-      this.props.auth ? <Component {...props} /> : <Redirect to='/' />
-    )}
-  />
-);
+    />
+  );
+};
 
 
+//so auth is like loggedIn
 function mapStateToProps({ auth, entities }) {
   return { auth , entities};
 }
 
-export const AuthRoute =
-  withRouter(connect(mapStateToProps, actions)(Auth));
 export const ProtectedRoute =
   withRouter(connect(mapStateToProps, actions)(Protected));
+
+  // export const AuthRoute =
+  //   withRouter(connect(mapStateToProps, actions)(Auth));
+
+
+
+  // const Auth = ({ path, component: Component }) => {
+  //   console.log('auth props', this.props);
+  //   return (
+  //
+  //     <Route
+  //       path={path}
+  //       render={auth => (
+  //         this.props.auth ? <Redirect to='/customers/orders/new' /> : <Component {...auth} />
+  //     )}
+  //     />
+  //   );
+  // };
