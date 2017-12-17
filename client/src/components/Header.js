@@ -79,9 +79,6 @@ class Header extends Component {
     }
   }
 
-
-
-
   render() {
     console.log('I AM HEADER PROPS',this.props);
 
