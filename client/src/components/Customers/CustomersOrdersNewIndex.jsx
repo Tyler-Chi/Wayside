@@ -55,7 +55,7 @@ class CustomersOrdersNewIndex extends Component {
       _driverId: trip._user,
       _tripId: trip._id,
     });
-    this.props.history.push('/customers/orders/history');
+    this.props.history.push('/customers/orders/upcoming');
   }
 
   handleDisplay(trip) {
