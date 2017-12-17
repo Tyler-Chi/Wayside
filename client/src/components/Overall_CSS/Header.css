@@ -35,7 +35,7 @@
   flex-direction: row;
 }
 .nav-right > * {
-  padding: 25px 15px;
+  padding: 25px 25px;
   font-size: 18px;
 }
 .nav-right > *:hover {
