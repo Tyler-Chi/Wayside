@@ -5,41 +5,42 @@ import CustomersOrderItem from "./CustomersOrderItem";
 import "./CustomersOrderItem.css";
 
 class CustomersOrdersUpcoming extends Component {
+  constructor (props) {
+    super(props);
+  }
+
   componentWillMount() {
     this.props.fetchOrders();
   }
 
   render() {
-    if (this.props.entities.orders === null) {
+    if (this.props.entities.orders === null ||
+        this.props.auth === null) {
       return <div> LOADING </div>;
     }
-    
-    if (this.props.auth === undefined) {
-      setTimeout(() => this.render(), 30);
-    }
-    else  {
-      const { orders } = this.props.entities;
-      const ordersArray = Object.values(orders);
-      const ordersHistory = ordersArray
-      .filter(order => (order._ownerId === this.props.auth._id && order.deliveredStatus === false))
-      .sort(function(a,b) { return a.deliveredBy > b.deliveredBy; });
 
-      return (
-        <div className="customer-orders-all">
-          <h2 className="customer-orders-title barlow">FUTURE ORDERS</h2>
+    const { orders } = this.props.entities;
+    const ordersArray = Object.values(orders);
+    const ordersHistory = ordersArray
+    .filter(order => (order._ownerId === this.props.auth._id && order.deliveredStatus === false))
+    .sort(function(a,b) { return a.deliveredBy > b.deliveredBy; });
 
-          <ul className="customer-orders-list">
-            {ordersHistory.map(order => (
-              <CustomersOrderItem
-                key={order._id}
-                order={order}
-                />
-            ))}
-          </ul>
+    return (
+      <div className="customer-orders-all">
+        <h2 className="customer-orders-title barlow">FUTURE ORDERS</h2>
 
-        </div>
-      );
-    }
+        <ul className="customer-orders-list">
+          {ordersHistory.map(order => (
+            <CustomersOrderItem
+              key={order._id}
+              order={order}
+              />
+          ))}
+        </ul>
+
+      </div>
+    );
+
   }
 }
 

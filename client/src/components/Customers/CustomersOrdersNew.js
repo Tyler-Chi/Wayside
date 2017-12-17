@@ -79,12 +79,13 @@ class CustomersOrdersNew extends Component {
     Object.values(trips).forEach(trip => {
   ;
       this.newDistance = Math.ceil(this.checkAndCalculate(trip.latO, trip.lngO, trip.latD, trip.lngD));
-      // this.newDistance = this.newDistance.toFixed(2);
       let oldDistance = trip.tripDistance;
       this.difference = this.newDistance - oldDistance;
-
       let tripPrice = (this.difference * RATE).toFixed(2);
-      if ( (this.difference <= RADIUS) && (this.state.deliveredBy >= trip.tripEndDate) ) {
+
+      if ( (this.difference <= RADIUS) &&
+          (this.difference > 0) &&
+          (this.state.deliveredBy >= trip.tripEndDate)) {
         this.props.updateTrip(trip._id, { price: tripPrice,
         tripNewDistance: this.newDistance });
         filterTrips.push(trip);
@@ -171,7 +172,7 @@ class CustomersOrdersNew extends Component {
   }
 
   handleSearch() {
-    this.sortTrips();
+    setTimeout(() => this.sortTrips(), 20);
     //if there is no matching trip, toggles display so that state changes => re-render
     if (this.searchTrips.length === 0) {
       this.setState({ display: true });
