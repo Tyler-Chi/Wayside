@@ -5,7 +5,7 @@ import CustomersOrderItem from "./CustomersOrderItem";
 import "./CustomersOrderItem.css";
 
 class CustomersOrdersHistory extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchOrders();
   }
 
