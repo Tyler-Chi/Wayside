@@ -9,19 +9,15 @@ import { Redirect } from 'react-router';
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.loginLogout = this.loginLogout.bind(this);
     this.props.fetchOrders();
-    this.currentTab = this.currentTab.bind(this);
-    console.log('header props',this.props);
-  }
 
-  // componentDidMount(){
-  //   this.currentTab();
-  // }
+    this.loginLogout = this.loginLogout.bind(this);
+    this.currentTab = this.currentTab.bind(this);
+  }
 
   currentTab(string){
     let fullCurrent = this.props.location.pathname.split("/");
-    console.log(fullCurrent);
+
     if (fullCurrent[1] === "drivers") {
       if (fullCurrent[3] === "upcoming" && string === "upcoming-trips") {
         return "currentTab";
@@ -54,18 +50,22 @@ class Header extends Component {
   customerDriver(){
 
     let current = (this.props.location.pathname.split("/")[1]);
-    console.log('CURRENT',current);
-
     let fullCurrent = this.props.location.pathname.split("/");
-    console.log(fullCurrent);
+    let user = this.props.auth;
 
     if (current === 'customers'){
+
+      const allOrders = Object.values(this.props.entities.orders);
+      let customerPendingOrders = allOrders.filter(order => order.requestPending === true);
+      customerPendingOrders = customerPendingOrders.filter(order => this.props.auth._id === order._ownerId);
+
+
       return (
         <div className="nav-right">
           <button
             className={this.currentTab("pending-orders")}
             onClick={()=>this.props.history.replace('/customers/orders/upcoming')}
-            >Pending Orders</button>
+            >Pending Orders ({customerPendingOrders.length})</button>
           <button
             className={this.currentTab("past-orders")}
             onClick={()=>this.props.history.replace('/customers/orders/history')}
@@ -78,23 +78,27 @@ class Header extends Component {
             className={this.currentTab("become-driver")}
             onClick={()=>this.props.history.replace('/drivers/trips/new')}
             >Become a Driver!</button>
+
           <a
             className="logout"
             href="/api/logout"
             >Log out</a>
+          <div>
+            <img src={user.imageUrl} className="driver-img"></img>
+          </div>
 
         </div>
       );
     } else {
 
       const allOrders = Object.values(this.props.entities.orders);
-
       //first, filter them out by request pending, and accepted is false
 
-      allOrders.filter(order => order.requestPending === true);
+      let driverUpcomingOrder = allOrders.filter(order => order.requestPending === true);
       //filter them where the current user is the driver of the trip of the order.
-      allOrders.filter(order => this.props.auth._id === order.tripObject._ownerId);
+      driverUpcomingOrder = driverUpcomingOrder.filter(order => this.props.auth._id === order._driverId);
       // let allpendingOrders = allOrders.filter(order => order.requestPending );
+
 
       return (
 
@@ -102,7 +106,7 @@ class Header extends Component {
           <button
             className={this.currentTab("upcoming-trips")}
             onClick={()=> this.props.history.replace('/drivers/trips/upcoming')}
-            >Upcoming Trips ({allOrders.length})</button>
+            >Upcoming Trips ({driverUpcomingOrder.length})</button>
           <button
             className={this.currentTab("past-trips")}
             onClick={()=> this.props.history.replace('/drivers/trips/history')}
@@ -115,11 +119,14 @@ class Header extends Component {
             className={this.currentTab("become-customer")}
             onClick={()=> this.props.history.replace('/customers/orders/new')}
             >Send a Package</button>
-
           <a
             className="logout"
             href="/api/logout"
             >Log out</a>
+          <div>
+            <img src={user.imageUrl} className="driver-img"></img>
+          </div>
+          
         </div>
 
       );

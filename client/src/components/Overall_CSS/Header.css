@@ -39,7 +39,15 @@
   font-size: 18px;
 }
 .nav-right > *:hover {
-  border-top: 5px solid red;
+  border-bottom: 5px solid red;
+}
+
+.nav-right > div:hover {
+  border-bottom: none;
+}
+
+.logout {
+  align-self: center;
 }
 
 
