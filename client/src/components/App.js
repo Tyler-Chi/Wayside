@@ -37,43 +37,43 @@ class App extends Component {
             <Route exact path="/test" component={Test} />
 
             <Route exact path="/" component={Splash} />
-            <Route
+            <ProtectedRoute
               exact
               path="/customers/orders/new"
               component={CustomersOrdersNew}
             />
 
-            <Route
+          <ProtectedRoute
               exact
               path="/customers/orders/upcoming"
               component={CustomersOrdersUpcoming}
             />
 
-            <Route
+          <ProtectedRoute
               exact
               path="/customers/orders/history"
               component={CustomersOrdersHistory}
             />
 
-            <Route
+          <ProtectedRoute
               exact
               path="/drivers/trips/new"
               component={DriversTripsNew}
             />
 
-            <Route
+          <ProtectedRoute
               exact
               path="/drivers/trips/upcoming"
               component={DriversTripsUpcoming}
             />
 
-            <Route
+          <ProtectedRoute
               exact
               path="/drivers/trips/history"
               component={DriversTripsHistory}
             />
 
-            <Route exact path="/drivers/new" component={DriversNew} />
+          <ProtectedRoute exact path="/drivers/new" component={DriversNew} />
           </div>
         </BrowserRouter>
       </div>
