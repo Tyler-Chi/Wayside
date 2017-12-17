@@ -86,10 +86,7 @@ class CustomersOrdersNewIndex extends Component {
       );
     }
 
-    var filterTrips = this.props.filterTrips;
-    console.log('not sort', filterTrips);
-    filterTrips = filterTrips.sort((x,y) => x.price - y.price );
-    console.log('sorted', filterTrips);
+    var filterTrips = this.props.filterTrips.sort((x,y) => x.price - y.price );
 
     return (
       <div className="customer-orders-new-all">
