@@ -115,7 +115,6 @@ class OrderItem extends Component {
       );
     }
 
-
     // const { order } = this.props;
     //
     //   console.log('type',this.props.type);
