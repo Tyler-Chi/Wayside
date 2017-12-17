@@ -37,7 +37,7 @@ class App extends Component {
             <Route exact path="/test" component={Test} />
 
             <Route exact path="/" component={Splash} />
-            <ProtectedRoute
+            <Route
               exact
               path="/customers/orders/new"
               component={CustomersOrdersNew}
