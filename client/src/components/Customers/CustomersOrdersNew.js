@@ -176,6 +176,7 @@ class CustomersOrdersNew extends Component {
     if (this.searchTrips.length === 0) {
       this.setState({ display: true });
     }
+    window.scrollTo(0, 1400);
 
   }
 
