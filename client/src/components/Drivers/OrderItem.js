@@ -16,8 +16,8 @@ class OrderItem extends Component {
 
     return (
       <div>
-        <div>{order.startLoc} - {order.endLoc}, by {order.deliveredBy.toString().slice(0, 10)}</div>
-        <div>Price: ${order.price}</div>
+        {this.orderInfo()}
+
         <button
           onClick={()=>this.props.updateOrder(order._id,{
             requestPending: false,
@@ -36,47 +36,18 @@ class OrderItem extends Component {
     );
   }
 
-  orderAcceptNotCompleted() {
+  orderInfo() {
     const { order } = this.props;
 
     return (
       <div>
-        <div>{order.startLoc} - {order.endLoc}, by {order.deliveredBy.toString().slice(0, 10)}</div>
+        <div>
+          {order.startLoc} - {order.endLoc}, by {order.deliveredBy.toString().slice(0, 10)}
+        </div>
         <div>Price: ${order.price}</div>
-        <div>Accepted!</div>
-        <button
-          onClick={()=>this.props.updateOrder(order._id,{
-            deliveredStatus: true})
-          }> Complete this Order
-        </button>
       </div>
     );
   }
-
-  orderAcceptCompleted() {
-    const { order } = this.props;
-
-    return (
-      <div>
-        <div>{order.startLoc} - {order.endLoc}, by {order.deliveredBy.toString().slice(0, 10)}</div>
-        <div>Price: ${order.price}</div>
-        <div>Order Completed/ Delivered</div>
-      </div>
-    );
-  }
-
-  orderReject() {
-    const { order } = this.props;
-
-    return (
-      <div>
-        <div>{order.startLoc} - {order.endLoc}, by {order.deliveredBy.toString().slice(0, 10)}</div>
-        <div>Price: ${order.price}</div>
-        <div>Rejected!</div>
-      </div>
-    );
-  }
-
 
 //state is not updated, so the modal does not re-render yet. But refreshing the page will show correct order.
   render(){
@@ -90,27 +61,34 @@ class OrderItem extends Component {
       );
     }
 
-    if (type === 'accepted') {
-      if (order.deliveredStatus === false) {
+      if (type === 'accepted' && order.deliveredStatus === false) {
         return (
           <div>
-            {this.orderAcceptNotCompleted()}
+            {this.orderInfo()}
+            <h6>Accepted!</h6>
+            <button
+              onClick={()=>this.props.updateOrder(order._id,{
+                deliveredStatus: true})
+              }> Complete this Order
+            </button>
           </div>
         );
       }
-      if (order.deliveredStatus === true){
+      if (type === 'accepted' && order.deliveredStatus === true){
         return (
           <div>
-            {this.orderAcceptCompleted()}
+            {this.orderInfo()}
+            <h6>Order Completed/ Delivered</h6>
           </div>
         );
       }
-    }
+
 
     if (type === 'rejected') {
       return (
         <div>
-          {this.orderReject()}
+          {this.orderInfo()}
+          <h6>Rejected!</h6>
         </div>
       );
     }
