@@ -9,8 +9,68 @@ class OrderItem extends Component {
     super(props)
   }
 
-  accepted(){
 
+  //this lets the customer accept/reject the order
+  //IF the requestPending is true.
+  acceptOrder(){
+    const { order } = this.props;
+
+    if (order.requestPending === true ){
+      return (
+        <div>
+
+        <button
+        onClick={()=>this.props.updateOrder(order._id,{
+          requestPending: false,
+          accepted: true
+        })
+        }
+        >
+        accept order
+        </button>
+
+        <button
+        onClick={()=>this.props.updateOrder(order._id,{
+          requestPending: false,
+          accepted: false
+        })
+        }
+        >
+        reject order
+        </button>
+
+        </div>
+      )
+    } else {
+      return (
+        <div>
+
+        </div>
+      )
+    }
+
+  }
+
+  completeOrder(){
+    const { order } = this.props;
+
+    if (order.accepted === true && order.requestPending === false){
+      <div>
+        <button
+        onClick={()=>this.props.updateOrder(order._id,{
+          completed: true
+        })}
+        >
+        just completed order
+        </button>
+      </div>
+    } else {
+      return (
+        <div>
+        (Rejected Order)
+        </div>
+      )
+    }
   }
 
 
@@ -18,11 +78,14 @@ class OrderItem extends Component {
   render(){
 
     const { order } = this.props;
-  
+
+      console.log('type',this.props.type);
 
     return (
       <div>
-        i am groot
+      hello world
+        {this.acceptOrder()}
+        {this.completeOrder()}
       </div>
     )
   }

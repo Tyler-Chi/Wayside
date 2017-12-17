@@ -28,6 +28,7 @@ class DriversTripItem extends Component {
   // <h3 className="trip-packages"> {ordersRequested.length} </h3>
 
 
+
   variedTitle(){
     if (this.props.type === "upcoming"){
       return (
@@ -68,13 +69,41 @@ class DriversTripItem extends Component {
 
   render() {
 
+    //
+    // {
+    //   ordersRequested.map(order => (
+    //     <OrderItem
+    //       order={order}
+    //       type={'requested'}
+    //       />
+    //   ))
+    // }
+    // {
+    //   ordersAccepted.map(order => (
+    //     <OrderItem
+    //       order={order}
+    //       type={'accepted'}
+    //       />
+    //   ))
+    //
+    // }
+    // {
+    //
+    //   ordersRejected.map(order => (
+    //     <OrderItem
+    //       order={order}
+    //       type={'rejected'}
+    //       />
+    //   ))
+    // }
+
     const { orders } = this.props;
 
     console.log('orders',orders);
     // console.log('DTI ORDERS',orders);
 
-    const ordersRequested = orders.filter(order => order.requestPending);
-    const ordersAccepted = orders.filter(order => order.accepted);
+    const ordersRequested = orders.filter(order => order.requestPending && order.accepted === false);
+    const ordersAccepted = orders.filter(order => order.requestPending === false && order.accepted);
     const ordersRejected = orders.filter(order => order.accepted === false && order.requestPending === false);
 
     console.log('ordersAccepted', ordersAccepted);
@@ -176,26 +205,10 @@ class DriversTripItem extends Component {
 
             <ul>
               {
-                ordersRequested.map(order => (
+                orders.map(order => (
                   <OrderItem
                     order={order}
-                    />
-                ))
-              }
-              {
-                ordersAccepted.map(order => (
-                  <OrderItem
-                    order={order}
-                    />
-                ))
-
-              }
-              {
-
-                ordersRejected.map(order => (
-                  <OrderItem
-                    order={order}
-                    />
+                  />
                 ))
               }
 
