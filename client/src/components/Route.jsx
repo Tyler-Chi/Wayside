@@ -10,6 +10,8 @@ const Protected = ({ auth, path, component: Component }) => {
   console.log('protected path', path);
   console.log('protected component', Component);
 
+
+  //auth is undefined
   return (
     <Route
       path={path}
