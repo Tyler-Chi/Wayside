@@ -6,12 +6,7 @@ import { Route, withRouter } from 'react-router-dom';
 
 
 const Protected = ({ auth, path, component: Component }) => {
-  console.log('protected auth', auth);
-  console.log('protected path', path);
-  console.log('protected component', Component);
 
-
-  //auth is undefined
   return (
     <Route
       path={path}
@@ -22,29 +17,12 @@ const Protected = ({ auth, path, component: Component }) => {
   );
 };
 
-
 //so auth is like loggedIn
-function mapStateToProps({ auth, entities }) {
-  return { auth , entities};
-}
+const mapStateToProps = ({ auth, entities }) => ({
+  auth,
+  entities,
+});
+
 
 export const ProtectedRoute =
   withRouter(connect(mapStateToProps, actions)(Protected));
-
-  // export const AuthRoute =
-  //   withRouter(connect(mapStateToProps, actions)(Auth));
-
-
-
-  // const Auth = ({ path, component: Component }) => {
-  //   console.log('auth props', this.props);
-  //   return (
-  //
-  //     <Route
-  //       path={path}
-  //       render={auth => (
-  //         this.props.auth ? <Redirect to='/customers/orders/new' /> : <Component {...auth} />
-  //     )}
-  //     />
-  //   );
-  // };
