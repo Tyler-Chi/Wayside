@@ -6,7 +6,7 @@ import * as actions from "../../actions";
 import CustomersOrdersNewIndex from './CustomersOrdersNewIndex';
 
 const MAPOPTIONS = {
-  zoom: 3,
+  zoom: 4,
   center: { lat: 40.612969, lng: -96.455751 } //center of US
 };
 //rate per mile
@@ -167,6 +167,7 @@ class CustomersOrdersNew extends Component {
       this.directionsDisplay
     );
     this.sortTrips();
+    window.scrollTo(0,800);
   }
 
   handleSearch() {
@@ -175,7 +176,8 @@ class CustomersOrdersNew extends Component {
     if (this.searchTrips.length === 0) {
       this.setState({ display: true });
     }
-    //need to change it back incase next time customer still enters the non-matching route
+    window.scrollTo(0, 1400);
+
   }
 
   render() {
@@ -184,19 +186,23 @@ class CustomersOrdersNew extends Component {
     }
 
     return (
-      <div>
-        <h1>Send a Package Today</h1>
+      <div className="trip-new">
+        <h1 className="form-title barlow">CUSTOMERS</h1>
+        <h2 className="form-description open">Send A Package Today</h2>
 
+        <h3 className="form-start-loc">Package Pick Up Location</h3>
         <input
           type="text"
           id="cust-start"
-          placeholder="Package Pick Up Location"
+          placeholder=""
           onChange={this.handleInput("startLoc")}
         />
+
+        <h3 className="form-end-loc open">Package Drop Off Location</h3>
         <input
           type="text"
           id="cust-end"
-          placeholder="Package Drop Off Location"
+          placeholder=""
           onChange={this.handleInput("endLoc")}
         />
 
@@ -211,21 +217,26 @@ class CustomersOrdersNew extends Component {
           />
         </label>
 
-        <input
-          type="submit"
-          id="submit-search"
-          value="Next"
-          onClick={this.getGeo}
-        />
-      <br/>
-        <input
-          type="submit"
-          id="submit-search"
-          value="Finish/ Display Search"
-          onClick={this.handleSearch}
-        />
+        <div className="map-div">
+          <input
+            type="submit"
+            id="submit"
+            value="Next"
+            className="map-button"
+            onClick={this.getGeo}
+            />
 
-        <div ref="map" style={{ width: 400, height: 400 }} />
+          <div className="map" ref="map" style={{ width: 700, height: 700 }} />
+
+          <input
+            type="submit"
+            id="submit"
+            className="map-button"
+            value="Search for Drivers"
+            onClick={this.handleSearch}
+            />
+        </div>
+
 
         <CustomersOrdersNewIndex
           filterTrips={this.searchTrips}

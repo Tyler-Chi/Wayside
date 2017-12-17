@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import * as actions from "../../actions";
+import './CustomersOrdersNew.css';
 
 
 const RATE = 0.25;
@@ -13,6 +14,11 @@ class CustomersOrdersNewIndex extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.displayNewRoute = this.displayNewRoute.bind(this);
+    this.handleDisplay = this.handleDisplay.bind(this);
+  }
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
   }
 
   //this one will handle displaying the new map, taking customer start and end location as waypoints
@@ -52,6 +58,18 @@ class CustomersOrdersNewIndex extends Component {
     this.props.history.push('/customers/orders/history');
   }
 
+  handleDisplay(trip) {
+    this.displayNewRoute(
+      trip.origin,
+      trip.destination,
+      this.props.startLoc,
+      this.props.endLoc,
+      this.props.service,
+      this.props.display
+    );
+    window.scrollTo(0, 500);
+  }
+
   render() {
     if (!this.props.filterTrips) {
       return (
@@ -60,48 +78,106 @@ class CustomersOrdersNewIndex extends Component {
     }
     if (this.props.displayMessage === true && this.props.filterTrips.length === 0) {
       return (
-        <h3>Sorry! Couldn't find any matching trip for this route. Maybe adjust your date or locations?</h3>
+        <div>
+          <h2>Sorry, no matched results!</h2>
+          <h4>We only match trips that are within 100 miles off from driver's original trip, as well as ending before your request delivery date.</h4>
+          <h4>Maybe adjust your date or locations?</h4>
+        </div>
       );
     }
 
+    var filterTrips = this.props.filterTrips.sort((x,y) => x.price - y.price );
+
     return (
-      <ul>
-        {
-          this.props.filterTrips.map( trip =>
-            <li key={trip._id}>
-              <h3>Matched Drivers</h3>
-              <div>Driver Name: {trip.userObject.name}</div>
-              <div>Rating: </div>
-              <div>Delivered By: {trip.tripEndDate.split('T')[0]}</div>
-              <div>Original trip distance: {trip.tripDistance} miles</div>
-              <div>New trip distance: {Math.ceil(trip.tripNewDistance)} miles</div>
-              <div>Differences: {Math.ceil(trip.tripNewDistance) - trip.tripDistance} miles</div>
-              <div>Price (${RATE}/mile): ${trip.price.toFixed(2)}</div>
+      <div className="customer-orders-new-all">
+        <ul className="customer-order-list">
+          {
+            filterTrips.map( trip =>
+              <li key={trip._id} className="order-new-item">
+                <div className="order-new-date">
+                  <div className="column order-new-deliverby">
+                    <h4>DELIVER BY</h4>
+                    <h3 className="order-new-deliverby">
+                      {trip.tripEndDate.split('T')[0]}
+                    </h3>
+                  </div>
+                </div>
 
-              <input
-                type="submit"
-                id="order-submit"
-                value="Pick this driver"
-                onClick={() => this.handleSubmit(trip)}>
-              </input>
+                <div className="order-new-item-bottom">
+                  <div className="column">
+                    <h4>DRIVER TRIP DISTANCE</h4>
+                    <h3 className="order-new-startLoc">
+                      {trip.tripDistance} miles
+                    </h3>
+                  </div>
 
-              <input
-                type="submit"
-                id="order-view-map"
-                value="View map"
-                onClick={() => this.displayNewRoute(
-                    trip.origin,
-                    trip.destination,
-                    this.props.startLoc,
-                    this.props.endLoc,
-                    this.props.service,
-                    this.props.display
-                  )}>
-              </input>
-            </li>
-          )
-        }
-      </ul>
+                  <div className="column">
+                    <h4>TOTAL DETOUR DISTANCE</h4>
+                    <h3 className="order-new-endLoc">
+                      {Math.ceil(trip.tripNewDistance)} miles
+                    </h3>
+                  </div>
+
+                  <div className="order-new-etc">
+                    <div className="column">
+                      <h4 className="request">DIFFERENCES</h4>
+                      <h3 className="order-new-request request">
+                        {Math.ceil(trip.tripNewDistance) - trip.tripDistance} miles
+                      </h3>
+                    </div>
+
+                    <div className="column price">
+                      <h4 className="price">PRICE (${RATE}/mile)</h4>
+                      <h3 className="order-new-price price">
+                        ${trip.price.toFixed(2)}
+                      </h3>
+                    </div>
+                  </div>
+
+                  <div className="driver-new-row row">
+                    <div className="driver-new-info">
+                      <img className="driver-img" alt="user-img" src={trip.userObject.imageUrl}/>
+                      <div className="column order-driver-col">
+                        <h4>DRIVER</h4>
+                        <h3 className="order-driver">
+                          {trip.userObject.name}
+                        </h3>
+                      </div>
+
+                      <div className="driver-rating">
+                        <i className="fa fa-star" aria-hidden="true"></i>
+                        <i className="fa fa-star" aria-hidden="true"></i>
+                        <i className="fa fa-star" aria-hidden="true"></i>
+                        <i className="fa fa-star" aria-hidden="true"></i>
+                        <i className="fa fa-star" aria-hidden="true"></i>
+                      </div>
+                    </div>
+
+                    <input
+                      type="submit"
+                      id="order-view-map"
+                      value="View map"
+                      className="trip-button"
+                      onClick={() => this.handleDisplay(trip)}>
+                    </input>
+
+
+                    <input
+                      type="submit"
+                      id="order-submit"
+                      value="Pick this driver"
+                      className="trip-button"
+                      onClick={() => this.handleSubmit(trip)}>
+                    </input>
+
+
+                  </div>
+                </div>
+              </li>
+            )
+          }
+        </ul>
+      </div>
     );
   }
 }

@@ -7,7 +7,7 @@ import './DriversTripsNew.css';
 
 const KMTOMILE = 0.621371/1000;
 const MAPOPTIONS = {
-  zoom: 3,
+  zoom: 4,
   center: {lat: 40.612969, lng: -96.455751 } //center at the US
 };
 

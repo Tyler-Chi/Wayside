@@ -7,7 +7,8 @@
   align-items: left;*/
 }
 
-#driver-end, #driver-start, #date-start, #date-end {
+#driver-end, #driver-start, #date-start, #date-end,
+#cust-end, #cust-start, #deliver-by {
   font-size: 1.5rem;
 }
 
