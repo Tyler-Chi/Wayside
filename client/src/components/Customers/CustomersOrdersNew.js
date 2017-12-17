@@ -176,8 +176,8 @@ class CustomersOrdersNew extends Component {
     if (this.searchTrips.length === 0) {
       this.setState({ display: true });
     }
-    window.scrollTo(0, 1400);
-
+    // setTimeout(() => this.checkAndCalculate(), 50);
+    setTimeout(() => window.scrollTo(0, 1500), 50);
   }
 
   render() {

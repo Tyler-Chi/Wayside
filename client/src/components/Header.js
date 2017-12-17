@@ -11,34 +11,77 @@ class Header extends Component {
     super(props);
     this.loginLogout = this.loginLogout.bind(this);
     this.props.fetchOrders();
+    this.currentTab = this.currentTab.bind(this);
     console.log('header props',this.props);
+  }
+
+  // componentDidMount(){
+  //   this.currentTab();
+  // }
+
+  currentTab(string){
+    let fullCurrent = this.props.location.pathname.split("/");
+    console.log(fullCurrent);
+    if (fullCurrent[1] === "drivers") {
+      if (fullCurrent[3] === "upcoming" && string === "upcoming-trips") {
+        return "currentTab";
+      }
+      else if (fullCurrent[3] === "history" && string === "past-trips")  {
+        //they're in drivers trips history
+        return "currentTab";
+        // console.log("HERE IS THE ELEMENT", document.getElementsByClassName("past-trips"));
+        // document.getElementsByClassName("past-trips").style.background = "red";
+      } else if (fullCurrent[3] === "new" && string === "new-trips") {
+        return "currentTab";
+      }
+    } else {
+      if (fullCurrent[3] === "new" && string === "new-orders"){
+        return "currentTab";
+      }
+      else if (fullCurrent[3] === "upcoming" && string === "pending-orders"){
+        return "currentTab";
+      }
+      else if (fullCurrent[3] === "history" && string === "past-orders"){
+        return "currentTab";
+      }
+      // they're customers
+
+    }
+
   }
 
 
   customerDriver(){
 
-    let current = (this.props.location.pathname.split("/")[1])
-
+    let current = (this.props.location.pathname.split("/")[1]);
     console.log('CURRENT',current);
+
+    let fullCurrent = this.props.location.pathname.split("/");
+    console.log(fullCurrent);
 
     if (current === 'customers'){
       return (
         <div className="nav-right">
           <button
+            className={this.currentTab("pending-orders")}
             onClick={()=>this.props.history.replace('/customers/orders/upcoming')}
-            >Upcoming Deliveries</button>
+            >Pending Orders</button>
           <button
-              onClick={()=>this.props.history.replace('/customers/orders/history')}
-            >Past Deliveries</button>
+            className={this.currentTab("past-orders")}
+            onClick={()=>this.props.history.replace('/customers/orders/history')}
+            >Order History</button>
           <button
-              onClick={()=>this.props.history.replace('/customers/orders/new')}
+            className={this.currentTab("new-orders")}
+            onClick={()=>this.props.history.replace('/customers/orders/new')}
             >Send a Package</button>
-
-            <button
-                onClick={()=>this.props.history.replace('/drivers/trips/new')}
-              >Become a Driver!</button>
-
-          <a className="logout" href="/api/logout">Log out</a>
+          <button
+            className={this.currentTab("become-driver")}
+            onClick={()=>this.props.history.replace('/drivers/trips/new')}
+            >Become a Driver!</button>
+          <a
+            className="logout"
+            href="/api/logout"
+            >Log out</a>
 
         </div>
       );
@@ -48,24 +91,35 @@ class Header extends Component {
 
       //first, filter them out by request pending, and accepted is false
 
-      allOrders.filter(order => order.requestPending === true)
+      allOrders.filter(order => order.requestPending === true);
       //filter them where the current user is the driver of the trip of the order.
-      allOrders.filter(order => this.props.auth._id === order.tripObject._ownerId)
-
+      allOrders.filter(order => this.props.auth._id === order.tripObject._ownerId);
+      // let allpendingOrders = allOrders.filter(order => order.requestPending );
 
       return (
+
         <div className="nav-right">
           <button
+            className={this.currentTab("upcoming-trips")}
             onClick={()=> this.props.history.replace('/drivers/trips/upcoming')}
-            >Pending Requests ({allOrders.length})</button>
+            >Upcoming Trips ({allOrders.length})</button>
           <button
+            className={this.currentTab("past-trips")}
             onClick={()=> this.props.history.replace('/drivers/trips/history')}
-            >Past Packages</button>
+            >Past Trips</button>
           <button
+            className={this.currentTab("new-trips")}
+            onClick={()=> this.props.history.replace('/drivers/trips/new')}
+            >New Trip</button>
+          <button
+            className={this.currentTab("become-customer")}
             onClick={()=> this.props.history.replace('/customers/orders/new')}
-            >Customer Mode</button>
+            >Send a Package</button>
 
-          <a className="logout" href="/api/logout">Log out</a>
+          <a
+            className="logout"
+            href="/api/logout"
+            >Log out</a>
         </div>
 
       );

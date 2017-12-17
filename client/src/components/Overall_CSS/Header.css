@@ -7,7 +7,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /*border-bottom: 1px smadolid black;*/
+  /*border-bottom: 1px solid black;*/
   margin-bottom: 5px;
   /*background-color: #FF0000;*/
 }
@@ -42,8 +42,9 @@
   border-top: 5px solid red;
 }
 
-.logout {
-  font-size: 18px;
-  font-family: "Open Sans";
+
+.currentTab {
+  /*text-decoration: underline;*/
+  font-weight: 700;
 
 }
