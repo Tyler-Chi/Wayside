@@ -36,7 +36,7 @@ class DriversTripsNew extends Component {
   }
 
   componentDidMount() {
-
+    this.props.fetchOrders();
     const map = this.refs.map;
     //define where our initial map should be centered
     this.map = new google.maps.Map(map, MAPOPTIONS);

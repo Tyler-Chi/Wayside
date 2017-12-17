@@ -82,10 +82,11 @@ class Splash extends Component {
             <h1 className="mainSplashHeader barlow" style={style.mainSplashHeader}>
               DELIVER & SHIP PACKAGES</h1>
 
-            <button className="loginButton"
-              onClick={()=> this.props.history.push('/auth/google')}>
-              Log in with Google
-            </button>
+            <a className="loginButton"
+              type="button"
+              href="/auth/google">Log in with Google
+            </a>
+
           </div>
         </div>
 
@@ -136,11 +137,13 @@ class Splash extends Component {
 
           <div className="about signUp" style={style.signUp}>
             <h2>WHY WAIT?</h2>
-            <h4>Sign up now with your Google account!</h4>
-            <button className="bottom-login-button"
-              onClick={()=> this.props.history.push('/auth/google')}>
-              Sign up with Google
-            </button>
+            <h4>Log in now with your Google account!</h4>
+
+            <a className="bottom-login-button"
+              type="button"
+              href="/auth/google">Log in with Google
+            </a>
+
           </div>
         </div>
 

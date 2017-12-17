@@ -5,6 +5,18 @@ import { Redirect } from 'react-router';
 import { Route, withRouter } from 'react-router-dom';
 
 
+const Auth = ({ auth, path, component: Component }) => {
+
+  return (
+    <Route
+      path={path}
+      render={props => (
+        auth ? <Redirect to='/customers/orders/new' /> : <Component {...props} />
+    )}
+    />
+  );
+};
+
 const Protected = ({ auth, path, component: Component }) => {
 
   return (
@@ -26,3 +38,5 @@ const mapStateToProps = ({ auth, entities }) => ({
 
 export const ProtectedRoute =
   withRouter(connect(mapStateToProps, actions)(Protected));
+export const AuthRoute =
+  withRouter(connect(mapStateToProps, actions)(Auth));

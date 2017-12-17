@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Modal from "react-modal";
 import * as actions from "../../actions";
 import './DriversTripItem.css';
+import OrderItem from "./OrderItem";
 
 
 class DriversTripItem extends Component {
@@ -14,6 +15,12 @@ class DriversTripItem extends Component {
     };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+
+    const { orders } = this.props;
+    this.ordersRequested = orders.filter(order => order.requestPending);
+    this.ordersAccepted = orders.filter(order => order.accepted);
+    this.ordersRejected = orders.filter(order => (order.accepted === false && order.requestPending === false));
+
   }
 
   openModal(){
@@ -25,6 +32,7 @@ class DriversTripItem extends Component {
 
   // <h4>PENDING REQUESTS</h4>
   // <h3 className="trip-packages"> {ordersRequested.length} </h3>
+
 
 
   variedTitle(){
@@ -41,20 +49,20 @@ class DriversTripItem extends Component {
 
   variedBody(){
 
-    const { orders } = this.props;
-    const ordersRequested = orders.filter(order => order.requestPending);
-    const ordersAccepted = orders.filter(order => order.accepted);
+    // const { orders } = this.props;
+    // const ordersRequested = orders.filter(order => order.requestPending);
+    // const ordersAccepted = orders.filter(order => order.accepted);
 
     if (this.props.type === "upcoming"){
       return (
-        <h3 className="trip-packages"> {ordersRequested.length} </h3>
+        <h3 className="trip-packages"> {this.ordersRequested.length} </h3>
       );
     } else { //goes here if the trip has been completed, so show money.
 
-      console.log('ordersAccepted123123',ordersAccepted);
+      console.log('ordersAccepted123123',this.ordersAccepted);
       let cashTotal = 0;
 
-      ordersAccepted.forEach(order => cashTotal += order.price)
+      this.ordersAccepted.forEach(order => cashTotal += order.price)
       //here should show the total amount of mone accepted from the ordersAccepted
 
       //TODO maybe turn this green, green = money.
@@ -70,13 +78,8 @@ class DriversTripItem extends Component {
     const { orders } = this.props;
 
     console.log('orders',orders);
-    // console.log('DTI ORDERS',orders);
-
-    const ordersRequested = orders.filter(order => order.requestPending);
-    const ordersAccepted = orders.filter(order => order.accepted);
-
-    console.log('ordersAccepted', ordersAccepted);
-    console.log('ordersRequested',ordersRequested);
+    console.log('ordersAccepted', this.ordersAccepted);
+    console.log('ordersRequested',this.ordersRequested);
 
     let trip = this.props.trip;
     let tripStartDate = this.props.trip.tripStartDate.toString().slice(0, 10);
@@ -118,7 +121,7 @@ class DriversTripItem extends Component {
 
               <div className="column">
                 <h4>PACKAGES</h4>
-                <h3 className="trip-packages">{ordersAccepted.length}</h3>
+                <h3 className="trip-packages">{this.ordersAccepted.length}</h3>
               </div>
 
               <button className="trip-button" onClick={this.openModal}> See Trip Information </button>
@@ -162,15 +165,42 @@ class DriversTripItem extends Component {
 
             <div className="trip-etc">
               <div className="column">
-                <h4>PENDING REQUESTS {ordersRequested.length} </h4>
-                <h3 className="trip-requests"> {ordersRequested.length}</h3>
+                <h4>PENDING REQUESTS {this.ordersRequested.length} </h4>
+                <h3 className="trip-requests"> {this.ordersRequested.length}</h3>
               </div>
 
               <div className="column">
                 <h4>PACKAGES</h4>
-                <h3 className="trip-packages">{ordersAccepted.length}</h3>
+                <h3 className="trip-packages">{this.ordersAccepted.length}</h3>
               </div>
             </div>
+
+            <ul>
+              {
+                this.ordersRequested.map(order => (
+                  <OrderItem
+                    order={order}
+                    type={'requested'}
+                    />
+                ))
+              }
+              {
+                this.ordersAccepted.map(order => (
+                  <OrderItem
+                    order={order}
+                    type={'accepted'}
+                    />
+                ))
+              }
+              {
+                this.ordersRejected.map(order => (
+                  <OrderItem
+                    order={order}
+                    type={'rejected'}
+                    />
+                ))
+              }
+            </ul>
 
             <button className="trip-button" onClick={this.closeModal}> Close </button>
           </div>
