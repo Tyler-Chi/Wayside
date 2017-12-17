@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Modal from "react-modal";
 import * as actions from "../../actions";
 import './DriversTripItem.css';
+import OrderItem from "./OrderItem";
 
 
 class DriversTripItem extends Component {
@@ -74,6 +75,7 @@ class DriversTripItem extends Component {
 
     const ordersRequested = orders.filter(order => order.requestPending);
     const ordersAccepted = orders.filter(order => order.accepted);
+    const ordersRejected = orders.filter(order => order.accepted === false && order.requestPending === false);
 
     console.log('ordersAccepted', ordersAccepted);
     console.log('ordersRequested',ordersRequested);
@@ -171,6 +173,34 @@ class DriversTripItem extends Component {
                 <h3 className="trip-packages">{ordersAccepted.length}</h3>
               </div>
             </div>
+
+            <ul>
+              {
+                ordersRequested.map(order => (
+                  <OrderItem
+                    order={order}
+                    />
+                ))
+              }
+              {
+                ordersAccepted.map(order => (
+                  <OrderItem
+                    order={order}
+                    />
+                ))
+
+              }
+              {
+
+                ordersRejected.map(order => (
+                  <OrderItem
+                    order={order}
+                    />
+                ))
+              }
+
+
+            </ul>
 
             <button className="trip-button" onClick={this.closeModal}> Close </button>
           </div>

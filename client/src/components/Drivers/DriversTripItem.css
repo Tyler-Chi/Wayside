@@ -150,3 +150,12 @@
   margin-right: 162px;
   margin-bottom: 30px;
 }
+
+.trip-modal {
+  background-color: white;
+  margin-top: 5%;
+  width: 95%;
+  margin-left: 2.5%;
+  height: 80%;
+  border: 1px solid black;
+}
