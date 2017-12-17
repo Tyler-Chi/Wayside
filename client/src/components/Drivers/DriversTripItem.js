@@ -31,24 +31,24 @@ class DriversTripItem extends Component {
     if (this.props.type === "upcoming"){
       return (
         <h4> PENDING REQUESTS</h4>
-      )
+      );
     } else { //goes here if the trip has been completed, so show money.
       return (
         <h4> MONEY EARNED </h4>
-      )
+      );
     }
   }
 
   variedBody(){
 
     const { orders } = this.props;
-    const ordersRequested = orders.filter(order => order.requestPending)
-    const ordersAccepted = orders.filter(order => order.accepted)
+    const ordersRequested = orders.filter(order => order.requestPending);
+    const ordersAccepted = orders.filter(order => order.accepted);
 
     if (this.props.type === "upcoming"){
       return (
         <h3 className="trip-packages"> {ordersRequested.length} </h3>
-      )
+      );
     } else { //goes here if the trip has been completed, so show money.
 
       console.log('ordersAccepted123123',ordersAccepted);
@@ -61,7 +61,7 @@ class DriversTripItem extends Component {
       return (
         cashTotal
 
-      )
+      );
     }
   }
 
@@ -72,8 +72,8 @@ class DriversTripItem extends Component {
     console.log('orders',orders);
     // console.log('DTI ORDERS',orders);
 
-    const ordersRequested = orders.filter(order => order.requestPending)
-    const ordersAccepted = orders.filter(order => order.accepted)
+    const ordersRequested = orders.filter(order => order.requestPending);
+    const ordersAccepted = orders.filter(order => order.accepted);
 
     console.log('ordersAccepted', ordersAccepted);
     console.log('ordersRequested',ordersRequested);
