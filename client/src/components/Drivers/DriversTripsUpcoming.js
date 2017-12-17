@@ -10,7 +10,7 @@ class DriversTripsUpcoming extends Component {
     super(props);
     this.state = {
       type: 'upcoming'
-    }
+    };
   }
 
   componentDidMount() {

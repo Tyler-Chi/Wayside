@@ -1,4 +1,8 @@
 
+.customer-orders-title {
+  margin-left: 30px;
+}
+
 .customer-orders-all {
   width: 1000px;
   margin: 30px auto;
@@ -58,8 +62,50 @@
   margin: 5px 0;
   padding-bottom: 15px;
 }
-.driver-rating > i {
+
+
+/*ratings */
+.driver-rating > * {
   font-size: 20px;
+  margin: auto 1px;
+}
+.driver-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.fa-star {
+  color: gray;
+}
+.star1:hover {
+  color: blue;
+}
+.star2:hover ~ .star2a{
+  color: blue;
+}
+.star2:hover {
+  color: blue;
+}
+.star3:hover ~ .star3a{
+  color: blue;
+}
+.star3:hover {
+  color: blue;
+}
+.star4:hover ~ .star4a{
+  color: blue;
+}
+.star4:hover {
+  color: blue;
+}
+.star5:hover ~ .star5a{
+  color: blue;
+}
+.star5:hover {
+  color: blue;
+}
+#star1as, #star2as, #star3as, #star4as, #star5as  {
   color: yellow;
-  margin: auto 3px;
 }
