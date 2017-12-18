@@ -76,7 +76,7 @@
   border-radius: 3px;
   color: white;
   font-size: 20px;
-  font-style: 600;
+  /*font-weight: 600;*/
 }
 
 .map {

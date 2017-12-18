@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import * as actions from "../../actions";
 import './CustomersOrdersNew.css';
-
+import './CustomersOrdersNewItem.css';
 
 const RATE = 0.25;
 
@@ -67,7 +67,7 @@ class CustomersOrdersNewIndex extends Component {
       this.props.service,
       this.props.display
     );
-    window.scrollTo(0, 500);
+    // window.scrollTo(0, 500);
   }
 
   render() {
@@ -103,36 +103,36 @@ class CustomersOrdersNewIndex extends Component {
                   </div>
                 </div>
 
+
                 <div className="order-new-item-bottom">
                   <div className="column">
-                    <h4>DRIVER TRIP DISTANCE</h4>
+                    <h4>NEW TRIP DISTANCE</h4>
+                    <h3 className="order-new-endLoc">
+                      {Math.ceil(trip.tripNewDistance)} miles
+                    </h3>
+                  </div>
+
+                  <div className="column">
+                    <h4>ORIGINAL DISTANCE</h4>
                     <h3 className="order-new-startLoc">
                       {trip.tripDistance} miles
                     </h3>
                   </div>
 
                   <div className="column">
-                    <h4>TOTAL DETOUR DISTANCE</h4>
-                    <h3 className="order-new-endLoc">
-                      {Math.ceil(trip.tripNewDistance)} miles
+                    <h4 className="request">DETOUR</h4>
+                    <h3 className="order-new-request request">
+                      {Math.ceil(trip.tripNewDistance) - trip.tripDistance} miles
                     </h3>
                   </div>
 
-                  <div className="order-new-etc">
-                    <div className="column">
-                      <h4 className="request">DIFFERENCES</h4>
-                      <h3 className="order-new-request request">
-                        {Math.ceil(trip.tripNewDistance) - trip.tripDistance} miles
-                      </h3>
-                    </div>
-
-                    <div className="column price">
-                      <h4 className="price">PRICE (${RATE}/mile)</h4>
-                      <h3 className="order-new-price price">
-                        ${trip.price.toFixed(2)}
-                      </h3>
-                    </div>
+                  <div className="column price">
+                    <h4 className="price">PRICE (${RATE}/mile)</h4>
+                    <h3 className="order-new-price price">
+                      ${trip.price.toFixed(2)}
+                    </h3>
                   </div>
+
 
                   <div className="driver-new-row row">
                     <div className="driver-new-info">
@@ -144,15 +144,19 @@ class CustomersOrdersNewIndex extends Component {
                         </h3>
                       </div>
 
-                      <div className="driver-rating">
-                        <i className="fa fa-star" aria-hidden="true"></i>
-                        <i className="fa fa-star" aria-hidden="true"></i>
-                        <i className="fa fa-star" aria-hidden="true"></i>
-                        <i className="fa fa-star" aria-hidden="true"></i>
-                        <i className="fa fa-star" aria-hidden="true"></i>
-                      </div>
                     </div>
-
+                  </div>
+                  <div className="new-driver-rating column">
+                    <h4>DRIVER RATING</h4>
+                    <div className="new-driver-rating">
+                      <i className="fa fa-star" aria-hidden="true"></i>
+                      <i className="fa fa-star" aria-hidden="true"></i>
+                      <i className="fa fa-star" aria-hidden="true"></i>
+                      <i className="fa fa-star" aria-hidden="true"></i>
+                      <i className="fa fa-star" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                  <div className="column">
                     <input
                       type="submit"
                       id="order-view-map"
@@ -166,12 +170,13 @@ class CustomersOrdersNewIndex extends Component {
                       type="submit"
                       id="order-submit"
                       value="Pick this driver"
-                      className="trip-button"
+                      className="trip-button new-order-bottom-button"
                       onClick={() => this.handleSubmit(trip)}>
                     </input>
 
-
                   </div>
+
+
                 </div>
               </li>
             )

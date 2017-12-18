@@ -1,11 +1,22 @@
+.map-hold {
+  min-width: 500px;
+  margin-bottom: 50px;
+}
+.item-holder {
+  min-width: 400px;
+  /*border: 1px solid rgb(158, 158, 158);
+  border-radius: 3px;*/
+  margin-right: 40px;
+  margin-bottom: 50px;
+}
 
 .customer-orders-new-all {
-  width: 1000px;
-  margin: 30px auto;
+  max-width: 600px;
 }
 
 .order-new-item {
-  margin: 30px;
+  /*margin: 30px;*/
+  margin-bottom: 30px;
   box-shadow: 3px 3px 3px 3px rgba(0, 0, 255, .2);
   border-radius: 5px;
 }
@@ -14,7 +25,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background: #651366;
+  background: #8F0732;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   padding: 5px 30px;
@@ -28,6 +39,34 @@
 .order-new-request, .order-new-status, .order-new-price, .order-new-driver {
   margin: 0px;
   font-size: 25px;
+}
+
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.button-map, .on {
+  width: 175px;
+  background: red;
+  border-radius: 3px;
+  color: white;
+  font-size: 20px;
+  margin: 20px 20px 50px 20px;
+  padding: 10px 25px;
+  text-align: center;
+  box-shadow: 1px 3px 2px 2px rgba(0, 0, 255, .2);
+}
+.off {
+  width: 175px;
+  background: gray;
+  border-radius: 3px;
+  color: white;
+  font-size: 20px;
+  margin: 20px 20px 50px 20px;
+  padding: 10px 25px;
+  text-align: center;
 }
 
 
@@ -63,8 +102,46 @@
 .driver-new-info {
   display: flex;
 }
-.driver-rating > i {
-  font-size: 20px;
-  /*color: yellow;*/
-  margin: auto 1px;
+
+.mapMid {
+  position: relative;
+  left: -220px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.mapFlex {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.mapFix {
+  position: fixed;
+  top: 50px;
+  left: 884px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+#map {
+  left: 0px;
+}
+.map-mid {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+.map-button {
+  height: 27px;
 }
