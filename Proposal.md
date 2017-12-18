@@ -52,7 +52,7 @@ Over this weekend:
      - [ ] Tyler: OAuth
      - [ ] Anna: mongoDB schema and wireframes
 
-     
+
 ## Potential Challenges
 
 Aside from ReactJS/Redux, all of the technologies in this project are new to us, so we will have to learn them prior to implementation. There will also be a fair bit of user interaction, which might be tricky to handle (for example, users should be able to rate a driver once a package has been delivered.)

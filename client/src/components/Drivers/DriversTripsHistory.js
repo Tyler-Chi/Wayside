@@ -11,13 +11,14 @@ class DriversTripsHistory extends Component {
     super(props);
     this.state = {
       type: 'history'
-    }
+    };
   }
 
   componentDidMount() {
     //fetch all trips fetchs all the trips where the current user is the driver of that trip.
     this.props.fetchOrders();
     this.props.fetchAllTrips();
+    window.scrollTo(0,0);
   }
 
   render() {
