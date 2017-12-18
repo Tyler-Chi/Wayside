@@ -36,7 +36,7 @@ class DriversTripsNew extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchOrders();
+
     const map = this.refs.map;
     //define where our initial map should be centered
     this.map = new google.maps.Map(map, MAPOPTIONS);
@@ -57,6 +57,9 @@ class DriversTripsNew extends Component {
     this.directionsDisplay.addListener('directions_changed', () => {
           this.computeTotalDistance(this.directionsDisplay.getDirections());
         });
+
+    this.props.fetchOrders();
+    this.props.fetchAllTrips();
     window.scrollTo(0,0);
   }
 
