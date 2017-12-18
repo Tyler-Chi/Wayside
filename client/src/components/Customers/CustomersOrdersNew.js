@@ -57,11 +57,11 @@ class CustomersOrdersNew extends Component {
       // console.log(window.scrollY);
       // console.log(searchDriverButton);
       if (searchDriverButton.className === "button-driver-search on yes mapbutton"){
-        if (window.scrollY > 642){
+        if (window.scrollY > 580){
           let mid = window.innerWidth/2;
           // console.log(mid);
           HTMLMap.className="mapFix";
-          HTMLMap.style.left = `${mid - 36}px`;
+          HTMLMap.style.left = `${mid - 37  }px`;
         } else {
           HTMLMap.className="mapFlex";
           HTMLMap.style.left = "0px";
@@ -224,7 +224,7 @@ class CustomersOrdersNew extends Component {
         <input
           type="text"
           id="cust-start"
-          placeholder=""
+          placeholder="Package Pickup Point (ex. 825 Battery St. San Francisco, CA 94111)"
           onChange={this.handleInput("startLoc")}
         />
 
@@ -232,7 +232,7 @@ class CustomersOrdersNew extends Component {
         <input
           type="text"
           id="cust-end"
-          placeholder=""
+          placeholder="Package Drop Off Point (ex. 6925 Hollywood Blvd, Hollywood, CA 90028)"
           onChange={this.handleInput("endLoc")}
         />
 

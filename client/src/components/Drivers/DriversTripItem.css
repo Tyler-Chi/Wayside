@@ -5,7 +5,7 @@
   margin: 30px auto;
 }
 
-.driver-upcoming-title {
+.driver-history-title {
   font-size: 60px;
   font-weight: 700;
   margin-bottom: 20px;
@@ -210,15 +210,8 @@
   margin: 0;
   overflow: hidden;
 }
-.delivered {
-  /*border: 1px solid black;*/
-}
-.accepted {
-  /*border: 1px solid black;*/
-}
-.rejected {
-  /*border: 1px solid black;*/
-}
+
+
 .modal-order-item {
   margin: 5px;
   padding: 10px;
@@ -234,6 +227,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 .modal-button-div {
   display: flex;

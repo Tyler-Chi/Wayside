@@ -155,12 +155,12 @@ class DriversTripsNew extends Component {
         <h2 className="form-description open">Turn Kilometers Into Cash</h2>
           <h3 className="form-start-loc">Starting Location</h3>
             <input  type="text" id="driver-start"
-              placeholder=""
+              placeholder="Trip Starting Point (ex. 825 Battery St. San Francisco, CA 94111)"
               onChange={this.handleInput('origin')}></input>
 
           <h3 className="form-end-loc open">Destination</h3>
             <input  type="text" id="driver-end"
-              placeholder=""
+              placeholder="Trip End Point (ex. 6925 Hollywood Blvd, Hollywood, CA 90028)"
               onChange={this.handleInput('destination')}></input>
 
           <div className="form-dates open">

@@ -1,6 +1,10 @@
 
 .customer-orders-title {
   margin-left: 30px;
+  font-size: 60px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: black;
 }
 
 .customer-orders-all {
