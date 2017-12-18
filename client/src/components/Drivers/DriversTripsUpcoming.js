@@ -28,8 +28,6 @@ class DriversTripsUpcoming extends Component {
 
     const { trips } = this.props.entities;
 
-    console.log('trips',trips);
-
     const tripsArray = Object.values(trips);
     const upcomingTrips = tripsArray
                         .filter(trip => trip.completed === false)

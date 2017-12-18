@@ -9,8 +9,9 @@ class CustomersOrdersUpcoming extends Component {
     super(props);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchOrders();
+    window.scrollTo(0,0);
   }
 
   render() {
