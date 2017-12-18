@@ -29,11 +29,12 @@ class DriversTripsUpcoming extends Component {
 
     const tripsArray = Object.values(trips);
     const upcomingTrips = tripsArray
-                        .filter(trip => trip.completed === false)
-                        .sort(function(a, b) { return a.tripStartDate > b.tripStartDate; });
-    console.log(upcomingTrips);
-    const ordersArray = Object.values(this.props.entities.orders);
+      .filter(trip => trip.completed === false)
+      .sort(function(a, b) {
+        return a.tripStartDate > b.tripStartDate;
+      });
 
+    const ordersArray = Object.values(this.props.entities.orders);
 
     return(
       <div className="driver-upcoming-all">

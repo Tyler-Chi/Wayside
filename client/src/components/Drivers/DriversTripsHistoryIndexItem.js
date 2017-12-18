@@ -5,7 +5,6 @@ import * as actions from "../../actions";
 class DriversTripsHistoryIndexItem extends Component {
   render() {
     const { trip } = this.props;
-    console.log(trip);
     return (
       <div className="dthii-div">
         <h1> HELLO WORLD </h1>

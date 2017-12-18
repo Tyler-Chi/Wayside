@@ -53,6 +53,7 @@ class CustomersOrdersNew extends Component {
     let HTMLMap = document.getElementById("map1");
     let searchDriverButton = document.getElementsByClassName("button-driver-search")[0];
     window.addEventListener("scroll", function(e){
+
       if (searchDriverButton.className === "button-driver-search on yes mapbutton"){
         if (window.scrollY > 580){
           let mid = window.innerWidth/2;
@@ -188,7 +189,6 @@ class CustomersOrdersNew extends Component {
     window.scrollTo(0,600);
 
     let searchDriverButton = document.getElementsByClassName("button-driver-search")[0];
-    // console.log(searchDriverButton);
     // searchDriverButton.disabled = false;
     searchDriverButton.className = "button-driver-search on not mapbutton";
 

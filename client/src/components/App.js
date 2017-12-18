@@ -19,9 +19,7 @@ import DriversNew from "./Drivers/DriversNew";
 import DriversTripsUpcoming from "./Drivers/DriversTripsUpcoming";
 import Test from "./test";
 
-import { AuthRoute, ProtectedRoute } from './Route';
-
-import LoadingIcon from './loading_icon';
+// import { AuthRoute, ProtectedRoute } from './Route';
 
 class App extends Component {
   componentDidMount() {
@@ -36,7 +34,6 @@ class App extends Component {
     //   );
     // }
     //
-    //   console.log('in App', this.props.auth);
     return (
       <div>
         <BrowserRouter>

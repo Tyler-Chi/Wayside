@@ -116,17 +116,6 @@ class OrderItem extends Component {
         </div>
       );
     }
-
-    // const { order } = this.props;
-    //
-    //   console.log('type',this.props.type);
-    //
-    // return (
-    //   <div>
-    //     {this.acceptOrder()}
-    //     {this.completeOrder()}
-    //   </div>
-    // );
   }
 }
 
