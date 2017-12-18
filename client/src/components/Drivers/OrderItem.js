@@ -42,9 +42,30 @@ class OrderItem extends Component {
     return (
       <div>
         <div>
-          {order.startLoc} - {order.endLoc}, by {order.deliveredBy.toString().slice(0, 10)}
+          <div className="row-modal">
+            <div className="column-modal">
+              <h4 className="package-subtitle">PICKED UP</h4>
+              <h3 className="package-info">{order.startLoc}</h3>
+            </div>
+            <div className="column-modal">
+              <h4 className="package-subtitle">DROPPED OFF</h4>
+              <h3 className="package-info">{order.endLoc}</h3>
+            </div>
+          </div>
+
+          <div className="row-modal">
+            <div className="column-modal">
+              <h4 className="package-subtitle">DELIVERY DATE</h4>
+              <h3 className="package-info">{order.deliveredBy.toString().slice(0, 10)} </h3>
+            </div>
+              <div className="column-modal">
+                <h4 className="package-subtitle">PRICE</h4>
+                <h3 className="package-info">${order.price}</h3>
+              </div>
+
+          </div>
+
         </div>
-        <div>Price: ${order.price}</div>
       </div>
     );
   }
@@ -63,22 +84,24 @@ class OrderItem extends Component {
 
       if (type === 'accepted' && order.deliveredStatus === false) {
         return (
-          <div>
+          <div className="modal-order-item accepted">
             {this.orderInfo()}
-            <h6>Accepted!</h6>
+            <h4 className="package-subtitle">STATUS</h4>
+            <h3 className="package-info">Accepted</h3>
             <button
               onClick={()=>this.props.updateOrder(order._id,{
                 deliveredStatus: true})
-              }> Complete this Order
+              }>Package Delivered
             </button>
           </div>
         );
       }
       if (type === 'accepted' && order.deliveredStatus === true){
         return (
-          <div>
+          <div className="modal-order-item delivered">
             {this.orderInfo()}
-            <h6>Order Completed/ Delivered</h6>
+            <h4 className="package-subtitle">STATUS</h4>
+            <h3 className="package-info">Delivered</h3>
           </div>
         );
       }
@@ -86,9 +109,10 @@ class OrderItem extends Component {
 
     if (type === 'rejected') {
       return (
-        <div>
+        <div className="modal-order-item rejected">
           {this.orderInfo()}
-          <h6>Rejected!</h6>
+          <h4 className="package-subtitle">STATUS</h4>
+          <h3 className="package-info">Rejected</h3>
         </div>
       );
     }
