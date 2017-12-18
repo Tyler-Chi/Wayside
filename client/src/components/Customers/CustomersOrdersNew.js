@@ -3,6 +3,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
+import "./CustomersOrdersNew.css";
 import CustomersOrdersNewIndex from './CustomersOrdersNewIndex';
 
 const MAPOPTIONS = {
@@ -26,7 +27,7 @@ class CustomersOrdersNew extends Component {
       lngS: 0,
       latE: 0,
       lngE: 0,
-      display: false
+      display: false,
     };
     this.today = new Date().toJSON().split("T")[0];
 
@@ -35,7 +36,6 @@ class CustomersOrdersNew extends Component {
     this.checkAndCalculate = this.checkAndCalculate.bind(this);
     this.sortTrips = this.sortTrips.bind(this);
     this.getGeo = this.getGeo.bind(this);
-
   }
 
   componentDidMount() {
@@ -49,6 +49,27 @@ class CustomersOrdersNew extends Component {
       map: this.map
     });
     window.scrollTo(0, 0);
+
+    let HTMLMap = document.getElementById("map1");
+    let searchDriverButton = document.getElementsByClassName("button-driver-search")[0];
+    window.addEventListener("scroll", function(e){
+      // console.log(HTMLMap);
+      console.log(window.scrollY);
+      // console.log(searchDriverButton);
+      if (searchDriverButton.className === "button-driver-search on yes mapbutton"){
+        if (window.scrollY > 642){
+          let mid = window.innerWidth/2;
+          // console.log(mid);
+          HTMLMap.className="mapFix";
+          HTMLMap.style.left = `${mid - 36}px`;
+        } else {
+          HTMLMap.className="mapFlex";
+          HTMLMap.style.left = "0px";
+        }
+      } else {
+        HTMLMap.className = "mapMid";
+      }
+    })
   }
 
   geocodeAddress(geocoder, map, address, type) {
@@ -168,7 +189,13 @@ class CustomersOrdersNew extends Component {
       this.directionsDisplay
     );
     this.sortTrips();
-    window.scrollTo(0,800);
+    window.scrollTo(0,600);
+
+    let searchDriverButton = document.getElementsByClassName("button-driver-search")[0];
+    // console.log(searchDriverButton);
+    // searchDriverButton.disabled = false;
+    searchDriverButton.className = "button-driver-search on not mapbutton";
+
   }
 
   handleSearch() {
@@ -177,8 +204,10 @@ class CustomersOrdersNew extends Component {
     if (this.searchTrips.length === 0) {
       this.setState({ display: true });
     }
-    // setTimeout(() => this.checkAndCalculate(), 50);
-    setTimeout(() => window.scrollTo(0, 1500), 50);
+    let searchDriverButton = document.getElementsByClassName("button-driver-search")[0];
+    searchDriverButton.className = "button-driver-search on yes mapbutton";
+
+    setTimeout(() => window.scrollTo(0, 500), 50);
   }
 
   render() {
@@ -219,37 +248,58 @@ class CustomersOrdersNew extends Component {
         </label>
 
         <div className="map-div">
-          <input
-            type="submit"
-            id="submit"
-            value="Next"
-            className="map-button"
-            onClick={this.getGeo}
-            />
+          <div className="buttons">
+            <input
+              type="submit"
+              id="submit"
+              value="Next"
+              className="button-map"
+              onClick={this.getGeo}
+              />
 
-          <div className="map" ref="map" style={{ width: 700, height: 700 }} />
+            <input
+              type="submit"
+              id="submit"
+              className="button-driver-search off not mapbutton"
 
-          <input
-            type="submit"
-            id="submit"
-            className="map-button"
-            value="Search for Drivers"
-            onClick={this.handleSearch}
-            />
+              value="Search for Drivers"
+              onClick={this.handleSearch}
+              />
+          </div>
+
+        <div className="map-mid">
+            <div className="item-holder">
+              <CustomersOrdersNewIndex
+                filterTrips={this.searchTrips}
+                startLoc={this.state.startLoc}
+                endLoc={this.state.endLoc}
+                map={this.map}
+                service={this.directionsService}
+                display={this.directionsDisplay}
+                submitOrder={this.props.submitOrder}
+                displayMessage={this.state.display}
+                history={this.props.history}
+                />
+
+            </div>
+
+            <div className="map-hold">
+              <div id="map1" className="map-right">
+                <div
+                  id="map"
+                  className="map"
+                  ref="map"
+                  style={{ width: 500, height: 500 }} />
+
+              </div>
+
+            </div>
+
+            </div>
+
         </div>
 
 
-        <CustomersOrdersNewIndex
-          filterTrips={this.searchTrips}
-          startLoc={this.state.startLoc}
-          endLoc={this.state.endLoc}
-          map={this.map}
-          service={this.directionsService}
-          display={this.directionsDisplay}
-          submitOrder={this.props.submitOrder}
-          displayMessage={this.state.display}
-          history={this.props.history}
-          />
 
       </div>
     );

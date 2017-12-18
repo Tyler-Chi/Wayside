@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Modal from "react-modal";
 import * as actions from "../../actions";
-import './CustomersOrderItem.css';
+import './CustomersOrdersNewItem.css';
 
 class CustomersOrderItem extends Component {
   constructor(props) {

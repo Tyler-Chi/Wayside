@@ -1,0 +1,14 @@
+.new-driver-rating > i {
+  font-size: 20px;
+  margin: auto 1px;
+  color: yellow;
+}
+.new-driver-rating {
+  justify-content: start;
+  align-items: baseline;
+
+}
+
+.new-order-bottom-button {
+  margin-bottom: 30px;
+}
