@@ -284,7 +284,7 @@ class CustomersOrdersNew extends Component {
             </div>
 
             <div className="map-hold">
-              <div id="map1" className="map-right">
+              <div id="map1" className="map-right mapMid">
                 <div
                   id="map"
                   className="map"
