@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Overall_CSS/Header.css";
 import * as actions from '../actions';
-import { Redirect } from 'react-router';
+// import { Redirect } from 'react-router';
 //here, have access to this.props.auth
 //if it is false, the user is not logged in
 //otherwise, there is a user and you can access the username and other data
@@ -50,7 +50,7 @@ class Header extends Component {
   customerDriver(){
 
     let current = (this.props.location.pathname.split("/")[1]);
-    let fullCurrent = this.props.location.pathname.split("/");
+    // let fullCurrent = this.props.location.pathname.split("/");
     let user = this.props.auth;
 
     if (current === 'customers'){

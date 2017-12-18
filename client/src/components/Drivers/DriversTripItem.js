@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Modal from "react-modal";
-import * as actions from "../../actions";
+// import * as actions from "../../actions";
 import './DriversTripItem.css';
 import OrderItem from "./OrderItem";
 
@@ -102,7 +102,7 @@ class DriversTripItem extends Component {
 
   completeOrder() {
     //so all the orders that are accepted has to be deliveredStatus = true. Also the trip itself has to be completed = false
-    const { trip, orders } = this.props;
+    const { trip } = this.props;
     let checkAllCompleted = this.ordersAccepted.every(order => order.deliveredStatus === true);
 
     if ((trip.completed === false) &&
@@ -118,16 +118,13 @@ class DriversTripItem extends Component {
   }
 
   update(trip) {
-    console.log('props', this.props);
     this.props.updateTrip(trip._id, {completed: true});
     this.setState({ toggle: true });
     this.setState({ toggle: false });
   }
 
   render() {
-    console.log('props', this.props);
-
-    const { orders, trip } = this.props;
+    const { trip } = this.props;
 
     let tripStartDate = trip.tripStartDate.toString().slice(0, 10);
     let tripEndDate = trip.tripEndDate.toString().slice(0, 10);

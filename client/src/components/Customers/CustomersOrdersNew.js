@@ -53,13 +53,10 @@ class CustomersOrdersNew extends Component {
     let HTMLMap = document.getElementById("map1");
     let searchDriverButton = document.getElementsByClassName("button-driver-search")[0];
     window.addEventListener("scroll", function(e){
-      // console.log(HTMLMap);
-      // console.log(window.scrollY);
-      // console.log(searchDriverButton);
+
       if (searchDriverButton.className === "button-driver-search on yes mapbutton"){
         if (window.scrollY > 642){
           let mid = window.innerWidth/2;
-          // console.log(mid);
           HTMLMap.className="mapFix";
           HTMLMap.style.left = `${mid - 36}px`;
         } else {
@@ -192,7 +189,6 @@ class CustomersOrdersNew extends Component {
     window.scrollTo(0,600);
 
     let searchDriverButton = document.getElementsByClassName("button-driver-search")[0];
-    // console.log(searchDriverButton);
     // searchDriverButton.disabled = false;
     searchDriverButton.className = "button-driver-search on not mapbutton";
 

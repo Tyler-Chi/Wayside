@@ -29,8 +29,7 @@ passport.use(
       proxy: true
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log("this is profile");
-      console.log(profile);
+
       //first, we need to check if the googleId exists in the record though
       //this query returns a promise.
       //this query searchs based on the argument. logic:
