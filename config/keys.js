@@ -1,12 +1,11 @@
 //keys.js - figure out what set of credentials to return.
 
 
-//TODO after seeding, change the first require into
-//"./prod"
+//TODO after proper seeding, go to prod and comment back in the stuff.
 
 if (process.env.NODE_ENV === "production") {
   //we are in production, return the prod set of keys
-  module.exports = require("./dev");
+  module.exports = require("./prod");
 } else {
   //we are in development, return the dev keys.
   module.exports = require("./dev");
