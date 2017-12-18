@@ -69,7 +69,25 @@ computeTotalDistance(result) {
 }
 ```
 
-* Something else...
+* Map location and styling was dependent on what stage of the form the customer was at and how far their window was scrolled down.
+
+```JavaScript and CSS 
+window.addEventListener("scroll", function(e){
+  if (searchDriverButton.className === "button-driver-search on yes mapbutton"){
+    if (window.scrollY > 580){
+      let mid = window.innerWidth/2;
+      HTMLMap.className="mapFix";
+      HTMLMap.style.left = `${mid - 37  }px`;
+    } else {
+      HTMLMap.className="mapFlex";
+      HTMLMap.style.left = "0px";
+    }
+  } else {
+    HTMLMap.className = "mapMid";
+  }
+})
+}
+```
 
 ## Additional Resources
 

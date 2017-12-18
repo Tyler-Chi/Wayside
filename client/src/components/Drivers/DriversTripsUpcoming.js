@@ -31,7 +31,7 @@ class DriversTripsUpcoming extends Component {
     const upcomingTrips = tripsArray
                         .filter(trip => trip.completed === false)
                         .sort(function(a, b) { return a.tripStartDate > b.tripStartDate; });
-
+    console.log(upcomingTrips);
     const ordersArray = Object.values(this.props.entities.orders);
 
 

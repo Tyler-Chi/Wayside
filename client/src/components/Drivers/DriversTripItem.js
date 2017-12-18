@@ -111,7 +111,7 @@ class DriversTripItem extends Component {
         <button
           className="trip-button"
           onClick={()=> this.update(trip)
-          }> Complete Trip
+          }> Trip Completed
         </button>
       );
     }
