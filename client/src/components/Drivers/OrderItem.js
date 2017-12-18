@@ -84,7 +84,7 @@ class OrderItem extends Component {
 
       if (type === 'accepted' && order.deliveredStatus === false) {
         return (
-          <div>
+          <div className="modal-order-item accepted">
             {this.orderInfo()}
             <h4 className="package-subtitle">STATUS</h4>
             <h3 className="package-info">Accepted</h3>
@@ -98,7 +98,7 @@ class OrderItem extends Component {
       }
       if (type === 'accepted' && order.deliveredStatus === true){
         return (
-          <div>
+          <div className="modal-order-item delivered">
             {this.orderInfo()}
             <h4 className="package-subtitle">STATUS</h4>
             <h3 className="package-info">Delivered</h3>
@@ -109,7 +109,7 @@ class OrderItem extends Component {
 
     if (type === 'rejected') {
       return (
-        <div>
+        <div className="modal-order-item rejected">
           {this.orderInfo()}
           <h4 className="package-subtitle">STATUS</h4>
           <h3 className="package-info">Rejected</h3>

@@ -180,14 +180,14 @@ class DriversTripItem extends Component {
               <h3 className="trip-end"> {trip.destination}</h3>
             </div>
 
-            <div className="trip-etc">
-              <div className="column">
+            <div className="modal-trip-etc">
+              <div className="column trip-etc-column">
                 {this.variedTitle()}
                 <h3 className="trip-price">{this.variedBody()}</h3>
               </div>
 
-              <div className="column">
-                <h4>PACKAGES</h4>
+              <div className="column trip-etc-column">
+                <h4>NUM. OF PACKAGES</h4>
                 <h3 className="trip-packages">{this.ordersAccepted.length}</h3>
               </div>
             </div>
@@ -222,8 +222,9 @@ class DriversTripItem extends Component {
                 ))
               }
             </ul>
-
-            <button className="trip-button-modal" onClick={this.closeModal}> Close </button>
+            <div className="modal-button-div">
+              <button className="trip-button-modal" onClick={this.closeModal}> Close </button>
+            </div>
           </div>
 
         </Modal>
