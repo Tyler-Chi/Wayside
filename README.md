@@ -35,8 +35,14 @@ The delivery fee is calculated based on the extra distance the driver had to go 
 
 - [ ] Drivers can accept or deny delivery requests
 - [ ] Drivers can see the list of his upcoming trips or past trips
+
+![](https://github.com/trungvuh/Practice-for-Flex/raw/master/Giphys/Trip_Up_Past.gif)
+
 - [ ] Customer can request a package be delivered
 - [ ] Customers get matched with a driver based on their packages' trips and the drivers' trips, no further than a fixed radius
+
+![](https://github.com/trungvuh/Practice-for-Flex/raw/master/Giphys/Order_New.gif)
+
 - [ ] Prices are calculated based on the difference distance between packages's trips and the drivers' trips
 - [ ] Customers can see the list of their pending request order, or past orders
 
@@ -71,7 +77,7 @@ computeTotalDistance(result) {
 
 * Map location and styling was dependent on what stage of the form the customer was at and how far their window was scrolled down.
 
-```JavaScript and CSS 
+```JavaScript and CSS
 window.addEventListener("scroll", function(e){
   if (searchDriverButton.className === "button-driver-search on yes mapbutton"){
     if (window.scrollY > 580){
