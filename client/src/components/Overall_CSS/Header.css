@@ -1,15 +1,26 @@
 .nav {
-  height: 80px;
-  max-width: 1200px;
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  height: 90px;
+  /*border-bottom: 1px solid black;*/
+  /*box-shadow: 0 2px 5px rgba(0,0,0,.26);*/
+  margin-bottom: 5px;
+  background-color: white;
+  z-index: 2;
+}
+.nav-spacer{
+  height: 90px;
+}
+.nav-inner {
+  width: 1200px;
   margin: 0 auto;
   padding: 0 30px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /*border-bottom: 1px solid black;*/
-  margin-bottom: 5px;
-  /*background-color: #FF0000;*/
 }
 
 .left {
@@ -35,7 +46,7 @@
   flex-direction: row;
 }
 .nav-right > * {
-  padding: 25px 25px;
+  padding: 15px 25px;
   font-size: 18px;
 }
 .nav-right > *:hover {
@@ -47,7 +58,9 @@
 }
 
 .logout {
-  align-self: center;
+  text-align: center;
+  margin: auto 0;
+  line-height: 45px;
 }
 
 

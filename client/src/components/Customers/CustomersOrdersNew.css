@@ -1,3 +1,7 @@
+/*.form-title {
+
+}*/
+
 .map-hold {
   min-width: 500px;
   margin-bottom: 50px;
@@ -123,7 +127,7 @@
 }
 .mapFix {
   position: fixed;
-  top: 50px;
+  top: 120px;
   left: 884px;
 
   display: flex;

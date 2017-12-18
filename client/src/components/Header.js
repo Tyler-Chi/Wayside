@@ -134,7 +134,7 @@ class Header extends Component {
 
   demoLogin(){
     this.props.fetchDemo();
-    this.props.history.push('/customers/orders/new')
+    this.props.history.push('/customers/orders/new');
   }
 
   loginLogout(){
@@ -166,15 +166,22 @@ class Header extends Component {
 
     //this anchor to logout makes a get request to the api/logout. in authRoutes, this handles logout logic, as well as redirection.
     return (
-      <div className="nav">
-        <div className="left">
-          <a className="title pacifico" href="/">
-          WaySide
-          </a>
-        </div>
-        <div>
-          {this.loginLogout()}
+      <div className="nav-outer">
+        <div className="nav">
+          <div className="nav-inner">
+            <div className="left">
+              <a className="title pacifico" href="/">
+                WaySide
+              </a>
+            </div>
+            <div>
+              {this.loginLogout()}
 
+            </div>
+
+          </div>
+        </div>
+        <div className="nav-spacer">
         </div>
       </div>
     );
