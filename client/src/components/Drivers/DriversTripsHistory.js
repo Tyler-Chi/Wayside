@@ -55,6 +55,7 @@ class DriversTripsHistory extends Component {
               trip={trip}
               orders = {ordersArray.filter(order => order._tripId === trip._id )}
               type = {this.state.type}
+              updateTrip={this.props.updateTrip}
             />
           ))}
         </ul>

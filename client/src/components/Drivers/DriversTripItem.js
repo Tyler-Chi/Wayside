@@ -36,11 +36,13 @@ class DriversTripItem extends Component {
     super(props);
     this.state = {
       modalISOpen: false,
-      error: ""
+      error: "",
+      toggle: false
     };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.completeOrder = this.completeOrder.bind(this);
+    this.update = this.update.bind(this);
 
     const { orders } = this.props;
     this.ordersRequested = orders.filter(order => order.requestPending);
@@ -103,22 +105,27 @@ class DriversTripItem extends Component {
     const { trip, orders } = this.props;
     let checkAllCompleted = this.ordersAccepted.every(order => order.deliveredStatus === true);
 
-    console.log('accepted', this.ordersAccepted);
-    console.log('check', trip.completed, orders, checkAllCompleted );
     if ((trip.completed === false) &&
         (checkAllCompleted === true)) {
       return (
         <button
           className="trip-button"
-          onClick={()=>this.props.updateTrip(trip._id,{
-            completed: true})
+          onClick={()=> this.update(trip)
           }> Complete Trip
         </button>
       );
     }
   }
 
+  update(trip) {
+    console.log('props', this.props);
+    this.props.updateTrip(trip._id, {completed: true});
+    this.setState({ toggle: true });
+    this.setState({ toggle: false });
+  }
+
   render() {
+    console.log('props', this.props);
 
     const { orders, trip } = this.props;
 
