@@ -131,7 +131,6 @@ class CustomersOrderItem extends Component {
   render(){
     let order = this.props.order;
     let orderDeliverBy = this.props.order.deliveredBy.toString().slice(0, 10);
-    console.log(this.state);
     return (
       <div>
         <div className="order-item">

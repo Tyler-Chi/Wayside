@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Modal from "react-modal";
-import * as actions from "../../actions";
+// import * as actions from "../../actions";
 import './DriversTripItem.css';
 import OrderItem from "./OrderItem";
 
@@ -36,11 +36,13 @@ class DriversTripItem extends Component {
     super(props);
     this.state = {
       modalISOpen: false,
-      error: ""
+      error: "",
+      toggle: false
     };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.completeOrder = this.completeOrder.bind(this);
+    this.update = this.update.bind(this);
 
     const { orders } = this.props;
     this.ordersRequested = orders.filter(order => order.requestPending);
@@ -100,27 +102,29 @@ class DriversTripItem extends Component {
 
   completeOrder() {
     //so all the orders that are accepted has to be deliveredStatus = true. Also the trip itself has to be completed = false
-    const { trip, orders } = this.props;
+    const { trip } = this.props;
     let checkAllCompleted = this.ordersAccepted.every(order => order.deliveredStatus === true);
 
-    console.log('accepted', this.ordersAccepted);
-    console.log('check', trip.completed, orders, checkAllCompleted );
     if ((trip.completed === false) &&
         (checkAllCompleted === true)) {
       return (
         <button
           className="trip-button"
-          onClick={()=>this.props.updateTrip(trip._id,{
-            completed: true})
-          }> Complete Trip
+          onClick={()=> this.update(trip)
+          }> Trip Completed
         </button>
       );
     }
   }
 
-  render() {
+  update(trip) {
+    this.props.updateTrip(trip._id, {completed: true});
+    this.setState({ toggle: true });
+    this.setState({ toggle: false });
+  }
 
-    const { orders, trip } = this.props;
+  render() {
+    const { trip } = this.props;
 
     let tripStartDate = trip.tripStartDate.toString().slice(0, 10);
     let tripEndDate = trip.tripEndDate.toString().slice(0, 10);

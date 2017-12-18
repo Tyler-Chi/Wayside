@@ -15,7 +15,6 @@ module.exports = app => {
       output[trip._id] = trip;
     });
 
-    console.log("here i am", output);
     res.send(output);
   });
 
@@ -30,7 +29,6 @@ module.exports = app => {
       output[trip._id] = trip;
     });
 
-    console.log("here i am", output);
     res.send(output);
   });
 
@@ -46,7 +44,6 @@ module.exports = app => {
       output[trip._id] = trip;
     });
 
-    console.log("here i am", output);
     res.send(output);
   });
 
@@ -56,7 +53,6 @@ module.exports = app => {
   });
 
   app.get("/api/trips/upcoming", async (req, res) => {
-    console.log("i am in upcoming");
     const trips = await Trip.find({
       completed: false,
       _user: req.user.id
@@ -68,13 +64,10 @@ module.exports = app => {
       output[trip._id] = trip;
     });
 
-    console.log("here i am", output);
     res.send(output);
   });
 
   app.put("/api/trips/:tripId", async (req, res) => {
-    console.log("params", req.params);
-    console.log("body", req.body.completed);
 
     const queryTrip = await Trip.findById(req.params.tripId);
 
@@ -83,8 +76,6 @@ module.exports = app => {
     //maybe i can use object.assign....?
 
     Object.assign(queryTrip, req.body);
-
-    console.log(queryTrip.completed);
 
     queryTrip.save(function(saveErr, savedTrip) {
       return res.send(savedTrip);
@@ -95,10 +86,6 @@ module.exports = app => {
     //first check that the user is logged in, otherwise
     //they should not be able to make a trip
     //except the body of the request to hold the schema stuff.
-
-    console.log("req body", req.body);
-
-    // console.log("res1", res);
 
     const {
       origin,

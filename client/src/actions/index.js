@@ -19,7 +19,6 @@ import {
 //the payload being what we got from the get request to the API.
 
 export const fetchOrders = () => async dispatch => {
-  console.log("i am in the actions");
   const res = await axios.get("/api/orders");
 
   dispatch({ type: FETCH_ORDERS, payload: res.data });
@@ -94,7 +93,6 @@ export const fetchCompletedTrips = async () => dispatch => {
 
 //this one just fetches the ones pertaining to the user.
 export const fetchUpcomingTrips = () => dispatch => {
-  console.log("i am in upcoming trips");
   axios
     .get("/api/trips/upcoming")
     .then(trips => dispatch({ type: FETCH_TRIPS, payload: trips.data }));

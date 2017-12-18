@@ -7,10 +7,6 @@ export default function(oldState = {}, action) {
 
   switch (action.type) {
     case FETCH_TRIP:
-      console.log("i am in the tripReducer");
-      console.log(action.payload);
-      // Object.assign(newState, {action.payload._id: action.payload});
-
       newState[action.payload._id] = action.payload;
       return newState;
 

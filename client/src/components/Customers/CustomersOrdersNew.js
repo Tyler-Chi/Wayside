@@ -53,15 +53,12 @@ class CustomersOrdersNew extends Component {
     let HTMLMap = document.getElementById("map1");
     let searchDriverButton = document.getElementsByClassName("button-driver-search")[0];
     window.addEventListener("scroll", function(e){
-      // console.log(HTMLMap);
-      // console.log(window.scrollY);
-      // console.log(searchDriverButton);
+
       if (searchDriverButton.className === "button-driver-search on yes mapbutton"){
-        if (window.scrollY > 642){
+        if (window.scrollY > 580){
           let mid = window.innerWidth/2;
-          // console.log(mid);
           HTMLMap.className="mapFix";
-          HTMLMap.style.left = `${mid - 36}px`;
+          HTMLMap.style.left = `${mid - 37  }px`;
         } else {
           HTMLMap.className="mapFlex";
           HTMLMap.style.left = "0px";
@@ -192,14 +189,13 @@ class CustomersOrdersNew extends Component {
     window.scrollTo(0,600);
 
     let searchDriverButton = document.getElementsByClassName("button-driver-search")[0];
-    // console.log(searchDriverButton);
     // searchDriverButton.disabled = false;
     searchDriverButton.className = "button-driver-search on not mapbutton";
 
   }
 
   handleSearch() {
-    setTimeout(() => this.sortTrips(), 20);
+    this.sortTrips();
     //if there is no matching trip, toggles display so that state changes => re-render
     if (this.searchTrips.length === 0) {
       this.setState({ display: true });
@@ -224,7 +220,7 @@ class CustomersOrdersNew extends Component {
         <input
           type="text"
           id="cust-start"
-          placeholder=""
+          placeholder="Package Pickup Point (ex. 825 Battery St. San Francisco, CA 94111)"
           onChange={this.handleInput("startLoc")}
         />
 
@@ -232,7 +228,7 @@ class CustomersOrdersNew extends Component {
         <input
           type="text"
           id="cust-end"
-          placeholder=""
+          placeholder="Package Drop Off Point (ex. 6925 Hollywood Blvd, Hollywood, CA 90028)"
           onChange={this.handleInput("endLoc")}
         />
 

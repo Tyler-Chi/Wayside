@@ -31,18 +31,12 @@ class DriversTripsHistory extends Component {
 
     const ordersArray = Object.values(this.props.entities.orders);
 
-    console.log("ordersArray", ordersArray);
-
-    let tripsArray = Object.values(trips);
-    console.log("tripsArray", tripsArray);
-    const pastTrips = tripsArray.filter(trip => trip.completed === true);
-    // console.log('pasttrip', pastTrips);
-    const pastTrips2 = tripsArray
+    const tripsArray = Object.values(trips);
+    const pastTrips = tripsArray
       .filter(trip => trip.completed === true)
       .sort(function(a, b) {
         return a.tripStartDate > b.tripStartDate;
       });
-    // console.log(pastTrips2);
 
     return (
       <div className="driver-history-all">
@@ -55,6 +49,7 @@ class DriversTripsHistory extends Component {
               trip={trip}
               orders = {ordersArray.filter(order => order._tripId === trip._id )}
               type = {this.state.type}
+              updateTrip={this.props.updateTrip}
             />
           ))}
         </ul>

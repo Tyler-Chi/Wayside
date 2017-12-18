@@ -5,11 +5,9 @@ const Trip = mongoose.model("trips");
 module.exports = app => {
   //my request orders
   app.get("/api/orders", async (req, res) => {
-    console.log("i am in the routes");
     const requestOrders = await Order.find({
       _ownerId: req.user.id
     });
-    console.log("req orders", requestOrders);
 
     const deliverOrders = await Order.find({
       _driverId: req.user.id
@@ -28,8 +26,6 @@ module.exports = app => {
 
   //logic for accepting an order
   app.put("/api/orders/:orderId", async (req, res) => {
-    console.log("im trying to update an order :<");
-    console.log("order update req", req.body);
 
     //editting the order...
     //at this point, the driver is already chosen.
@@ -38,7 +34,6 @@ module.exports = app => {
 
     Object.assign(queryOrder, req.body);
 
-    console.log(queryOrder.rating);
     //save it into the database, and return this. will merge it into the orders slice of state.
     queryOrder.save(function(saveErr, savedOrder) {
       return res.send(savedOrder);
@@ -46,8 +41,6 @@ module.exports = app => {
   });
 
   app.post("/api/orders", async (req, res) => {
-    console.log("i am in order routes :D");
-    console.log("req", req.body);
 
     const {
       _driverId,
@@ -82,9 +75,7 @@ module.exports = app => {
 
     //now I want to push it into the corresponding trip's array of orders. the trip will only have ID's, with these ID's, we will access the orders held inside the state.
 
-    console.log("i am in the order routes, here is the trip");
     const trip = await Trip.findById(order._tripId);
-    console.log(trip);
 
     trip.orders.push(order._id);
     order.tripObject = trip;
