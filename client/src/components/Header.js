@@ -132,6 +132,10 @@ class Header extends Component {
     }
   }
 
+  demoLogin(){
+    this.props.fetchDemo();
+    this.props.history.push('/customers/orders/new')
+  }
 
   loginLogout(){
     //do this if they are already logged in.
@@ -145,7 +149,8 @@ class Header extends Component {
       return (
         <div className="login">
           <button className="login-demo"
-            onClick={()=> this.props.fetchDemo()}
+            onClick={()=>
+              this.demoLogin()}
             >Demo Login</button>
           <a className="login-google" href="/auth/google">Log in with Google</a>
         </div>
