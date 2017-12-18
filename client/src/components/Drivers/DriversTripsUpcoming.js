@@ -16,8 +16,7 @@ class DriversTripsUpcoming extends Component {
   componentDidMount() {
     //this fills the trips slice of state with this users
     //trips that they will go on in the future.
-    this.props.fetchOrders();
-    this.props.fetchAllTrips();
+    this.props.fetchOrders().then(() => this.props.fetchAllTrips());
     window.scrollTo(0,0);
   }
 

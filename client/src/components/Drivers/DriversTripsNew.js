@@ -57,9 +57,6 @@ class DriversTripsNew extends Component {
     this.directionsDisplay.addListener('directions_changed', () => {
           this.computeTotalDistance(this.directionsDisplay.getDirections());
         });
-
-    this.props.fetchOrders();
-    this.props.fetchAllTrips();
     window.scrollTo(0,0);
   }
 
