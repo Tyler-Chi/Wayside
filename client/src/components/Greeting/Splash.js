@@ -73,6 +73,11 @@ class Splash extends Component {
   }
 
   render() {
+
+    if (this.props.auth){
+      this.props.history.push('/customers/orders/new')
+    }
+
     return (
       <div className="splash" style={style.splash}>
         <div
