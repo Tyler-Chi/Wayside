@@ -25,29 +25,34 @@ Wayside uses Google Maps API to match drivers, who were already planning on driv
 The delivery fee is calculated based on the extra distance the driver had to go compared to his original intended trip. Customers will then get to pick a driver based on the driver's date, price, and rating.
 
 ## Functionalities
-- [ ] Drivers and Customers can sign up and login with Google+ API OAuth
+#### OAuth
+  + Drivers and Customers can sign up and login with Google+ API OAuth
 
 ![](https://github.com/trungvuh/Practice-for-Flex/raw/master/Giphys/Splash.gif)
 
-- [ ] Drivers can create new trips, and drag pointer to alter their desired route
+#### Driver
+
+  + Drivers can create new trips, and drag pointer to alter their desired route
 
 ![](https://github.com/trungvuh/Practice-for-Flex/raw/master/Giphys/Trip_New.gif)
 
-- [ ] Drivers can accept or deny delivery requests
-- [ ] Drivers can see the list of his upcoming trips or past trips
+  + Drivers can accept or deny delivery requests
+  + Drivers can see the list of his upcoming trips or past trips
 
 ![](https://github.com/trungvuh/Practice-for-Flex/raw/master/Giphys/Trip_Up_Past.gif)
 
-- [ ] Customer can request a package be delivered
-- [ ] Customers get matched with a driver based on their packages' trips and the drivers' trips, no further than a fixed radius
+#### Customer
+  + Customer can request a package be delivered
+  + Customers get matched with a driver based on their packages' trips and the drivers' trips, no further than a fixed radius
+  + Customers can see the list of their pending request order, or past orders
 
 ![](https://github.com/trungvuh/Practice-for-Flex/raw/master/Giphys/Order_New.gif)
 
-- [ ] Prices are calculated based on the difference distance between packages's trips and the drivers' trips
-- [ ] Customers can see the list of their pending request order, or past orders
+#### Price
+  + Prices are calculated based on the difference distance between packages's trips and the drivers' trips
+
 
 ## Features
-(this is where all the code snippets will go, I guess)
 
 * Using Google Map API DirectionsRenderer DirectionsService, we were able to display the correct route for the driver's trip, as well as calculating its distance.
 
@@ -105,3 +110,4 @@ window.addEventListener("scroll", function(e){
 - [ ] Package size and weight limits for different drivers
 - [ ] Driver's ability to keep his trip on the search or to take it off, based on space availability
 - [ ] Customers can rate drivers
+- [ ] Ride share?
