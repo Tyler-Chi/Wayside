@@ -80,7 +80,7 @@
   margin: 0px;
 
 }
-.trip-arrival, .trip-departure, .trip-requets, .trip-packages {
+.trip-arrival, .trip-departure, .trip-requets, .trip-packages, .trip-price {
   font-size: 25px;
   font-family: 25px;
   margin: 0px;
@@ -153,9 +153,58 @@
 
 .trip-modal {
   background-color: white;
-  margin-top: 5%;
-  width: 95%;
-  margin-left: 2.5%;
-  height: 80%;
+  margin: auto;
+  width: 60%;
+  height: 75%;
   border: 1px solid black;
+}
+
+.trip-button-modal {
+  padding: 10px 25px;
+  min-width: 200px;
+  text-align: center;
+  background: #E7204E;
+  /*background: #A71A5B;*/
+  color: white;
+  font-size: 20px;
+  border-radius: 5px;
+  height: 30px;
+  margin: 15px auto;
+  box-shadow: 1px 3px 2px 2px rgba(0, 0, 255, .2);
+}
+.trip-button-modal:hover {
+  background: #6B0103;
+}
+.packages-title {
+  font-family: "Open Sans";
+  font-size: 20px;
+  font-weight: 600;
+}
+.modal-package-list {
+  height: 250px;
+  overflow: scroll;
+}
+.column-modal {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  width: 400px;
+}
+.row-modal {
+  display: flex;
+  flex-direction: row;
+  /*justify-content: space-between;*/
+}
+.row-modal > * {
+  margin-right: 40px;
+}
+.package-subtitle {
+  font-size: 16px;
+  margin: 0;
+  margin-bottom: 5px;
+}
+.package-info {
+  font-size: 25px;
+  margin: 0;
+  overflow: hidden;
 }

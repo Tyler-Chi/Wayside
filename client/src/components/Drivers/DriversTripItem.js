@@ -5,6 +5,31 @@ import * as actions from "../../actions";
 import './DriversTripItem.css';
 import OrderItem from "./OrderItem";
 
+let customStyle = {
+  overlay : {
+    position          : 'fixed',
+    top               : 0,
+    left              : 0,
+    right             : 0,
+    bottom            : 0,
+    backgroundColor   : 'rgba(0, 0, 0, 0.75)'
+  },
+  content : {
+    position                   : 'absolute',
+    top                        : '40px',
+    left                       : '40px',
+    right                      : '40px',
+    bottom                     : '40px',
+    border                     : '1px solid #ccc',
+    background                 : '#fff',
+    overflow                   : 'auto',
+    WebkitOverflowScrolling    : 'touch',
+    borderRadius               : '4px',
+    outline                    : 'none',
+    padding                    : '20px'
+
+  }
+};
 
 class DriversTripItem extends Component {
   constructor(props) {
@@ -62,7 +87,7 @@ class DriversTripItem extends Component {
       let cashTotal = 0;
 
       this.ordersAccepted.forEach(order => cashTotal += order.price)
-      //here should show the total amount of mone accepted from the ordersAccepted
+      //here should show the total amount of money accepted from the ordersAccepted
 
       //TODO maybe turn this green, green = money.
       return (
@@ -125,13 +150,11 @@ class DriversTripItem extends Component {
         </div>
         <Modal
           className="trip-modal"
+          style={customStyle}
           isOpen={this.state.modalISOpen}
           onClose={this.closeModal}
           shouldCloseOnOverlayClick={true}
           onRequestClose={this.closeModal}>
-
-
-          <h2>YOUR TRIP</h2>
 
           <div className="trip-date">
             <div className="column trip-departure-div">
@@ -159,8 +182,8 @@ class DriversTripItem extends Component {
 
             <div className="trip-etc">
               <div className="column">
-                <h4>PENDING REQUESTS {this.ordersRequested.length} </h4>
-                <h3 className="trip-requests"> {this.ordersRequested.length}</h3>
+                {this.variedTitle()}
+                <h3 className="trip-price">{this.variedBody()}</h3>
               </div>
 
               <div className="column">
@@ -169,12 +192,14 @@ class DriversTripItem extends Component {
               </div>
             </div>
 
-            <ul>
+            <h2 className="packages-title">PACKAGES</h2>
+            <ul className="modal-package-list">
               {
                 this.ordersRequested.map(order => (
                   <OrderItem
                     order={order}
                     type={'requested'}
+                    className="pending"
                     />
                 ))
               }
@@ -183,6 +208,7 @@ class DriversTripItem extends Component {
                   <OrderItem
                     order={order}
                     type={'accepted'}
+                    className="accepted"
                     />
                 ))
               }
@@ -191,12 +217,13 @@ class DriversTripItem extends Component {
                   <OrderItem
                     order={order}
                     type={'rejected'}
+                    className="rejected"
                     />
                 ))
               }
             </ul>
 
-            <button className="trip-button" onClick={this.closeModal}> Close </button>
+            <button className="trip-button-modal" onClick={this.closeModal}> Close </button>
           </div>
 
         </Modal>
