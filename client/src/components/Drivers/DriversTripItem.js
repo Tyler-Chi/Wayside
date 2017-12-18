@@ -59,7 +59,6 @@ class DriversTripItem extends Component {
       );
     } else { //goes here if the trip has been completed, so show money.
 
-      console.log('ordersAccepted123123',this.ordersAccepted);
       let cashTotal = 0;
 
       this.ordersAccepted.forEach(order => cashTotal += order.price)
@@ -74,12 +73,7 @@ class DriversTripItem extends Component {
   }
 
   render() {
-
     const { orders } = this.props;
-
-    console.log('orders',orders);
-    console.log('ordersAccepted', this.ordersAccepted);
-    console.log('ordersRequested',this.ordersRequested);
 
     let trip = this.props.trip;
     let tripStartDate = this.props.trip.tripStartDate.toString().slice(0, 10);

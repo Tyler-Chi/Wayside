@@ -21,12 +21,22 @@ import Test from "./test";
 
 import { AuthRoute, ProtectedRoute } from './Route';
 
+import LoadingIcon from './loading_icon';
+
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
   }
 
   render() {
+    //
+    // if (!this.props.payload) {
+    //   return (
+    //     <LoadingIcon loading={true} />
+    //   );
+    // }
+    //
+    //   console.log('in App', this.props.auth);
     return (
       <div>
         <BrowserRouter>
@@ -41,39 +51,39 @@ class App extends Component {
               exact
               path="/customers/orders/new"
               component={CustomersOrdersNew}
-            />
+              />
 
-          <Route
+            <ProtectedRoute
               exact
               path="/customers/orders/upcoming"
               component={CustomersOrdersUpcoming}
-            />
+              />
 
-          <Route
+            <Route
               exact
               path="/customers/orders/history"
               component={CustomersOrdersHistory}
-            />
+              />
 
-          <Route
+            <Route
               exact
               path="/drivers/trips/new"
               component={DriversTripsNew}
-            />
+              />
 
-          <Route
+            <Route
               exact
               path="/drivers/trips/upcoming"
               component={DriversTripsUpcoming}
-            />
+              />
 
-          <Route
+            <Route
               exact
               path="/drivers/trips/history"
               component={DriversTripsHistory}
-            />
+              />
 
-          <Route exact path="/drivers/new" component={DriversNew} />
+            <Route exact path="/drivers/new" component={DriversNew} />
           </div>
         </BrowserRouter>
       </div>

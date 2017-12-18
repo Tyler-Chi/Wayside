@@ -18,6 +18,7 @@ class DriversTripsUpcoming extends Component {
     //trips that they will go on in the future.
     this.props.fetchOrders();
     this.props.fetchAllTrips();
+    window.scrollTo(0,0);
   }
 
   render() {
@@ -26,8 +27,6 @@ class DriversTripsUpcoming extends Component {
     }
 
     const { trips } = this.props.entities;
-
-    console.log('trips',trips);
 
     const tripsArray = Object.values(trips);
     const upcomingTrips = tripsArray

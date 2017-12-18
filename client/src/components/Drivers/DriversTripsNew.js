@@ -105,7 +105,6 @@ class DriversTripsNew extends Component {
     //use Math ceil to round up the total miles of the trip
     let tripDistance = Math.ceil((route.legs[0].distance.value * KMTOMILE));
     this.setState ({ tripDistance: tripDistance });
-    console.log(this.state);
   }
 
   handleInput(type) {
