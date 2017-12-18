@@ -148,10 +148,6 @@ class Header extends Component {
 
       return (
         <div className="login">
-          <button className="login-demo"
-            onClick={()=>
-              this.demoLogin()}
-            >Demo Login</button>
           <a className="login-google" href="/auth/google">Log in with Google</a>
         </div>
 
@@ -180,6 +176,11 @@ class Header extends Component {
     );
   }
 }
+// 
+// <button className="login-demo"
+//   onClick={()=>
+//     this.demoLogin()}
+//   >Demo Login</button>
 
 //this is essentially our container.
 //connect gives mapStateToProps and mapDispatchToProps access to the store's state
