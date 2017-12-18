@@ -101,19 +101,18 @@ class DriversTripItem extends Component {
   completeOrder() {
     //so all the orders that are accepted has to be deliveredStatus = true. Also the trip itself has to be completed = false
     const { trip, orders } = this.props;
-    let checkAllCompleted = this.ordersAccepted.every(order => {
-      order.deliveredStatus === true;
-    });
+    let checkAllCompleted = this.ordersAccepted.every(order => order.deliveredStatus === true);
+
+    console.log('accepted', this.ordersAccepted);
     console.log('check', trip.completed, orders, checkAllCompleted );
     if ((trip.completed === false) &&
-        (orders.length > 0) &&
         (checkAllCompleted === true)) {
       return (
         <button
           className="trip-button"
           onClick={()=>this.props.updateTrip(trip._id,{
             completed: true})
-          }> Trip Completed
+          }> Complete Trip
         </button>
       );
     }
