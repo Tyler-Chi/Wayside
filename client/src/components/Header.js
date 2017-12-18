@@ -67,7 +67,7 @@ class Header extends Component {
           <button
             className={this.currentTab("pending-orders")}
             onClick={()=>this.props.history.replace('/customers/orders/upcoming')}
-            >Pending Orders </button>
+            >Pending Orders ({customerPendingOrders.length})</button>
           <button
             className={this.currentTab("past-orders")}
             onClick={()=>this.props.history.replace('/customers/orders/history')}
@@ -183,7 +183,7 @@ class Header extends Component {
     );
   }
 }
-// 
+//
 // <button className="login-demo"
 //   onClick={()=>
 //     this.demoLogin()}

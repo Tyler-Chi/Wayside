@@ -7,7 +7,7 @@ import "./CustomersOrdersNew.css";
 import CustomersOrdersNewIndex from './CustomersOrdersNewIndex';
 
 const MAPOPTIONS = {
-  zoom: 4,
+  zoom: 3,
   center: { lat: 40.612969, lng: -96.455751 } //center of US
 };
 //rate per mile
