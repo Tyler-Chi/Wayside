@@ -16,8 +16,7 @@ class DriversTripsHistory extends Component {
 
   componentDidMount() {
     //fetch all trips fetchs all the trips where the current user is the driver of that trip.
-    this.props.fetchOrders();
-    this.props.fetchAllTrips();
+    this.props.fetchOrders().then(() => this.props.fetchAllTrips());
     window.scrollTo(0,0);
   }
 

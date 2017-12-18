@@ -53,7 +53,7 @@ class App extends Component {
               component={CustomersOrdersNew}
               />
 
-            <ProtectedRoute
+            <Route
               exact
               path="/customers/orders/upcoming"
               component={CustomersOrdersUpcoming}

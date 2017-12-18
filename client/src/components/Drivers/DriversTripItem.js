@@ -40,6 +40,7 @@ class DriversTripItem extends Component {
     };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.completeOrder = this.completeOrder.bind(this);
 
     const { orders } = this.props;
     this.ordersRequested = orders.filter(order => order.requestPending);
@@ -97,11 +98,31 @@ class DriversTripItem extends Component {
     }
   }
 
-  render() {
-    const { orders } = this.props;
+  completeOrder() {
+    //so all the orders that are accepted has to be deliveredStatus = true. Also the trip itself has to be completed = false
+    const { trip, orders } = this.props;
+    let checkAllCompleted = this.ordersAccepted.every(order => order.deliveredStatus === true);
 
-    let trip = this.props.trip;
-    let tripStartDate = this.props.trip.tripStartDate.toString().slice(0, 10);
+    console.log('accepted', this.ordersAccepted);
+    console.log('check', trip.completed, orders, checkAllCompleted );
+    if ((trip.completed === false) &&
+        (checkAllCompleted === true)) {
+      return (
+        <button
+          className="trip-button"
+          onClick={()=>this.props.updateTrip(trip._id,{
+            completed: true})
+          }> Complete Trip
+        </button>
+      );
+    }
+  }
+
+  render() {
+
+    const { orders, trip } = this.props;
+
+    let tripStartDate = trip.tripStartDate.toString().slice(0, 10);
     let tripEndDate = trip.tripEndDate.toString().slice(0, 10);
 
     return(
@@ -142,6 +163,8 @@ class DriversTripItem extends Component {
                 <h4>PACKAGES</h4>
                 <h3 className="trip-packages">{this.ordersAccepted.length}</h3>
               </div>
+
+              {this.completeOrder()}
 
               <button className="trip-button" onClick={this.openModal}> See Trip Information </button>
 

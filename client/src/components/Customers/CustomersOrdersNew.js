@@ -54,7 +54,7 @@ class CustomersOrdersNew extends Component {
     let searchDriverButton = document.getElementsByClassName("button-driver-search")[0];
     window.addEventListener("scroll", function(e){
       // console.log(HTMLMap);
-      console.log(window.scrollY);
+      // console.log(window.scrollY);
       // console.log(searchDriverButton);
       if (searchDriverButton.className === "button-driver-search on yes mapbutton"){
         if (window.scrollY > 642){
