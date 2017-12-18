@@ -31,6 +31,16 @@ export const fetchUser = () => async dispatch => {
   dispatch({ type: FETCH_USER, payload: res.data });
 };
 
+export const fetchDemo = () => dispatch => {
+  const res = {
+    _id: 'thedemouserid',
+    name: 'demo_user',
+    imageUrl: "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg?sz=50"
+  }
+
+  dispatch({ type: FETCH_USER, payload: res });
+}
+
 //i THINK that values is the body of the request
 
 export const submitTrip = (values, history) => dispatch => {
