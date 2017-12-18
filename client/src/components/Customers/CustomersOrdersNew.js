@@ -195,7 +195,7 @@ class CustomersOrdersNew extends Component {
   }
 
   handleSearch() {
-    setTimeout(() => this.sortTrips(), 20);
+    this.sortTrips();
     //if there is no matching trip, toggles display so that state changes => re-render
     if (this.searchTrips.length === 0) {
       this.setState({ display: true });

@@ -78,7 +78,7 @@ class CustomersOrdersNewIndex extends Component {
     }
     if (this.props.displayMessage === true && this.props.filterTrips.length === 0) {
       return (
-        <div>
+        <div className="item-holder">
           <h2>Sorry, no matched results!</h2>
           <h4>We only match trips that are within 100 miles off from driver's original trip, as well as ending before your request delivery date.</h4>
           <h4>Maybe adjust your date or locations?</h4>
