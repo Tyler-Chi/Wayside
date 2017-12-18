@@ -67,7 +67,7 @@ class Header extends Component {
           <button
             className={this.currentTab("pending-orders")}
             onClick={()=>this.props.history.replace('/customers/orders/upcoming')}
-            >Pending Orders ({customerPendingOrders.length})</button>
+            >Pending Orders </button>
           <button
             className={this.currentTab("past-orders")}
             onClick={()=>this.props.history.replace('/customers/orders/history')}
@@ -144,7 +144,9 @@ class Header extends Component {
 
       return (
         <div className="login">
-          <a className="login-demo" href="">Demo Login</a>
+          <button className="login-demo"
+            onClick={()=> this.props.fetchDemo()}
+            >Demo Login</button>
           <a className="login-google" href="/auth/google">Log in with Google</a>
         </div>
 
