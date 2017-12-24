@@ -75,7 +75,7 @@ class Splash extends Component {
   render() {
 
     if (this.props.auth){
-      this.props.history.goBack();
+      this.props.history.replace('/customers/orders/new');
     }
 
     return (
