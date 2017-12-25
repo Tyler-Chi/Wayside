@@ -76,14 +76,15 @@ class CustomersOrdersNew extends Component {
     Object.values(trips).forEach(trip => {
 
       this.newDistance = Math.ceil(this.calculateDistance(trip.latO, trip.lngO, trip.latD, trip.lngD));
-      console.log('newDistance', this.newDistance);
+
       let oldDistance = trip.tripDistance;
       var difference = this.newDistance - oldDistance;
       let tripPrice = (difference * RATE).toFixed(2);
 
       if ( (difference <= RADIUS) &&
            (difference > 0) &&
-           (this.state.deliveredBy >= trip.tripEndDate) ) {
+           (this.state.deliveredBy >= trip.tripEndDate) &&
+           (trip.tripStartDate >= this.today) ) {
         this.props.updateTrip(trip._id,
           {
             price: tripPrice,
@@ -208,7 +209,8 @@ class CustomersOrdersNew extends Component {
 
       if ( (difference <= RADIUS) &&
            (difference > 0) &&
-           (this.state.deliveredBy >= trip.tripEndDate) ) {
+           (this.state.deliveredBy >= trip.tripEndDate) &&
+           (trip.tripStartDate >= this.today) ) {
         this.props.updateTrip(trip._id,
           {
             price: tripPrice,
