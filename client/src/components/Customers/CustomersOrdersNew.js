@@ -33,7 +33,7 @@ class CustomersOrdersNew extends Component {
 
     this.handleSearch = this.handleSearch.bind(this);
     this.calculateDistance = this.calculateDistance.bind(this);
-    this.checkAndCalculate = this.checkAndCalculate.bind(this);
+    // this.checkAndCalculate = this.checkAndCalculate.bind(this);
     this.sortTrips = this.sortTrips.bind(this);
     this.getGeo = this.getGeo.bind(this);
   }
@@ -69,43 +69,28 @@ class CustomersOrdersNew extends Component {
     })
   }
 
-  geocodeAddress(geocoder, map, address, type) {
-    geocoder.geocode({ address: address }, async (result, status) => {
-      if (status !== "OK") {
-        alert("INVALID ADDRESS DUE TO: " + status);
-      } else {
-
-        if (type === "start") {
-          this.setState({
-            latS: await result[0].geometry.location.lat(),
-            lngS: await result[0].geometry.location.lng()
-          });
-        } else if (type === "end") {
-          this.setState({
-            latE: await result[0].geometry.location.lat(),
-            lngE: await result[0].geometry.location.lng()
-          });
-        }
-      }
-    });
-  }
-
   sortTrips() {
     let trips = this.props.entities.trips;
     let filterTrips = [];
 
     Object.values(trips).forEach(trip => {
-  ;
-      this.newDistance = Math.ceil(this.checkAndCalculate(trip.latO, trip.lngO, trip.latD, trip.lngD));
-      let oldDistance = trip.tripDistance;
-      this.difference = this.newDistance - oldDistance;
-      let tripPrice = (this.difference * RATE).toFixed(2);
 
-      if ( (this.difference <= RADIUS) &&
-          (this.difference > 0) &&
-          (this.state.deliveredBy >= trip.tripEndDate)) {
-        this.props.updateTrip(trip._id, { price: tripPrice,
-        tripNewDistance: this.newDistance });
+      this.newDistance = Math.ceil(this.calculateDistance(trip.latO, trip.lngO, trip.latD, trip.lngD));
+
+      let oldDistance = trip.tripDistance;
+      var difference = this.newDistance - oldDistance;
+      let tripPrice = (difference * RATE).toFixed(2);
+
+      if ( (difference <= RADIUS) &&
+           (difference > 0) &&
+           (this.state.deliveredBy >= trip.tripEndDate) &&
+           (trip.tripStartDate >= this.today) ) {
+        this.props.updateTrip(trip._id,
+          {
+            price: tripPrice,
+            tripNewDistance: this.newDistance
+          }
+        );
         filterTrips.push(trip);
       }
     });
@@ -114,6 +99,7 @@ class CustomersOrdersNew extends Component {
 
     return filterTrips;
   }
+
 
   //O is Original location, D is original Destination
   //S is the customer Starting location, E is customer Ending location
@@ -132,21 +118,21 @@ class CustomersOrdersNew extends Component {
     return newDistance;
   }
 
-  checkAndCalculate(latO, lngO, latD, lngD) {
-    let newDistance;
-    if (
-      this.state.latS + this.state.latE + this.state.lngS + this.state.lngE ===
-      0
-    ) {
-      setTimeout(() => this.checkAndCalculate(), 50);
-    } else {
-      newDistance = this.calculateDistance(
-        latO, lngO, latD, lngD
-      );
-      return newDistance;
-    }
-    return newDistance;
-  }
+  // checkAndCalculate(latO, lngO, latD, lngD) {
+  //   let newDistance;
+  //   if (
+  //     this.state.latS + this.state.latE + this.state.lngS + this.state.lngE ===
+  //     0
+  //   ) {
+  //     setTimeout(() => this.checkAndCalculate(), 50);
+  //   } else {
+  //     newDistance = this.calculateDistance(
+  //       latO, lngO, latD, lngD
+  //     );
+  //     return newDistance;
+  //   }
+  //   return newDistance;
+  // }
 
   displayRoute(origin, destination, service, display) {
     service.route(
@@ -176,17 +162,65 @@ class CustomersOrdersNew extends Component {
     };
   }
 
+  geocodeAddress(geocoder, map, address) {
+    return new Promise( (resolve, reject) => {
+      geocoder.geocode({ address: address }, (result, status) => {
+        if (status !== "OK") {
+          alert("INVALID ADDRESS DUE TO: " + status);
+          reject({});
+        } else {
+          resolve({
+            lat: result[0].geometry.location.lat(),
+            lng: result[0].geometry.location.lng()
+          });
+        }
+      });
+    });
+  }
+
   async getGeo() {
-    await this.geocodeAddress(this.geocoder, this.map, this.state.startLoc, "start");
-    await this.geocodeAddress(this.geocoder, this.map, this.state.endLoc, "end");
+    var getStart = this.geocodeAddress(this.geocoder, this.map, this.state.startLoc),
+      getEnd = this.geocodeAddress(this.geocoder, this.map, this.state.endLoc);
+    var start = await getStart;
+    var end = await getEnd;
+    this.setState({
+      latS: start.lat,
+      lngS: start.lng,
+      latE: end.lat,
+      lngE: end.lng
+    })
+
     this.displayRoute(
       this.state.startLoc,
       this.state.endLoc,
       this.directionsService,
       this.directionsDisplay
     );
-    this.sortTrips();
-    window.scrollTo(0,600);
+
+    let trips = this.props.entities.trips;
+    let filterTrips = [];
+
+    Object.values(trips).forEach(trip => {
+
+      this.newDistance = Math.ceil(this.calculateDistance(trip.latO, trip.lngO, trip.latD, trip.lngD));
+      let oldDistance = trip.tripDistance;
+      var difference = this.newDistance - oldDistance;
+      let tripPrice = (difference * RATE).toFixed(2);
+
+      if ( (difference <= RADIUS) &&
+           (difference > 0) &&
+           (this.state.deliveredBy >= trip.tripEndDate) &&
+           (trip.tripStartDate >= this.today) ) {
+        this.props.updateTrip(trip._id,
+          {
+            price: tripPrice,
+            tripNewDistance: this.newDistance
+          }
+        );
+      }
+    });
+
+    window.scrollTo(0,500);
 
     let searchDriverButton = document.getElementsByClassName("button-driver-search")[0];
     // searchDriverButton.disabled = false;
@@ -248,7 +282,7 @@ class CustomersOrdersNew extends Component {
             <input
               type="submit"
               id="submit"
-              value="Next"
+              value="Display Map"
               className="button-map"
               onClick={this.getGeo}
               />
