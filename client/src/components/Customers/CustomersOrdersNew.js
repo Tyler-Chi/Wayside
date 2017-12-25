@@ -69,33 +69,12 @@ class CustomersOrdersNew extends Component {
     })
   }
 
-  geocodeAddress(geocoder, map, address, type) {
-    geocoder.geocode({ address: address }, async (result, status) => {
-      if (status !== "OK") {
-        alert("INVALID ADDRESS DUE TO: " + status);
-      } else {
-
-        if (type === "start") {
-          this.setState({
-            latS: await result[0].geometry.location.lat(),
-            lngS: await result[0].geometry.location.lng()
-          });
-        } else if (type === "end") {
-          this.setState({
-            latE: await result[0].geometry.location.lat(),
-            lngE: await result[0].geometry.location.lng()
-          });
-        }
-      }
-    });
-  }
-
   sortTrips() {
     let trips = this.props.entities.trips;
     let filterTrips = [];
 
     Object.values(trips).forEach(trip => {
-  ;
+
       this.newDistance = Math.ceil(this.checkAndCalculate(trip.latO, trip.lngO, trip.latD, trip.lngD));
       let oldDistance = trip.tripDistance;
       this.difference = this.newDistance - oldDistance;
@@ -176,16 +155,50 @@ class CustomersOrdersNew extends Component {
     };
   }
 
+  geocodeAddress(geocoder, map, address, type) {
+    return new Promise( (resolve, reject) => {
+      geocoder.geocode({ address: address }, (result, status) => {
+        if (status !== "OK") {
+          alert("INVALID ADDRESS DUE TO: " + status);
+          reject();
+        } else {
+          // if (type === "start") {
+          //   this.setState({
+          //     latS: result[0].geometry.location.lat(),
+          //     lngS: result[0].geometry.location.lng()
+          //   });
+          // } else if (type === "end") {
+          //   this.setState({
+          //     latE: result[0].geometry.location.lat(),
+          //     lngE: result[0].geometry.location.lng()
+          //   });
+          // }
+          resolve(
+            this.setState({
+                latS: result[0].geometry.location.lat(),
+                lngS: result[0].geometry.location.lng()
+            })
+          );
+        }
+      });
+    });
+  }
+
   async getGeo() {
-    await this.geocodeAddress(this.geocoder, this.map, this.state.startLoc, "start");
-    await this.geocodeAddress(this.geocoder, this.map, this.state.endLoc, "end");
+    var data = this.geocodeAddress(this.geocoder, this.map, this.state.startLoc, "start");
+    await data;
+    console.log(data);
+    console.log(this.state);
+    // this.geocodeAddress(this.geocoder, this.map, this.state.endLoc, "end");
+
     this.displayRoute(
       this.state.startLoc,
       this.state.endLoc,
       this.directionsService,
       this.directionsDisplay
     );
-    this.sortTrips();
+    // console.log('state', this.state);
+    window.debug = this.state;
     window.scrollTo(0,600);
 
     let searchDriverButton = document.getElementsByClassName("button-driver-search")[0];
