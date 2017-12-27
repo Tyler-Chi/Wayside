@@ -11,6 +11,9 @@ const RATE = 0.25;
 class CustomersOrdersNewIndex extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      toggle: false
+    };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.displayNewRoute = this.displayNewRoute.bind(this);
@@ -55,6 +58,7 @@ class CustomersOrdersNewIndex extends Component {
       _driverId: trip._user,
       _tripId: trip._id,
     });
+    this.setState ({ toggle: true });
     this.props.history.push('/customers/orders/upcoming');
   }
 
