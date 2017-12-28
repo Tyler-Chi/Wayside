@@ -15,6 +15,9 @@ class CustomersOrdersNewIndex extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.displayNewRoute = this.displayNewRoute.bind(this);
     this.handleDisplay = this.handleDisplay.bind(this);
+    this.state = {
+      displayMap: false
+    }
   }
 
   componentDidMount() {

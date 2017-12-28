@@ -14,7 +14,7 @@ import reducers from "./reducers";
 const store = createStore(
   reducers,
   {},
-  applyMiddleware(reduxThunk, promise)
+  applyMiddleware(reduxThunk, promise,logger)
 );
 
 ReactDOM.render(

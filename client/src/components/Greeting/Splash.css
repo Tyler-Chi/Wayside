@@ -96,8 +96,8 @@ animation-delay: 0s;
   padding: 12px 20px;
   width: 275px;
   border-radius: 5px;
-  border: 1px solid #FF0000;
-  background: #FF0000;
+  border: 1px solid #792973;
+  background: #793973;
   font-size: 20px;
   font-weight: 600;
   color: white;
@@ -106,13 +106,13 @@ animation-delay: 0s;
   box-shadow: 1px 3px 2px 2px rgba(0, 0, 0, .2);
 }
 .loginButton:hover {
-  background: #6B0103;
-  border: 1px solid #6B0103;
+  background: #471743;
+  border: 1px solid #471743;
   border-radius: 5px;
 }
 .bottom-login-button:hover {
-  background: #6B0103;
-  border: 1px solid #6B0103;
+  background: #471743;
+  border: 1px solid #471743;
   border-radius: 5px;
 }
 
@@ -164,8 +164,8 @@ h2 {
   padding: 8px 20px;
   width: 275px;
   border-radius: 5px;
-  border: 1px solid ##FF0000;
-  background: #FF0000;
+  border: 1px solid #792973;
+  background: #792973;
   font-size: 20px;
   font-weight: 600;
   color: white;

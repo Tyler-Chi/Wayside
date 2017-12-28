@@ -28,6 +28,7 @@ class CustomersOrdersNew extends Component {
       latE: 0,
       lngE: 0,
       display: false,
+      displayMap: false
     };
     this.today = new Date().toJSON().split("T")[0];
 
@@ -68,6 +69,8 @@ class CustomersOrdersNew extends Component {
       }
     })
   }
+
+
 
   sortTrips() {
     let trips = this.props.entities.trips;
@@ -220,6 +223,8 @@ class CustomersOrdersNew extends Component {
       }
     });
 
+
+    this.setState({displayMap:true})
     window.scrollTo(0,500);
 
     let searchDriverButton = document.getElementsByClassName("button-driver-search")[0];
@@ -229,15 +234,22 @@ class CustomersOrdersNew extends Component {
   }
 
   handleSearch() {
-    this.sortTrips();
-    //if there is no matching trip, toggles display so that state changes => re-render
-    if (this.searchTrips.length === 0) {
-      this.setState({ display: true });
-    }
-    let searchDriverButton = document.getElementsByClassName("button-driver-search")[0];
-    searchDriverButton.className = "button-driver-search on yes mapbutton";
 
-    setTimeout(() => window.scrollTo(0, 500), 50);
+    //is there any way that we can make it so the button 'pops' out when
+    //displayMap is true?
+
+    if (this.state.displayMap === true){
+      this.sortTrips();
+      //if there is no matching trip, toggles display so that state changes => re-render
+      if (this.searchTrips.length === 0) {
+        this.setState({ display: true });
+      }
+      let searchDriverButton = document.getElementsByClassName("button-driver-search")[0];
+      searchDriverButton.className = "button-driver-search on yes mapbutton";
+
+      setTimeout(() => window.scrollTo(0, 500), 50);
+    }
+
   }
 
   render() {
