@@ -15,7 +15,7 @@ class OrderItem extends Component {
     const { order } = this.props;
 
     return (
-      <div>
+      <div className="modal-order-item">
         {this.orderInfo()}
 
         <button

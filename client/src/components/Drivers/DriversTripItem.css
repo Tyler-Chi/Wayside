@@ -233,3 +233,18 @@
   display: flex;
   justify-content: center;
 }
+
+.modal-package-list button {
+  font-size: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px black;
+  padding: 10px;
+  margin: 10px;
+}
+
+.modal-package-list button:hover {
+  background-color: #651366;
+  color: white;
+  opacity: 1;
+}
