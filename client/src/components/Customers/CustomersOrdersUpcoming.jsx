@@ -23,7 +23,7 @@ class CustomersOrdersUpcoming extends Component {
     const { orders } = this.props.entities;
     const ordersArray = Object.values(orders);
     const ordersHistory = ordersArray
-    .filter(order => (order._ownerId === this.props.auth._id && order.deliveredStatus === false))
+    .filter(order => (order._ownerId === this.props.auth._id && order.requestPending))
     .sort(function(a,b) { return a.deliveredBy > b.deliveredBy; });
 
     return (
