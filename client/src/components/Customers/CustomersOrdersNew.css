@@ -72,6 +72,9 @@
   padding: 10px 25px;
   text-align: center;
 }
+.button-map:hover {
+  background: #651366;
+}
 
 
 .order-new-etc {
