@@ -74,7 +74,7 @@
   padding: 10px 25px;
   width: 200px;
   text-align: center;
-  background: red;
+  background: #8B4789;
   /*border: 1px solid red;*/
   border-radius: 3px;
   color: white;
@@ -94,7 +94,7 @@
 .confirm-trip {
   margin: 0 auto 100px auto;
   padding: 10px 25px;
-  background: red;
+  background: #8B4789;
   color: white;
   width: 200px;
   text-align: center;
