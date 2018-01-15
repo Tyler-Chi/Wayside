@@ -113,7 +113,7 @@ class Splash extends Component {
           <div className="row human" style={style.human}>
             <div className="center">
               <div className="about2 human2">
-                <h2 className="about-title">A MORE HUMAN APPROACH</h2>
+                <h2 className="about-title2">A MORE HUMAN APPROACH</h2>
                 <h4 className="midsentence">Your stuff is <strong>IMPORTANT</strong>,</h4>
                 <h4 className="midsentence2">which is why you can choose your driver and know exactly who's handling your stuff.</h4>
               </div>
