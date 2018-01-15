@@ -3,20 +3,23 @@
   top:0;
   left:0;
   right:0;
-  height: 90px;
+  height: 95px;
   /*border-bottom: 1px solid black;*/
   /*box-shadow: 0 2px 5px rgba(0,0,0,.26);*/
-  margin-bottom: 5px;
-  background-color: white;
+  /*margin-bottom: 5px;*/
+  /*background-color: white;*/
+  background: #1E1E1E;
+  color: #FFF;
   z-index: 2;
 }
 .nav-spacer{
   height: 90px;
 }
 .nav-inner {
-  width: 1200px;
+  width: 900px;
   margin: 0 auto;
   padding: 0 30px;
+  padding-top: 5px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -38,12 +41,37 @@
   display: flex;
   flex-direction: row;
 }
-.login-google {
-  line-height: 50px;
-  padding: 15px 25px;
-  margin: 0 auto;
-  font-size: 18px;
+.login-google > img {
+  width: 20px;
+  height: 20px;
+  margin: auto 0;
+  padding-right: 15px;
 }
+.login-google > h4 {
+  font-size: .8em;
+  font-weight: 700;
+  margin: auto 0;
+}
+
+.login-google {
+  width: 200px;
+  height: 40px;
+  padding: auto 40px;
+  background: white;
+  color: gray;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.login-google:hover {
+  /*border: 3px solid blue;*/
+  background: blue;
+  color: white;
+  transition: 0.3s;
+}
+
+
 .login-demo {
   /*margin-top: 5px;*/
   padding: 15px 25px;
@@ -52,9 +80,6 @@
 }
 .login-demo:hover {
   border-top: 1px solid white;
-  border-bottom: 5px solid red;
-}
-.login-google:hover {
   border-bottom: 5px solid red;
 }
 /*.login > * {
@@ -70,23 +95,31 @@
 .nav-right {
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
+  width: 700px;
 }
 .nav-right > * {
-  padding: 15px 25px;
-  font-size: 18px;
+  padding: 1% 1.75%;
+  font-size: 0.8em;
+  /*border-bottom: 3px solid gray;*/
 }
 .nav-right > *:hover {
-  border-bottom: 5px solid red;
+  transition: 0.3s;
+  border-bottom: 3px solid orange;
+  color: orange;
 }
 
+.nav-right > div {
+  border-bottom: none;
+}
 .nav-right > div:hover {
   border-bottom: none;
 }
 
 .logout {
   text-align: center;
-  margin: auto 0;
-  line-height: 45px;
+  padding: 1% 2%;
+  padding-top: 3.25%;
 }
 
 
