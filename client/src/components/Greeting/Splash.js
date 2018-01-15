@@ -28,7 +28,7 @@ const style = {
     alignItems: "center",
   },
   mainSplashHeader: {
-    fontSize: "90px",
+    fontSize: "4em",
     color: "white",
     textAlign: "center",
     marginBottom: "50px",
