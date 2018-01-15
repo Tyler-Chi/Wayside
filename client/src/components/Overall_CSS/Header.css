@@ -5,13 +5,13 @@
   top:0;
   left:0;
   right:0;
-  height: 95px;
-  background: #1E1E1E;
+  height: 60px;
+  background: linear-gradient(to right, #7B4397 50%, #DC2430 80%);;
   color: #FFF;
   z-index: 2;
 }
 .nav-spacer{
-  height: 95px;
+  height: 60px;
 }
 .nav-inner {
   width: 850px;
@@ -23,7 +23,10 @@
   justify-content: space-between;
   align-items: center;
 }
-
+.nav > * {
+  position: relative;
+  top: -15px;
+}
 
 /*nav left side */
 .left {
@@ -33,7 +36,7 @@
 }
 .title {
   line-height: 85px;
-  font-size: 40px;
+  font-size: 1.75em;
   margin: auto 0;
 }
 
