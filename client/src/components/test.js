@@ -3,6 +3,60 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 
 class Test extends Component {
+
+  constructor(props){
+    super(props);
+    this.populate = this.populate.bind(this);
+  }
+
+  populate(){
+    console.log("hello world");
+
+    let months = ["01","02","03","04","05","06","07","08","09","10","11","12"];
+
+    let days = [];
+    for (var i = 1; i < 31; i++) {
+
+      if (i < 10) {
+        days.push("0" + i)
+      } else {
+        days.push(i.toString())
+      }
+    }
+
+    for (var month = 0; month < months.length; month++) {
+      for (var day = 0; day < days.length; day++) {
+        let first = "2018-";
+        let last = "T00:00:00.000Z";
+
+        let startDate = first + months[month] + "-" + days[day] + last;
+        let endDate = first + months[month] + "-" + days[day] + last;
+        
+
+        this.props.submitTrip({
+          origin: "6628 Lavandula Court, San Diego California 92130",
+          destination: "825 Battery Street, San Francisco California 94111",
+          latD: 37.7749295,
+          latO: 32.715738,
+          lngD: -122.41941550000001,
+          lngO: -117.16108380000003,
+          price: 0,
+          completed: false,
+          tripDistance: 507,
+          tripStartDate: startDate,
+          tripEndDate: endDate
+        });
+
+      }
+    }
+    
+
+
+
+
+  }
+
+  
   render() {
     return (
       <div>
@@ -83,21 +137,7 @@ class Test extends Component {
 
         <button
           onClick = {()=>
-            this.props.submitTrip({
-              origin: "San Diego",
-              destination: "San Francisco",
-              latD: 37.7749295,
-              latO: 32.715738,
-              lngD: -122.41941550000001,
-              lngO: -117.16108380000003,
-              price: 0,
-              completed: false,
-              tripDistance: 507,
-              tripStartDate: "2018-01-15T00:00:00.000Z",
-              tripEndDate: "2018-01-17T00:00:00.000Z"
-
-
-            })
+            this.populate()
           }  
           
         >
