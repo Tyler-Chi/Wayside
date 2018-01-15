@@ -78,6 +78,33 @@ class Test extends Component {
           the order id, the second argument is an object with the keys and
           values of the stuff you wanna change :D
         </button>
+
+        <br />
+
+        <button
+          onClick = {()=>
+            this.props.submitTrip({
+              origin: "San Diego",
+              destination: "San Francisco",
+              latD: 37.7749295,
+              latO: 32.715738,
+              lngD: -122.41941550000001,
+              lngO: -117.16108380000003,
+              price: 0,
+              completed: false,
+              tripDistance: 507,
+              tripStartDate: "2018-01-15T00:00:00.000Z",
+              tripEndDate: "2018-01-17T00:00:00.000Z"
+
+
+            })
+          }  
+          
+        >
+          POPULATE
+        </button>
+
+
       </div>
     );
   }
