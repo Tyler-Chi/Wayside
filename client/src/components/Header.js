@@ -86,7 +86,7 @@ class Header extends Component {
             href="/api/logout"
             >Log out</a>
           <div>
-            <img src={user.imageUrl} className="driver-img"></img>
+            <img src={user.imageUrl} className="nav-driver-img"></img>
           </div>
 
         </div>
@@ -123,7 +123,7 @@ class Header extends Component {
             href="/api/logout"
             >Log out</a>
           <div>
-            <img src={user.imageUrl} className="driver-img"></img>
+            <img src={user.imageUrl} className="nav-driver-img"></img>
           </div>
 
         </div>
