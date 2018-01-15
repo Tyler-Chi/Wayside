@@ -86,7 +86,7 @@ class Header extends Component {
             href="/api/logout"
             >Log out</a>
           <div>
-            <img src={user.imageUrl} className="driver-img"></img>
+            <img src={user.imageUrl} className="nav-driver-img"></img>
           </div>
 
         </div>
@@ -123,7 +123,7 @@ class Header extends Component {
             href="/api/logout"
             >Log out</a>
           <div>
-            <img src={user.imageUrl} className="driver-img"></img>
+            <img src={user.imageUrl} className="nav-driver-img"></img>
           </div>
 
         </div>
@@ -148,7 +148,9 @@ class Header extends Component {
 
       return (
         <div className="login">
-          <a className="login-google" href="/auth/google">Log in with Google</a>
+          <a className="login-google" href="/auth/google">
+            <img src="http://res.cloudinary.com/annaoh/image/upload/v1515977008/google-logo-icon-PNG-Transparent-Background_cmeqpo.png"></img>
+            <h4>Log in with Google</h4></a>
         </div>
 
       );
