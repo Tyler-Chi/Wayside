@@ -63,7 +63,7 @@
 
 }
 .form-date-input {
-  width: 450px;
+  width: 45%;
   display: flex;
   flex-direction: column;,
   justify-content: center;
@@ -75,28 +75,27 @@
   justify-content: center;
   align-content: center;
 }
+.map {
+  margin: 0 auto;
+}
 
 .map-button {
   /*margin: 10px;*/
-  margin: 20px auto 50px auto;
+  margin: 10px auto 30px auto;
   padding: 10px 25px;
-  width: 200px;
+  width: 22%;
   text-align: center;
   background: #8B4789;
   /*border: 1px solid red;*/
   border-radius: 3px;
   color: white;
-  font-size: 1em;
+  font-size: 1.25em;
   /*font-weight: 600;*/
   box-shadow: 1px 3px 2px 2px rgba(0, 0, 255, .2);
 }
 
 .map-button:hover {
   background: #651366;
-}
-
-.map {
-  left: 150px;
 }
 
 .confirm-q {
@@ -111,7 +110,7 @@
   width: 200px;
   text-align: center;
   border-radius: 3px;
-  font-size: 1em;
+  font-size: 1.25em;
   font-style: 600;
   box-shadow: 1px 3px 2px 2px rgba(0, 0, 255, .2);
 }
