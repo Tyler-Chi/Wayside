@@ -26,6 +26,17 @@ class CustomersOrdersUpcoming extends Component {
     .filter(order => (order._ownerId === this.props.auth._id && order.requestPending))
     .sort(function(a,b) { return a.deliveredBy > b.deliveredBy; });
 
+    if (ordersHistory.length === 0){
+      return (
+        <div className="customer-orders-all">
+          <h2 className="customer-orders-title barlow">FUTURE ORDERS</h2>
+
+          <p> You currently have no pending orders! Click on "Send a Package" in the navigation bar to make a new order :)</p>
+
+        </div>
+      )
+    }
+
     return (
       <div className="customer-orders-all">
         <h2 className="customer-orders-title barlow">FUTURE ORDERS</h2>

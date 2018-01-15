@@ -36,6 +36,17 @@ class DriversTripsUpcoming extends Component {
 
     const ordersArray = Object.values(this.props.entities.orders);
 
+    if (ordersArray.length === 0){
+      return (
+        <div className="driver-upcoming-all">
+          <h2 className="driver-upcoming-title barlow">UPCOMING TRIPS</h2>
+
+        <p> You currently have no upcoming trips! Click on "New Trip" in the navigation bar to post a new trip </p>
+         
+        </div>
+      )
+    }
+
     return(
       <div className="driver-upcoming-all">
         <h2 className="driver-upcoming-title barlow">UPCOMING TRIPS</h2>

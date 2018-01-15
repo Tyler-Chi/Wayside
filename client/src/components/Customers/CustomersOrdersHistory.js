@@ -20,6 +20,17 @@ class CustomersOrdersHistory extends Component {
       .filter(order => (order._ownerId === this.props.auth._id && order.deliveredStatus === true))
       .sort(function(a,b) { return a.deliveredBy > b.deliveredBy; });
 
+    if (ordersHistory.length === 0){
+      return (
+        <div className="customer-orders-all">
+          <h2 className="customer-orders-title barlow">ORDER HISTORY</h2>
+
+          <p> Join our thousands of satisfied customers and ship something today :) </p>
+
+        </div>
+      )
+    }
+
     return (
       <div className="customer-orders-all">
         <h2 className="customer-orders-title barlow">ORDER HISTORY</h2>

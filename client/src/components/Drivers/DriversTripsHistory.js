@@ -38,6 +38,18 @@ class DriversTripsHistory extends Component {
         return a.tripStartDate > b.tripStartDate;
       });
 
+    if (pastTrips.length === 0){
+      return (
+      <div className="driver-history-all">
+        <h2 className="driver-history-title barlow">TRIP HISTORY</h2>
+
+       <p > You have not completed any trips yet! </p>
+
+      </div>
+
+      )
+    }
+
     return (
       <div className="driver-history-all">
         <h2 className="driver-history-title barlow">TRIP HISTORY</h2>
