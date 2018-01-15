@@ -142,8 +142,7 @@ class Splash extends Component {
         </div>
 
           <div className="about signUp" style={style.signUp}>
-            <h2>WHY WAIT?</h2>
-            <h4>Log in now with your Google account!</h4>
+            <h2 className="signup-title">WHY WAIT?</h2>
 
             <a className="bottom-login-button"
               type="button"

@@ -22,17 +22,14 @@
   color: white;
   text-align: center;
   box-shadow: 1px 3px 2px 2px rgba(0, 0, 0, .2);
+  transition: 0.5s;
 }
 .loginButton:hover {
   background: #471743;
-  border: 1px solid #471743;
+  /*border: 1px solid #471743;*/
   border-radius: 5px;
 }
-.bottom-login-button:hover {
-  background: #471743;
-  border: 1px solid #471743;
-  border-radius: 5px;
-}
+
 
 
 /*questions*/
@@ -266,21 +263,33 @@ animation-delay: 8.3s;
 animation-delay: 0s;
 }
 
+
 .signUp {
-  font-size: 2em;
+  padding: 90px 0;
+}
+.signup-title {
+  font-size: 3em;
+}
+.signup-description {
+  font-size: 1.25em;
 }
 /*very bottom login button*/
 .bottom-login-button {
   margin-top: 10px;
   margin-bottom: 40px;
   padding: 8px 20px;
-  width: 275px;
-  border-radius: 5px;
-  border: 1px solid #792973;
-  background: #792973;
-  font-size: 20px;
-  font-weight: 600;
+  width: 200px;
+  border-radius: 3px;
+  background: blue;
   color: white;
+  font-size: 1.3em;
+  font-weight: 600;
   text-align: center;
   box-shadow: 1px 3px 2px 2px rgba(0, 0, 255, .2);
+  transition: 0.5s;
+}
+.bottom-login-button:hover {
+  background: #471743;
+  /*border: 1px solid #471743;*/
+  border-radius: 5px;
 }
