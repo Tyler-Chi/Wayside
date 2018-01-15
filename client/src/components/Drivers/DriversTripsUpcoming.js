@@ -41,8 +41,15 @@ class DriversTripsUpcoming extends Component {
         <div className="driver-upcoming-all">
           <h2 className="driver-upcoming-title barlow">UPCOMING TRIPS</h2>
 
-        <p> You currently have no upcoming trips! Click on "New Trip" in the navigation bar to post a new trip </p>
-         
+        <p> You currently have no posted upcoming trips! </p>
+        <p> Want to make some extra cash on your next trip?</p>
+          <button onClick={() => this.props.history.replace("/drivers/trips/new")}
+            className="empty-area-button"
+          >
+            Click here to post a new trip!
+        </button>
+
+
         </div>
       )
     }

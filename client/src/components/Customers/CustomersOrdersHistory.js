@@ -26,6 +26,11 @@ class CustomersOrdersHistory extends Component {
           <h2 className="customer-orders-title barlow">ORDER HISTORY</h2>
 
           <p> Join our thousands of satisfied customers and ship something today :) </p>
+          <button onClick={() => this.props.history.replace("/customers/orders/new")}
+            className="empty-area-button"
+          >
+            Click here to place your first order!
+          </button>
 
         </div>
       )

@@ -31,7 +31,12 @@ class CustomersOrdersUpcoming extends Component {
         <div className="customer-orders-all">
           <h2 className="customer-orders-title barlow">FUTURE ORDERS</h2>
 
-          <p> You currently have no pending orders! Click on "Send a Package" in the navigation bar to make a new order :)</p>
+          <p className = "empty-area"> You currently have no pending orders! </p>
+          <button onClick={() => this.props.history.replace("/customers/orders/new")}
+            className="empty-area-button"
+          >
+            Click here to make a new order!
+          </button>
 
         </div>
       )

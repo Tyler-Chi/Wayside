@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import * as actions from "../../actions";
 import DriversTripItem from "./DriversTripItem";
 import "./DriversTripItem.css";
+import {Link} from 'react-router-dom';
 
 class DriversTripsHistory extends Component {
   //need to figure out the promises here -__-
@@ -21,6 +22,8 @@ class DriversTripsHistory extends Component {
   }
 
   render() {
+    console.log('props',this.props);
+    
     if (
       this.props.entities.trips === null ||
       this.props.entities.orders === null
@@ -43,8 +46,13 @@ class DriversTripsHistory extends Component {
       <div className="driver-history-all">
         <h2 className="driver-history-title barlow">TRIP HISTORY</h2>
 
-       <p > You have not completed any trips yet! </p>
-
+       <p className = "empty-area"> You have not completed any trips yet. </p>
+       
+      <button onClick = {() => this.props.history.replace("/drivers/trips/new")}
+      className = "empty-area-button"
+      >
+        Click here to post a new trip!
+      </button>
       </div>
 
       )
