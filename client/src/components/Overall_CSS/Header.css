@@ -1,22 +1,20 @@
+
+/*nav bar in total*/
 .nav {
   position: fixed;
   top:0;
   left:0;
   right:0;
   height: 95px;
-  /*border-bottom: 1px solid black;*/
-  /*box-shadow: 0 2px 5px rgba(0,0,0,.26);*/
-  /*margin-bottom: 5px;*/
-  /*background-color: white;*/
   background: #1E1E1E;
   color: #FFF;
   z-index: 2;
 }
 .nav-spacer{
-  height: 90px;
+  height: 95px;
 }
 .nav-inner {
-  width: 900px;
+  width: 850px;
   margin: 0 auto;
   padding: 0 30px;
   padding-top: 5px;
@@ -26,17 +24,22 @@
   align-items: center;
 }
 
+
+/*nav left side */
 .left {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .title {
   line-height: 85px;
   font-size: 40px;
   margin: auto 0;
 }
+
+
+
+/*login button on splash page*/
 .login {
   display: flex;
   flex-direction: row;
@@ -52,7 +55,6 @@
   font-weight: 700;
   margin: auto 0;
 }
-
 .login-google {
   width: 200px;
   height: 40px;
@@ -65,34 +67,21 @@
   justify-content: center;
 }
 .login-google:hover {
-  /*border: 3px solid blue;*/
   background: blue;
   color: white;
   transition: 0.3s;
 }
-
-
 .login-demo {
-  /*margin-top: 5px;*/
   padding: 15px 25px;
   font-size: 18px;
-  /*height: 50px;*/
 }
 .login-demo:hover {
   border-top: 1px solid white;
   border-bottom: 5px solid red;
 }
-/*.login > * {
-  margin-top: 5px;
-  padding: 15px 25px;
-  font-size: 18px;
-  height: 50px;
-}*/
-/*.login > *:hover {
-  border-bottom: 5px solid red;
-}*/
 
 
+/*nav bar right side after login*/
 .nav-right {
   display: flex;
   flex-direction: row;
@@ -100,8 +89,11 @@
   width: 700px;
 }
 .nav-right > * {
-  padding: 1% 1.75%;
+  margin: auto .5%;
+  padding: .75% 1.5%;
   font-size: 0.8em;
+  font-weight: 700;
+  height: 30px;
 }
 .nav-right > button:focus {
   background-color: inherit;
@@ -111,31 +103,69 @@
   border-bottom: 3px solid orange;
   color: orange;
 }
-
 .nav-right > div {
   border-bottom: none;
 }
 .nav-right > div:hover {
   border-bottom: none;
 }
-
-.logout {
-  text-align: center;
-  padding: 3% 2%;
-  padding-top: 3.25%;
-}
-.logout:hover {
-  transition: 0.3s;
-  padding-top: 3%
-}
-
 .currentTab {
-  /*text-decoration: underline;*/
+  color: orange;
+}
+
+
+/*becoming driver or becoming customer buttons */
+.become-driver {
+  border: 1px solid orange;
+  border-radius: 2px;
+  background: orange;
+  color: black;
+  font-weight: 700;
+  height: 30px;
+}
+.become-driver:hover {
+  border: 1px solid #F35522;
+  background: #F35522;
+  color: white;
   font-weight: 700;
 }
+.become-customer {
+  border: 1px solid orange;
+  border-radius: 2px;
+  background: orange;
+  color: black;
+  font-weight: 700;
+  height: 30px;
+}
+.become-customer:hover {
+  border: 1px solid #F35522;
+  background: #F35522;
+  color: white;
+  font-weight: 700;
+}
+
+
+/*# logout button*/
+.logout {
+  text-align: center;
+  padding: 10px 10px 0 10px;
+  border-radius: 2px;
+  border: 2px solid white;
+}
+.logout:hover {
+  background: gray;
+  border: 2px solid gray;
+  color: black;
+  transition: 0.3s;
+}
+
+
 .nav-driver-img {
   width: 40px;
   height: 40px;
   border-radius: 60px;
   margin: auto 0;
+  position: relative;
+  top: -5px;
+  left: -5px;
 }

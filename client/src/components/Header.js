@@ -77,7 +77,7 @@ class Header extends Component {
             onClick={()=>this.props.history.replace('/customers/orders/new')}
             >Send a Package</button>
           <button
-            className={this.currentTab("become-driver")}
+            className={this.currentTab("become-driver") + " become-driver"}
             onClick={()=>this.props.history.replace('/drivers/trips/new')}
             >Become a Driver!</button>
 
@@ -115,7 +115,7 @@ class Header extends Component {
             onClick={()=> this.props.history.replace('/drivers/trips/new')}
             >New Trip</button>
           <button
-            className={this.currentTab("become-customer")}
+            className={this.currentTab("become-customer") + " become-customer"}
             onClick={()=> this.props.history.replace('/customers/orders/new')}
             >Send a Package</button>
           <a

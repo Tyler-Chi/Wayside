@@ -1,5 +1,5 @@
 .new-driver-rating > i {
-  font-size: 20px;
+  font-size: 1.25em;
   margin: auto 1px;
   color: yellow;
 }
@@ -11,4 +11,11 @@
 
 .new-order-bottom-button {
   margin-bottom: 30px;
+}
+
+.item-holder > h2 {
+  font-size: 2em;
+}
+.item-holder > h4 {
+  font-size: 1em;
 }

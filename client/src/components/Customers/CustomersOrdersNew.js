@@ -59,7 +59,7 @@ class CustomersOrdersNew extends Component {
         if (window.scrollY > 580){
           let mid = window.innerWidth/2;
           HTMLMap.className="mapFix";
-          HTMLMap.style.left = `${mid - 37  }px`;
+          HTMLMap.style.left = `${mid - 37}px`;
         } else {
           HTMLMap.className="mapFlex";
           HTMLMap.style.left = "0px";
@@ -280,7 +280,7 @@ class CustomersOrdersNew extends Component {
 
         <label>
           {" "}
-          Deliver By:
+          <h3 className="form-dates">Deliver By</h3>
           <input
             type="date"
             id="deliver-by"
@@ -294,7 +294,7 @@ class CustomersOrdersNew extends Component {
             <input
               type="submit"
               id="submit"
-              value="Display Map"
+              value="DISPLAY MAP"
               className="button-map"
               onClick={this.getGeo}
               />
@@ -304,7 +304,7 @@ class CustomersOrdersNew extends Component {
               id="submit"
               className="button-driver-search off not mapbutton"
 
-              value="Search for Drivers"
+              value="PICK A DRIVER"
               onClick={this.handleSearch}
               />
           </div>

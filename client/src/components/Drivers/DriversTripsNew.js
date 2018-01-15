@@ -182,18 +182,18 @@ class DriversTripsNew extends Component {
           <div className="map-div">
             <input
               type="submit" id="submit"
-              value="Next"
+              value="NEXT"
               className="map-button"
               onClick={this.handleDisplay} />
 
-            <div className="map" ref="map" style={{width: 700, height: 700}}>
+            <div className="map" ref="map" style={{width: 600, height: 600}}>
               Map
             </div>
             <div id="direction-panel"></div>
 
             <h5 className="confirm-q">Is this the route you're taking?</h5>
             <button className="confirm-trip" onClick={this.handleSubmit}>
-              Confirm Trip
+              CONFIRM TRIP
             </button>
 
         </div>
