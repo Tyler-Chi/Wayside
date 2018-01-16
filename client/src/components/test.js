@@ -9,10 +9,43 @@ class Test extends Component {
     this.populate = this.populate.bind(this);
   }
 
-  populate(){
+  populate() {
     console.log("hello world");
 
-    let months = ["01","02","03","04","05","06","07","08","09","10","11","12"];
+    let addresses = [
+      "7 W. Adams Lane San Jose, CA 95116",
+      "7246 Windsor Ln Citrus Heights, CA 95610",
+      "241 Indian Spring St. Pittsburg, CA 94565",
+      "9267 S Grand Ave Los Angeles, CA 90003",
+      "904 W Main St, El Cajon, CA 92020",
+      "90942 Kelso Cima Rd, Kelso, CA 92309",
+      "400 S China Lake Blvd, Ridgecrest, CA 93555",
+      "6628 Lavandula Ct, San Diego, CA 92130",
+      "4656 Tarantella Ln, San Diego, CA 92130",
+      "Angeles National Forest",
+      "Bakersfield, California",
+      "Tuolumne, California 95379",
+      "Santa Rosa",
+      "Plumas National Forest",
+      "Modoc National Forest, 225 West 8th Street, Alturas, CA 96101",
+      "Montague, California 96064",
+      "Eureka, CA",
+      "Crescent City, CA",
+      "1600 US-199, Crescent City, CA 95531",
+      "Fresno, CA",
+      "Death Valley National Park",
+      "90942 Kelso Cima Rd, Kelso, CA 92309",
+      "Kofa National Wildlife Refuge",
+      "Joshua Tree National Park",
+      "Stanislaus National Forest",
+      "Yosemite National Park",
+      "Sacramento, CA",
+      "Garberville, CA",
+      "King Range National Conservation Area",
+      "Hayfork, CA"
+    ]
+
+    let months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
 
     let days = [];
     for (var i = 1; i < 31; i++) {
@@ -31,28 +64,37 @@ class Test extends Component {
 
         let startDate = first + months[month] + "-" + days[day] + last;
         let endDate = first + months[month] + "-" + days[day] + last;
-        
 
-        this.props.submitTrip({
-          origin: "6628 Lavandula Court, San Diego California 92130",
-          destination: "825 Battery Street, San Francisco California 94111",
-          latD: 37.7749295,
-          latO: 32.715738,
-          lngD: -122.41941550000001,
-          lngO: -117.16108380000003,
-          price: 0,
-          completed: false,
-          tripDistance: 507,
-          tripStartDate: startDate,
-          tripEndDate: endDate
-        });
+
+        for (var j = 0; j < 30; j++) {
+          let startLoc = Math.floor(Math.random() * addresses.length);
+          let endLoc = Math.floor(Math.random() * addresses.length);
+
+
+          this.props.submitTrip({
+            origin: addresses[startLoc],
+            destination: addresses[endLoc],
+            latD: 37.7749295,
+            latO: 32.715738,
+            lngD: -122.41941550000001,
+            lngO: -117.16108380000003,
+            price: 0,
+            completed: false,
+            tripDistance: 507,
+            tripStartDate: startDate,
+            tripEndDate: endDate
+          });
+
+
+
+        }
+
+
+
+
 
       }
     }
-    
-
-
-
 
   }
 
