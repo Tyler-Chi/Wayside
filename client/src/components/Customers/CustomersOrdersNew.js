@@ -13,7 +13,7 @@ const MAPOPTIONS = {
 //rate per mile
 const RATE = 0.25;
 //radius of trip finding
-const RADIUS = 100;
+const RADIUS = 300;
 
 class CustomersOrdersNew extends Component {
   constructor(props) {
