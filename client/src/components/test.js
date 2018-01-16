@@ -66,7 +66,7 @@ class Test extends Component {
         let endDate = first + months[month] + "-" + days[day] + last;
 
 
-        for (var j = 0; j < 30; j++) {
+        for (var j = 0; j < 10; j++) {
           let startLoc = Math.floor(Math.random() * addresses.length);
           let endLoc = Math.floor(Math.random() * addresses.length);
 
