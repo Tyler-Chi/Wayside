@@ -71,15 +71,15 @@ class Header extends Component {
           <button
             className={this.currentTab("past-orders")}
             onClick={()=>this.props.history.replace('/customers/orders/history')}
-            >Order History</button>
+            >History</button>
           <button
             className={this.currentTab("new-orders")}
             onClick={()=>this.props.history.replace('/customers/orders/new')}
-            >Send a Package</button>
+            >Send Package</button>
           <button
             className={this.currentTab("become-driver") + " become-driver"}
             onClick={()=>this.props.history.replace('/drivers/trips/new')}
-            >Become a Driver!</button>
+            >Drive with Us</button>
 
           <a
             className="logout"
