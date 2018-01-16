@@ -5,13 +5,14 @@
   top:0;
   left:0;
   right:0;
-  height: 95px;
-  background: #1E1E1E;
+  height: 60px;
+  background: linear-gradient(to right, #7B4397 50%, #DC2430 70%);
+  /*background: linear-gradient(to right, #7b4397 0%,#b5238a 59%,#dc2430 87%);*/
   color: #FFF;
   z-index: 2;
 }
 .nav-spacer{
-  height: 95px;
+  height: 60px;
 }
 .nav-inner {
   width: 850px;
@@ -23,7 +24,10 @@
   justify-content: space-between;
   align-items: center;
 }
-
+.nav > * {
+  position: relative;
+  top: -17px;
+}
 
 /*nav left side */
 .left {
@@ -33,10 +37,12 @@
 }
 .title {
   line-height: 85px;
-  font-size: 40px;
+  font-size: 1.75em;
   margin: auto 0;
 }
-
+.title:hover {
+  color: #8200ff;
+}
 
 
 /*login button on splash page*/
@@ -89,13 +95,13 @@
   width: 700px;
 }
 .nav-right > * {
-  margin: auto .5%;
-  padding: .75% 1.5%;
+  margin: auto 1%;
+  padding: .75% 1.25%;
   font-size: 0.8em;
   font-weight: 700;
   height: 30px;
 }
-.nav-right > button:focus {
+.nav-right > *:focus {
   background-color: inherit;
 }
 .nav-right > *:hover {
@@ -123,6 +129,9 @@
   font-weight: 700;
   height: 30px;
 }
+.become-driver:focus {
+  background: orange;
+}
 .become-driver:hover {
   border: 1px solid #F35522;
   background: #F35522;
@@ -131,11 +140,14 @@
 }
 .become-customer {
   border: 1px solid orange;
-  border-radius: 2px;
+  border-radius: 4px;
   background: orange;
   color: black;
   font-weight: 700;
   height: 30px;
+}
+.become-customer:focus {
+  background: orange;
 }
 .become-customer:hover {
   border: 1px solid #F35522;
@@ -149,23 +161,24 @@
 .logout {
   text-align: center;
   padding: 10px 10px 0 10px;
-  border-radius: 2px;
+  margin-left: 60px;
+  border-radius: 4px;
   border: 2px solid white;
 }
 .logout:hover {
-  background: gray;
-  border: 2px solid gray;
+  background: white;
+  border: 2px solid white;
   color: black;
   transition: 0.3s;
 }
 
 
 .nav-driver-img {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border-radius: 60px;
   margin: auto 0;
   position: relative;
-  top: -5px;
-  left: -5px;
+  top: -3px;
+  left: -10px;
 }

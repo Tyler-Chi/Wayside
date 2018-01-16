@@ -31,19 +31,19 @@ const style = {
     fontSize: "4em",
     color: "white",
     textAlign: "center",
-    marginBottom: "50px",
+    marginBottom: "20px",
   },
   questions: {
-    marginTop: "40px",
+    marginTop: "1em",
     textAlign: "center",
   },
   questionsTitle: {
     textAlign: "center",
-    fontSize: "100px",
-    borderBottom: "1px solid gray",
-    width: "400px",
-    margin: "0 auto 35px auto",
-    paddingBottom: "6px",
+    fontSize: "4.5em",
+    // borderBottom: "3px solid #D3D3D3",
+    width: "300px",
+    margin: "0 auto 20px auto",
+    paddingBottom: "0px",
   },
 };
 
@@ -98,21 +98,22 @@ class Splash extends Component {
         <div className="bottom" style={style.bottom}>
           <div className="questions" style={style.questions}>
             <h1 className="questionsTitle pacifico" style={style.questionsTitle}>WaySide</h1>
-            <h5>Have you ever went on a road trip and had some free space in your car?</h5>
-            <h5>Have you ever wanted a cheaper, faster way to ship your packages?</h5>
+            <h5 className="question-underline"></h5>
+            <h5>Ever gone on a road trip and had some free space in your car?</h5>
+            <h5>Want a cheaper, faster way to ship your packages?</h5>
           </div>
 
           <div className="about first" style={style.about}>
-            <h2>HOW IT WORKS</h2>
-            <h4>WaySide matches drivers going in a certain direction with packages that need to be delivered in the same way.</h4>
-            <h4>Prices are calculated based on the extra distance the driver had to go out of his way to pick up and drop off the package.</h4>
+            <h2 className="about-title">HOW IT WORKS</h2>
+            <h4 className="about-blurb">WaySide matches drivers going in a certain direction with packages that need to be delivered in the same way.</h4>
+            <h4 className="about-blurb">Prices are calculated based on the extra distance the driver had to go out of his way to pick up and drop off the package.</h4>
             <img className="car" alt="car" src="https://res.cloudinary.com/annaoh/image/upload/v1513148713/car-2386838_960_720_vddt3q.png"/>
         </div>
 
           <div className="row human" style={style.human}>
             <div className="center">
-              <div className="about human2">
-                <h2>A MORE HUMAN APPROACH</h2>
+              <div className="about2 human2">
+                <h2 className="about-title2">A MORE HUMAN APPROACH</h2>
                 <h4 className="midsentence">Your stuff is <strong>IMPORTANT</strong>,</h4>
                 <h4 className="midsentence2">which is why you can choose your driver and know exactly who's handling your stuff.</h4>
               </div>
@@ -131,18 +132,17 @@ class Splash extends Component {
           <h2 className="slogan">Going the distance</h2>
           <h4 className="description">Request pickup. Ship. Repeat.</h4>
           <div className="ratings barlow">
-            <h4>Reviews</h4>
-            <h5>Cheap.   <p>-Christine</p></h5>
-            <h5>Super quick and easy   <p>-Tyler</p></h5>
-            <h5>5/5 would use again   <p>-Anna</p></h5>
-            <h5>Weekend shipping is the best   <p>-Trung</p></h5>
-            <h5>Great service!!!   <p>-Edan</p></h5>
+            <h4 className="ratings-title">Reviews</h4>
+            <h5 className="ratings-description">Cheap.   <p className="ratings-rater">-Christine</p></h5>
+            <h5 className="ratings-description">Super quick and easy   <p className="ratings-rater">-Tyler</p></h5>
+            <h5 className="ratings-description">5/5 would use again   <p className="ratings-rater">-Anna</p></h5>
+            <h5 className="ratings-description">Weekend shipping is the best   <p className="ratings-rater">-Trung</p></h5>
+            <h5 className="ratings-description">Great service!!!   <p className="ratings-rater">-Edan</p></h5>
           </div>
         </div>
 
           <div className="about signUp" style={style.signUp}>
-            <h2>WHY WAIT?</h2>
-            <h4>Log in now with your Google account!</h4>
+            <h2 className="signup-title">WHY WAIT?</h2>
 
             <a className="bottom-login-button"
               type="button"
