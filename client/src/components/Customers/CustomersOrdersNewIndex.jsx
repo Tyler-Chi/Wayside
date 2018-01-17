@@ -88,6 +88,7 @@ class CustomersOrdersNewIndex extends Component {
         <div className="item-holder">
           <h2>Sorry, no matched results!</h2>
           <h4>We only match trips that deliver before your delivery date and are within 300 miles of our drivers' planned trips.</h4>
+          <h4>Our service only covers California at the moment. Sorry for the inconvinience!</h4>
           <h4>Please try another date or location</h4>
         </div>
       );
