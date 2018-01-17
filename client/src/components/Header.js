@@ -149,7 +149,7 @@ class Header extends Component {
       return (
         <div className="login">
           <a className="login-google" href="/auth/google">
-            <img src="http://res.cloudinary.com/annaoh/image/upload/v1515977008/google-logo-icon-PNG-Transparent-Background_cmeqpo.png"></img>
+            <img src="https://res.cloudinary.com/annaoh/image/upload/v1515977008/google-logo-icon-PNG-Transparent-Background_cmeqpo.png"></img>
             <h4>Log in with Google</h4></a>
         </div>
 
